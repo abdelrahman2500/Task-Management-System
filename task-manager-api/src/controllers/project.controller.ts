@@ -1,38 +1,27 @@
 import type { Request, Response } from "express";
 import { ProjectService } from "../services/project.service.js";
 import type { CreateProjectDto, UpdateProjectDto } from "../dto/project.dto.js";
+import { asyncHandler } from "../utils/async-handler.js";
 
 const service = new ProjectService();
 
 export class ProjectController {
-  async getAllProjects(_: Request, res: Response) {
-    try {
-      const projects = await service.getAllProjects();
-      return res.json({ success: true, data: projects });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+  getAllProjects = asyncHandler(async (_: Request, res: Response) => {
+    const projects = await service.getAllProjects();
+    return res.json({ success: true, data: projects });
+  });
+  getProjectById = asyncHandler(
+    async (req: Request<{ projectId: string }>, res: Response) => {
+      const project = await service.getProjectById(
+        Number(req.params.projectId),
+      );
 
-  async getProjectById(req: Request, res: Response) {
-    try {
-      const projectId = parseInt(req.params.projectId as string, 10);
-      if (isNaN(projectId)) {
-        return res
-          .status(400)
-          .json({ success: false, error: "Invalid project ID" });
-      }
-      const project = await service.getProjectById(projectId);
-      if (!project) {
-        return res
-          .status(404)
-          .json({ success: false, error: "Project not found" });
-      }
-      return res.json({ success: true, data: project });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+      res.json({
+        success: true,
+        data: project,
+      });
+    },
+  );
 
   async createProject(req: Request<{}, {}, CreateProjectDto>, res: Response) {
     try {

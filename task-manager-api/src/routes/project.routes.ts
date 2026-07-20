@@ -4,7 +4,9 @@ import { TaskController } from "../controllers/task.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js";
 import { authorize } from "../middlewares/authorize.middleware.js";
 import { validate } from "../middlewares/validation.middleware.js";
-import { createProjectSchema } from "../schemas/project.schema.js";
+import { createProjectSchema, updateProjectSchema } from "../schemas/project.schema.js";
+import { createTaskSchema, updateTaskSchema } from "../schemas/task.schema.js";
+import { asyncHandler } from "../utils/async-handler.js";
 
 const router = Router();
 const controller = new ProjectController();
@@ -14,46 +16,55 @@ router.get(
   "/",
   authMiddleware,
   authorize(["owner", "admin", "member", "viewer"]),
-  controller.getAllProjects,
+  asyncHandler(controller.getAllProjects),
 );
 router.post(
   "/",
+  authMiddleware,
+  authorize(["owner"]),
   validate(createProjectSchema),
-  // authMiddleware,
-  // authorize(["owner"]),
-  controller.createProject,
+  asyncHandler(controller.createProject),
 );
 router.get(
   "/:projectId",
   authMiddleware,
-  authorize(["member", "owner"]),
-  controller.getProjectById,
+  authorize(["owner", "admin", "member", "viewer"]),
+  asyncHandler(controller.getProjectById),
 );
 router.patch(
   "/:projectId",
   authMiddleware,
-  authorize(["owner"]),
-  controller.updateProject,
+  authorize(["owner", "admin"]),
+  validate(updateProjectSchema),
+  asyncHandler(controller.updateProject),
 );
 router.delete(
   "/:projectId",
   authMiddleware,
   authorize(["owner"]),
-  controller.deleteProject,
+  asyncHandler(controller.deleteProject),
 );
 
 // Nested tasks under a project
 router.get(
   "/:projectId/tasks",
   authMiddleware,
-  authorize(["member", "owner"]),
-  taskController.getTasksByProjectId,
+  authorize(["owner", "admin", "member", "viewer"]),
+  asyncHandler(taskController.getTasksByProjectId),
 );
 router.post(
   "/:projectId/tasks",
   authMiddleware,
-  authorize(["owner"]),
-  taskController.createTask,
+  authorize(["owner", "admin", "member"]),
+  validate(createTaskSchema),
+  asyncHandler(taskController.createTask),
+);
+router.patch(
+  "/:projectId/tasks/:taskId",
+  authMiddleware,
+  authorize(["owner", "admin", "member"]),
+  validate(updateTaskSchema),
+  asyncHandler(taskController.updateTask),
 );
 
 export default router;
