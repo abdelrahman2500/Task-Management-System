@@ -1,19 +1,32 @@
 import { UserRepository } from "../repositories/user.repositoty.js";
 import bcrypt from "bcrypt";
+import { AppError } from "../utils/errors/app-error.js";
 
 export class UserService {
   constructor(private repository = new UserRepository()) {}
 
   async getAllUsers() {
-    return await this.repository.findAll();
+    return this.repository.findAll();
   }
 
   async getUserById(id: number) {
-    return await this.repository.findById(id);
+    const user = await this.repository.findById(id);
+
+    if (!user) {
+      throw new AppError(404, "USER_NOT_FOUND", "User not found");
+    }
+
+    return user;
   }
 
   async getUserByEmail(email: string) {
-    return await this.repository.findByEmail(email);
+    const user = await this.repository.findByEmail(email);
+
+    if (!user) {
+      throw new AppError(404, "USER_NOT_FOUND", "User not found");
+    }
+
+    return user;
   }
 
   async createUser(data: {
@@ -23,7 +36,7 @@ export class UserService {
     isActive?: boolean;
   }) {
     const passwordHash = await bcrypt.hash(data.password, 10);
-    return await this.repository.create({...data, password: passwordHash});
+    return this.repository.create({ ...data, password: passwordHash });
   }
 
   async updateUser(
@@ -37,12 +50,13 @@ export class UserService {
   ) {
     if (data.password) {
       const passwordHash = await bcrypt.hash(data.password, 10);
-      return await this.repository.update(id, {...data, password: passwordHash});
+      return this.repository.update(id, { ...data, password: passwordHash });
     }
-    return await this.repository.update(id, data);
+
+    return this.repository.update(id, data);
   }
 
   async deleteUser(id: number) {
-    return await this.repository.delete(id);
+    return this.repository.delete(id);
   }
 }

@@ -1,64 +1,57 @@
 import type { Request, Response } from "express";
 import { TaskService } from "../services/task.service.js";
 import type { CreateTaskDto, UpdateTaskDto } from "../dto/task.dto.js";
+import { asyncHandler } from "../utils/async-handler.js";
+import { AppError } from "../utils/errors/app-error.js";
+import { parseRequiredId } from "../utils/parse-required-id.js";
 
 const service = new TaskService();
 
 export class TaskController {
-  async getAllTasks(_: Request, res: Response) {
-    try {
-      const tasks = await service.getAllTasks();
-      return res.json({ success: true, data: tasks });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+  getAllTasks = asyncHandler(async (_: Request, res: Response) => {
+    const tasks = await service.getAllTasks();
+    return res.json({ success: true, data: tasks });
+  });
 
-  async getTaskById(req: Request, res: Response) {
-    try {
-      const taskId = parseInt(req.params.taskId as string, 10);
-      if (isNaN(taskId)) {
-        return res.status(400).json({ success: false, error: "Invalid task ID" });
-      }
-      const task = await service.getTaskById(taskId);
-      if (!task) {
-        return res.status(404).json({ success: false, error: "Task not found" });
-      }
-      return res.json({ success: true, data: task });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
+  getTaskById = asyncHandler(async (req: Request, res: Response) => {
+    const taskId = parseRequiredId(
+      req.params.taskId,
+      "INVALID_TASK_ID",
+      "Invalid task ID",
+    );
+    const task = await service.getTaskById(taskId);
+    if (!task) {
+      throw new AppError(404, "TASK_NOT_FOUND", "Task not found");
     }
-  }
+    return res.json({ success: true, data: task });
+  });
 
-  async getTasksByProjectId(req: Request, res: Response) {
-    try {
-      const projectId = parseInt(req.params.projectId as string, 10);
-      if (isNaN(projectId)) {
-        return res.status(400).json({ success: false, error: "Invalid project ID" });
-      }
-      const tasks = await service.getTasksByProjectId(projectId);
-      return res.json({ success: true, data: tasks });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+  getTasksByProjectId = asyncHandler(async (req: Request, res: Response) => {
+    const projectId = parseRequiredId(
+      req.params.projectId,
+      "INVALID_PROJECT_ID",
+      "Invalid project ID",
+    );
+    const tasks = await service.getTasksByProjectId(projectId);
+    return res.json({ success: true, data: tasks });
+  });
 
-  async createTask(req: Request<{ projectId?: string }, {}, CreateTaskDto>, res: Response) {
-    try {
+  createTask = asyncHandler(
+    async (req: Request<{ projectId?: string }, {}, CreateTaskDto>, res: Response) => {
       const paramProjectId = req.params.projectId ? parseInt(req.params.projectId, 10) : undefined;
       const projectId = paramProjectId ?? (req.body.projectId ? Number(req.body.projectId) : undefined);
 
       if (projectId === undefined || isNaN(projectId)) {
-        return res.status(400).json({ success: false, error: "Valid projectId is required" });
+        throw new AppError(400, "INVALID_PROJECT_ID", "Valid projectId is required");
       }
 
       const { title, assigneeId, createdBy, description, status, priority, dueDate } = req.body;
 
       if (!title) {
-        return res.status(400).json({ success: false, error: "Title is required" });
+        throw new AppError(400, "MISSING_TITLE", "Title is required");
       }
       if (createdBy === undefined || isNaN(Number(createdBy))) {
-        return res.status(400).json({ success: false, error: "Valid createdBy user ID is required" });
+        throw new AppError(400, "INVALID_CREATED_BY", "Valid createdBy user ID is required");
       }
 
       const task = await service.createTask({
@@ -73,17 +66,16 @@ export class TaskController {
       });
 
       return res.status(201).json({ success: true, data: task });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+    },
+  );
 
-  async updateTask(req: Request<{ taskId: string }, {}, UpdateTaskDto>, res: Response) {
-    try {
-      const taskId = parseInt(req.params.taskId, 10);
-      if (isNaN(taskId)) {
-        return res.status(400).json({ success: false, error: "Invalid task ID" });
-      }
+  updateTask = asyncHandler(
+    async (req: Request<{ taskId: string }, {}, UpdateTaskDto>, res: Response) => {
+      const taskId = parseRequiredId(
+        req.params.taskId,
+        "INVALID_TASK_ID",
+        "Invalid task ID",
+      );
 
       const { projectId, assigneeId, createdBy, title, description, status, priority, dueDate } = req.body;
 
@@ -99,21 +91,16 @@ export class TaskController {
       });
 
       return res.json({ success: true, data: task });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+    },
+  );
 
-  async deleteTask(req: Request, res: Response) {
-    try {
-      const taskId = parseInt(req.params.taskId as string, 10);
-      if (isNaN(taskId)) {
-        return res.status(400).json({ success: false, error: "Invalid task ID" });
-      }
-      await service.deleteTask(taskId);
-      return res.json({ success: true, message: "Task deleted successfully" });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+  deleteTask = asyncHandler(async (req: Request, res: Response) => {
+    const taskId = parseRequiredId(
+      req.params.taskId,
+      "INVALID_TASK_ID",
+      "Invalid task ID",
+    );
+    await service.deleteTask(taskId);
+    return res.json({ success: true, message: "Task deleted successfully" });
+  });
 }

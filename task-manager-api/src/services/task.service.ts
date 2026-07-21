@@ -1,19 +1,26 @@
 import { TaskRepository } from "../repositories/task.repository.js";
 import { TaskStatus, TaskPriority } from "@prisma/client";
+import { AppError } from "../utils/errors/app-error.js";
 
 export class TaskService {
   constructor(private repository = new TaskRepository()) {}
 
   async getAllTasks() {
-    return await this.repository.findAll();
+    return this.repository.findAll();
   }
 
   async getTaskById(id: number) {
-    return await this.repository.findById(id);
+    const task = await this.repository.findById(id);
+
+    if (!task) {
+      throw new AppError(404, "TASK_NOT_FOUND", "Task not found");
+    }
+
+    return task;
   }
 
   async getTasksByProjectId(projectId: number) {
-    return await this.repository.findByProjectId(projectId);
+    return this.repository.findByProjectId(projectId);
   }
 
   async createTask(data: {
@@ -46,6 +53,6 @@ export class TaskService {
   }
 
   async deleteTask(id: number) {
-    return await this.repository.delete(id);
+    return this.repository.delete(id);
   }
 }

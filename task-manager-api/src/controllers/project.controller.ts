@@ -2,6 +2,8 @@ import type { Request, Response } from "express";
 import { ProjectService } from "../services/project.service.js";
 import type { CreateProjectDto, UpdateProjectDto } from "../dto/project.dto.js";
 import { asyncHandler } from "../utils/async-handler.js";
+import { AppError } from "../utils/errors/app-error.js";
+import { parseRequiredId } from "../utils/parse-required-id.js";
 
 const service = new ProjectService();
 
@@ -23,8 +25,8 @@ export class ProjectController {
     },
   );
 
-  async createProject(req: Request<{}, {}, CreateProjectDto>, res: Response) {
-    try {
+  createProject = asyncHandler(
+    async (req: Request<{}, {}, CreateProjectDto>, res: Response) => {
       const { ownerId, name, description, status } = req.body;
 
       const project = await service.createProject({
@@ -35,22 +37,19 @@ export class ProjectController {
       });
 
       return res.status(201).json({ success: true, data: project });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+    },
+  );
 
-  async updateProject(
-    req: Request<{ projectId: string }, {}, UpdateProjectDto>,
-    res: Response,
-  ) {
-    try {
-      const projectId = parseInt(req.params.projectId, 10);
-      if (isNaN(projectId)) {
-        return res
-          .status(400)
-          .json({ success: false, error: "Invalid project ID" });
-      }
+  updateProject = asyncHandler(
+    async (
+      req: Request<{ projectId: string }, {}, UpdateProjectDto>,
+      res: Response,
+    ) => {
+      const projectId = parseRequiredId(
+        req.params.projectId,
+        "INVALID_PROJECT_ID",
+        "Invalid project ID",
+      );
 
       const { ownerId, name, description, status } = req.body;
 
@@ -62,26 +61,19 @@ export class ProjectController {
       });
 
       return res.json({ success: true, data: project });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+    },
+  );
 
-  async deleteProject(req: Request, res: Response) {
-    try {
-      const projectId = parseInt(req.params.projectId as string, 10);
-      if (isNaN(projectId)) {
-        return res
-          .status(400)
-          .json({ success: false, error: "Invalid project ID" });
-      }
-      await service.deleteProject(projectId);
-      return res.json({
-        success: true,
-        message: "Project deleted successfully",
-      });
-    } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
-    }
-  }
+  deleteProject = asyncHandler(async (req: Request, res: Response) => {
+    const projectId = parseRequiredId(
+      req.params.projectId,
+      "INVALID_PROJECT_ID",
+      "Invalid project ID",
+    );
+    await service.deleteProject(projectId);
+    return res.json({
+      success: true,
+      message: "Project deleted successfully",
+    });
+  });
 }

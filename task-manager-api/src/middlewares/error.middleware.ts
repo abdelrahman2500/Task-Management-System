@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { Prisma } from "@prisma/client";
+import { logger } from "../config/logger.js";
 import { AppError } from "../utils/errors/app-error.js";
 
 export function errorHandler(
@@ -8,13 +9,14 @@ export function errorHandler(
   res: Response,
   _next: NextFunction,
 ) {
-  // Prisma Errors
+  const log = req.log ?? logger;
+
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
     switch (error.code) {
       case "P2002": {
         const field = (error.meta?.target as string[])?.[0] ?? "Field";
 
-        req.log.warn(
+        log.warn(
           {
             requestId: req.requestId,
             err: error,
@@ -32,7 +34,7 @@ export function errorHandler(
       }
 
       case "P2025": {
-        req.log.warn(
+        log.warn(
           {
             requestId: req.requestId,
             err: error,
@@ -51,9 +53,8 @@ export function errorHandler(
     }
   }
 
-  // Custom App Errors
   if (error instanceof AppError) {
-    req.log.warn(
+    log.warn(
       {
         requestId: req.requestId,
         err: error,
@@ -70,8 +71,7 @@ export function errorHandler(
     });
   }
 
-  // Unknown Errors
-  req.log.error(
+  log.error(
     {
       requestId: req.requestId,
       method: req.method,
