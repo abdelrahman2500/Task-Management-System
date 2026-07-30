@@ -1,11 +1,22 @@
+import type { CreateOrUpdateUserSchema } from "../dto/user/create-user.schema.js";
 import { AuthService } from "../services/auth.service.js";
 import type { Request, Response } from "express";
 
 const service = new AuthService();
 export class AuthController {
-  register(_req: Request, res: Response) {
-    res.status(201).json({ message: "Register" });
+  async register(
+    req: Request<{}, {}, CreateOrUpdateUserSchema>,
+    res: Response,
+  ) {
+    const { name, email, password } = req.body;
+    const user = await service.register({
+      name,
+      email,
+      password,
+    });
+    return res.status(201).json({ success: true });
   }
+
   async login(req: Request, res: Response) {
     const { email, password } = req.body;
     const result = await service.login(email, password);

@@ -9,7 +9,11 @@ const router = Router();
 const controller = new UserController();
 
 router.get("/", authMiddleware, asyncHandler(controller.getAllUsers));
-router.post("/", validate(createUserSchema), asyncHandler(controller.createUser));
+router.post(
+  "/",
+  validate(createUserSchema),
+  asyncHandler(controller.createUser),
+);
 router.get("/:userId", authMiddleware, asyncHandler(controller.getUserById));
 router.patch(
   "/:userId",

@@ -1,7 +1,15 @@
 import prisma from "../config/prisma.js";
 
 export class AuthRepository {
-  register() {}
+  async register(data: { name: string; email: string; password: string }) {
+    return await prisma.user.create({
+      data: {
+        name: data.name,
+        email: data.email,
+        passwordHash: data.password,
+      },
+    });
+  }
   login() {}
   logout() {}
   me() {}
@@ -12,11 +20,11 @@ export class AuthRepository {
       },
     });
   }
-  async findById(id: number){
+  async findById(id: number) {
     return prisma.user.findUnique({
-      where:{
-        id
-      }
-    })
+      where: {
+        id,
+      },
+    });
   }
 }
