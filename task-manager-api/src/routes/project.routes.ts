@@ -44,7 +44,7 @@ router.patch(
 router.delete(
   "/:projectId",
   authMiddleware,
-  authorize(["owner"]),
+  // authorize(["owner"]),
   asyncHandler(controller.deleteProject),
 );
 

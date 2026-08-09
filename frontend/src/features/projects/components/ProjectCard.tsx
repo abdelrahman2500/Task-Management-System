@@ -5,9 +5,14 @@ import { Button } from "../../../shared/components/ui/Button";
 interface ProjectCardProps {
   project: Project;
   onEdit: (project: Project) => void;
+  onDelete: (projectId: number) => void;
 }
 
-export default function ProjectCard({ project, onEdit }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+  onEdit,
+  onDelete,
+}: ProjectCardProps) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
       <div className="mb-4 flex items-center justify-between">
@@ -27,9 +32,24 @@ export default function ProjectCard({ project, onEdit }: ProjectCardProps) {
       <div className="mt-6 text-xs text-slate-400 mb-4">
         Created: {new Date(project.createdAt).toLocaleDateString()}
       </div>
-      <Button variant="outline" size="sm" onClick={() => onEdit(project)}>
-        Edit
-      </Button>
+      <div className="flex gap-4">
+        <Button
+          className="flex-auto"
+          variant="outline"
+          size="sm"
+          onClick={() => onEdit(project)}
+        >
+          Edit
+        </Button>
+        <Button
+          className="flex-1"
+          variant="danger"
+          size="sm"
+          onClick={() => onDelete(project.id)}
+        >
+          Delete
+        </Button>
+      </div>
     </div>
   );
 }

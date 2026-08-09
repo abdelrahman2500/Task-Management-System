@@ -33,4 +33,8 @@ export const projectService = {
 
     return response.data;
   },
+
+  async deleteProject(id: number) {
+    await api.delete(`/projects/${id}`);
+  },
 };

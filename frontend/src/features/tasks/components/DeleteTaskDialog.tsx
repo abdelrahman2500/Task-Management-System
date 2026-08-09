@@ -1,35 +1,35 @@
 import { Button } from "../../../shared/components/ui/Button";
 import Dialog from "../../../shared/components/ui/Dialog/Dialog";
-import { useDeleteProject } from "../hooks/useDeleteProject";
+import { useDeleteTask } from "../hooks/useDeleteTask";
+import type { Task } from "../types";
 
-interface DeleteProjectDialogProps {
+interface DeleteTaskDialogProps {
   open: boolean;
-  projectId: number | null;
-  projectName: string;
+  task: Task | null;
   onClose: () => void;
 }
-export default function DeleteProjectDialog({
-  open,
-  projectId,
-  projectName,
-  onClose,
-}: DeleteProjectDialogProps) {
-  const deleteProject = useDeleteProject();
-  const handleDelete = () => {
-    if (!projectId) return;
 
-    deleteProject.mutate(projectId, {
-      onSuccess: () => {
-        onClose();
-      },
+export default function DeleteTaskDialog({
+  open,
+  task,
+  onClose,
+}: DeleteTaskDialogProps) {
+  const deleteTask = useDeleteTask();
+
+  const handleDelete = () => {
+    if (!task) return;
+
+    deleteTask.mutate(task.id, {
+      onSuccess: () => onClose(),
     });
   };
+
   return (
-    <Dialog open={open} title="Delete Project" onClose={onClose}>
+    <Dialog open={open} title="Delete Task" onClose={onClose}>
       <div className="space-y-6">
         <p className="text-slate-600">
-          Are you sure you want to delete
-          <span className="font-semibold"> {projectName}</span>?
+          Are you sure you want to delete{" "}
+          <span className="font-semibold">"{task?.title}"</span>?
         </p>
 
         <p className="text-sm text-red-500">This action cannot be undone.</p>
@@ -42,7 +42,7 @@ export default function DeleteProjectDialog({
           <Button
             variant="danger"
             className="w-auto"
-            loading={deleteProject.isPending}
+            loading={deleteTask.isPending}
             onClick={handleDelete}
           >
             Delete

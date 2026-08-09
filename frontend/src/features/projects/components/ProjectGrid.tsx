@@ -4,13 +4,23 @@ import ProjectCard from "./ProjectCard";
 interface ProjectGridProps {
   projects: Project[];
   onEdit: (project: Project) => void;
+  onDelete: (projectId: number) => void;
 }
 
-export default function ProjectGrid({ projects, onEdit }: ProjectGridProps) {
+export default function ProjectGrid({
+  projects,
+  onEdit,
+  onDelete,
+}: ProjectGridProps) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} onEdit={onEdit} />
+        <ProjectCard
+          key={project.id}
+          project={project}
+          onEdit={onEdit}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );
