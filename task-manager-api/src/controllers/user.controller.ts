@@ -1,73 +1,84 @@
 import type { Request, Response } from "express";
 import { UserService } from "../services/user.service.js";
-import type { CreateUserDto, UpdateUserDto } from "../dto/user.dto.js";
-import { createOrUpdateUserSchema } from "../dto/user/create-user.schema.js";
 import { asyncHandler } from "../utils/async-handler.js";
-import { AppError } from "../utils/errors/app-error.js";
 import { parseRequiredId } from "../utils/parse-required-id.js";
+import type {
+  UpdateMeInput,
+  UpdateUserByAdminInput,
+  CreateUserByAdminInput,
+  ListUsersQueryInput,
+} from "../schemas/user.schema.js";
+import type { SafeUser } from "../repositories/auth.repository.js";
 
 const service = new UserService();
 
+interface UserParams {
+  userId: string;
+}
+
+type AuthenticatedRequest<T = unknown> = Request<T, unknown, unknown, unknown> & {
+  user: SafeUser;
+};
+
 export class UserController {
-  getAllUsers = asyncHandler(async (_: Request, res: Response) => {
-    const users = await service.getAllUsers();
-    return res.json({ success: true, data: users });
+  getMe = asyncHandler(async (req: Request, res: Response) => {
+    const user = (req as AuthenticatedRequest).user;
+    const result = await service.getMe(user.id);
+    return res.status(200).json({ success: true, data: result });
   });
 
-  getUserById = asyncHandler(async (req: Request, res: Response) => {
-    const userId = parseRequiredId(
-      req.params.userId,
-      "INVALID_USER_ID",
-      "Invalid user ID",
-    );
-    const user = await service.getUserById(userId);
-    if (!user) {
-      throw new AppError(404, "USER_NOT_FOUND", "User not found");
-    }
-    return res.json({ success: true, data: user });
+  updateMe = asyncHandler(async (req: Request, res: Response) => {
+    const user = (req as AuthenticatedRequest).user;
+    const body = req.body as UpdateMeInput;
+    const result = await service.updateMe(user.id, body);
+    return res.status(200).json({ success: true, data: result });
   });
 
-  createUser = asyncHandler(
-    async (req: Request<{}, {}, CreateUserDto>, res: Response) => {
-      const { name, email, password, isActive } = req.body;
+  listUsers = asyncHandler(async (req: Request, res: Response) => {
+    const user = (req as AuthenticatedRequest).user;
+    const query = req.query as ListUsersQueryInput;
+    const result = await service.listUsers(user, query);
+    return res.status(200).json({ success: true, data: result });
+  });
 
-      if (!name) {
-        throw new AppError(400, "MISSING_NAME", "Name is required");
-      }
-      if (!email) {
-        throw new AppError(400, "MISSING_EMAIL", "Email is required");
-      }
-      if (!password) {
-        throw new AppError(400, "MISSING_PASSWORD", "password is required");
-      }
-
-      const body = createOrUpdateUserSchema.parse(req.body);
-      const user = await service.createUser(body);
-      return res.status(201).json({ success: true, data: user });
-    },
-  );
-
-  updateUser = asyncHandler(
-    async (req: Request<{ userId: string }, {}, UpdateUserDto>, res: Response) => {
-      const userId = parseRequiredId(
-        req.params.userId,
-        "INVALID_USER_ID",
-        "Invalid user ID",
-      );
-
-      const body = createOrUpdateUserSchema.parse(req.body);
-      const user = await service.updateUser(userId, body);
-      return res.json({ success: true, data: user });
-    },
-  );
-
-  deleteUser = asyncHandler(async (req: Request, res: Response) => {
-    const userId = parseRequiredId(
+  getUser = asyncHandler(async (req: Request<UserParams>, res: Response) => {
+    const user = (req as AuthenticatedRequest<UserParams>).user;
+    const targetId = parseRequiredId(
       req.params.userId,
       "INVALID_USER_ID",
-      "Invalid user ID",
+      "Invalid user ID.",
     );
-    await service.deleteUser(userId);
-    return res.json({ success: true, message: "User deleted successfully" });
+    const result = await service.getUser(user, targetId);
+    return res.status(200).json({ success: true, data: result });
+  });
+
+  createUser = asyncHandler(async (req: Request, res: Response) => {
+    const user = (req as AuthenticatedRequest).user;
+    const body = req.body as CreateUserByAdminInput;
+    const result = await service.createUserByAdmin(user, body);
+    return res.status(201).json({ success: true, data: result });
+  });
+
+  updateUser = asyncHandler(async (req: Request<UserParams>, res: Response) => {
+    const user = (req as AuthenticatedRequest<UserParams>).user;
+    const targetId = parseRequiredId(
+      req.params.userId,
+      "INVALID_USER_ID",
+      "Invalid user ID.",
+    );
+    const body = req.body as UpdateUserByAdminInput;
+    const result = await service.updateUser(user, targetId, body);
+    return res.status(200).json({ success: true, data: result });
+  });
+
+  deleteUser = asyncHandler(async (req: Request<UserParams>, res: Response) => {
+    const user = (req as AuthenticatedRequest<UserParams>).user;
+    const targetId = parseRequiredId(
+      req.params.userId,
+      "INVALID_USER_ID",
+      "Invalid user ID.",
+    );
+    await service.hardDeleteUser(user, targetId);
+    return res.status(204).send();
   });
 }

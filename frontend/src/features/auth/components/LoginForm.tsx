@@ -7,17 +7,14 @@ import { Input } from "../../../shared/components/ui/Input";
 
 import { loginSchema, type LoginFormData } from "../schemas/login.schema";
 import { useLogin } from "../hooks/useLogin";
-import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const { mutate, isPending } = useLogin();
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
+    formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -28,12 +25,7 @@ export default function LoginForm() {
   });
 
   const onSubmit = (data: LoginFormData) => {
-    mutate(data, {
-      onSuccess() {
-        reset();
-        navigate("/", { replace: true });
-      },
-    });
+    mutate(data);
   };
 
   return (
@@ -54,6 +46,7 @@ export default function LoginForm() {
         leftIcon={<Mail size={18} />}
         error={errors.email?.message}
         autoComplete="email"
+        disabled={isPending}
         {...register("email")}
       />
 
@@ -65,26 +58,31 @@ export default function LoginForm() {
         leftIcon={<Lock size={18} />}
         error={errors.password?.message}
         autoComplete="current-password"
+        disabled={isPending}
         {...register("password")}
       />
 
       <div className="flex items-center justify-between">
         <label className="flex items-center gap-2 text-sm text-slate-600">
-          <input type="checkbox" className="rounded border-slate-300" />
+          <input
+            type="checkbox"
+            className="rounded border-slate-300"
+            disabled={isPending}
+          />
           Remember me
         </label>
 
-        <Link
-          to="/auth/forgot-password"
+        <a
+          href="#"
           className="text-sm font-medium text-blue-600 transition hover:text-blue-700"
         >
           Forgot password?
-        </Link>
+        </a>
       </div>
 
       <Button
         type="submit"
-        loading={isPending || isSubmitting}
+        loading={isPending}
         disabled={isPending}
       >
         Sign In

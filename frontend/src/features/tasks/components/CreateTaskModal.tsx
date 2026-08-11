@@ -3,6 +3,9 @@ import { useCreateTask } from "../hooks/useCreateTask";
 import { TaskForm } from "./TaskForm";
 import type { TaskFormData } from "../schemas/task.schema";
 
+const toIsoDate = (value: string | null | undefined) =>
+  value ? `${value}T00:00:00.000Z` : null;
+
 interface CreateTaskModalProps {
   open: boolean;
   onClose: () => void;
@@ -23,7 +26,7 @@ export default function CreateTaskModal({
         priority: data.priority,
         assigneeId: data.assigneeId ?? null,
         projectId: data.projectId,
-        dueDate: data.dueDate ?? null,
+        dueDate: toIsoDate(data.dueDate),
       },
       {
         onSuccess: () => onClose(),

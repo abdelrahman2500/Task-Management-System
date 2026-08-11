@@ -2,12 +2,33 @@ import Dialog from "../../../shared/components/ui/Dialog/Dialog";
 import { useUpdateTask } from "../hooks/useUpdateTask";
 import { TaskForm } from "./TaskForm";
 import type { TaskFormData } from "../schemas/task.schema";
-import type { Task } from "../types";
+import type { Task, UpdateTaskRequest } from "../types";
+
+const toIsoDate = (value: string | null | undefined) =>
+  value ? `${value}T00:00:00.000Z` : null;
 
 interface EditTaskModalProps {
   open: boolean;
   task: Task | null;
   onClose: () => void;
+}
+
+function getUpdatePayload(task: Task, data: TaskFormData): UpdateTaskRequest {
+  const payload: UpdateTaskRequest = {};
+  const description = data.description?.trim() || null;
+  const dueDate = toIsoDate(data.dueDate);
+
+  if (data.title !== task.title) payload.title = data.title;
+  if (description !== task.description) payload.description = description;
+  if (data.status !== task.status) payload.status = data.status;
+  if (data.priority !== task.priority) payload.priority = data.priority;
+  if (data.assigneeId !== task.assigneeId) payload.assigneeId = data.assigneeId;
+  if (data.projectId !== task.projectId) payload.projectId = data.projectId;
+  if ((data.dueDate || null) !== (task.dueDate?.slice(0, 10) ?? null)) {
+    payload.dueDate = dueDate;
+  }
+
+  return payload;
 }
 
 export default function EditTaskModal({
@@ -20,17 +41,16 @@ export default function EditTaskModal({
   if (!task) return null;
 
   const handleSubmit = (data: TaskFormData) => {
+    const payload = getUpdatePayload(task, data);
+    if (Object.keys(payload).length === 0) {
+      onClose();
+      return;
+    }
+
     updateTask.mutate(
       {
         taskId: task.id,
-        data: {
-          title: data.title,
-          description: data.description ?? null,
-          status: data.status,
-          priority: data.priority,
-          assigneeId: data.assigneeId ?? null,
-          dueDate: data.dueDate ?? null,
-        },
+        data: payload,
       },
       {
         onSuccess: () => onClose(),

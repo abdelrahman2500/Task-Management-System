@@ -1,8 +1,7 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Dialog from "../../../shared/components/ui/Dialog/Dialog";
 import { ProjectForm } from "./ProjectForm";
-import { projectService } from "../services/project.service";
-import { projectKeys } from "../constants/queryKeys";
+import { useCreateProject } from "../hooks/useCreateProject";
+import type { ProjectFormData } from "../schemas/project.schema";
 
 interface Props {
   open: boolean;
@@ -10,31 +9,25 @@ interface Props {
 }
 
 export default function CreateProjectModal({ open, onClose }: Props) {
-  const queryClient = useQueryClient();
-  const createProject = useMutation({
-    mutationFn: projectService.createProject,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: projectKeys.all });
-    },
-  });
+  const { mutate: createProject, isPending } = useCreateProject();
+
+  const handleSubmit = (data: ProjectFormData) => {
+    createProject(data, {
+      onSuccess: () => onClose(),
+    });
+  };
+
   return (
-    <Dialog open={open} title="Create Project" onClose={onClose}>
+    <Dialog
+      open={open}
+      title="Create Project"
+      onClose={onClose}
+      closeDisabled={isPending}
+    >
       <ProjectForm
-        loading={createProject.isPending}
+        loading={isPending}
         onCancel={onClose}
-        onSubmit={(data) => {
-          createProject.mutate(
-            {
-              ownerId: 1, // مؤقتًا، حتى نربطه بالمستخدم المسجل
-              ...data,
-            },
-            {
-              onSuccess: () => {
-                onClose();
-              },
-            },
-          );
-        }}
+        onSubmit={handleSubmit}
       />
     </Dialog>
   );

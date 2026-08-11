@@ -1,30 +1,32 @@
+import { api } from "../../../shared/api/axios";
 import type {
   CreateTaskRequest,
   GetTasksParams,
   Task,
   UpdateTaskRequest,
+  ListTasksResponse,
 } from "../types";
-import { api } from "../../../shared/api/axios";
 
 export const taskServices = {
-  async getTasks(params: GetTasksParams): Promise<Task[]> {
-    const res = await api.get("/tasks", { params });
-    return res.data.data;
-  },
-
-  async createTask(payload: CreateTaskRequest): Promise<Task> {
-    const res = await api.post("/tasks", payload);
-    return res.data;
-  },
-
-  async updateTask(taskId: number, payload: UpdateTaskRequest): Promise<Task> {
-    const res = await api.patch(`/tasks/${taskId}`, payload);
-    return res.data;
+  async getTasks(params: GetTasksParams): Promise<ListTasksResponse> {
+    return api.get<ListTasksResponse>("/tasks", {
+      params,
+    }) as unknown as Promise<ListTasksResponse>;
   },
 
   async getTaskById(taskId: number): Promise<Task> {
-    const res = await api.get(`/tasks/${taskId}`);
-    return res.data;
+    return api.get<Task>(`/tasks/${taskId}`) as unknown as Promise<Task>;
+  },
+
+  async createTask(payload: CreateTaskRequest): Promise<Task> {
+    return api.post<Task>("/tasks", payload) as unknown as Promise<Task>;
+  },
+
+  async updateTask(taskId: number, payload: UpdateTaskRequest): Promise<Task> {
+    return api.patch<Task>(
+      `/tasks/${taskId}`,
+      payload,
+    ) as unknown as Promise<Task>;
   },
 
   async deleteTask(taskId: number): Promise<void> {

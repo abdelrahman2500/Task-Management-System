@@ -21,7 +21,7 @@ enum ProjectStatus {
 enum TaskStatus {
   TODO
   IN_PROGRESS
-  BLOCKED
+  IN_REVIEW
   DONE
 }
 
@@ -44,6 +44,7 @@ model User {
   name         String
   email        String   @unique
   passwordHash String   @map("password_hash")
+  role         Role     @default(MEMBER)
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")
   isActive     Boolean  @default(true) @map("is_active")
@@ -54,6 +55,7 @@ model User {
   createdTasks   Task[]          @relation("CreatedTasks")
   comments       Comment[]       @relation("Comments")
   projectMembers ProjectMember[]
+  preferences    UserPreferences?
 }
 
 model Project {
@@ -115,4 +117,19 @@ model ProjectMember {
   user    User    @relation(fields: [userId], references: [id])
 
   @@id([projectId, userId])
+}
+
+model UserPreferences {
+  id                  Int      @id @default(autoincrement())
+  userId              Int      @unique @map("user_id")
+  theme               String   @default("light")
+  language            String   @default("en")
+  emailNotifications  Boolean  @default(true) @map("email_notifications")
+  taskNotifications   Boolean  @default(true) @map("task_notifications")
+  projectNotifications Boolean @default(true) @map("project_notifications")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  // Relationships
+  user User @relation(fields: [userId], references: [id])
 }

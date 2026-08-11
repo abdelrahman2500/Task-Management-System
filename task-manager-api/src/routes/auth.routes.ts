@@ -11,22 +11,22 @@ const controller = new AuthController();
 router.post(
   "/register",
   validate(registerSchema),
-  asyncHandler((req: any, res: any) => controller.register(req, res)),
+  asyncHandler((req, res) => controller.register(req, res)),
 );
 router.post(
   "/login",
   validate(loginSchema),
-  asyncHandler((req: any, res: any) => controller.login(req, res)),
+  asyncHandler((req, res) => controller.login(req, res)),
 );
 router.post(
   "/logout",
   authMiddleware,
-  asyncHandler((req: any, res: any) => controller.logout(req, res)),
+  asyncHandler((req, res) => controller.logout(req, res)),
 );
 router.get(
   "/me",
   authMiddleware,
-  asyncHandler((req: any, res: any) => controller.me(req, res)),
+  asyncHandler((req, res) => controller.me(req, res)),
 );
 
 export default router;

@@ -1,35 +1,78 @@
-import axios from "axios";
+import axios, { type AxiosInstance } from "axios";
+import type { QueryClient } from "@tanstack/react-query";
 import { tokenStorage } from "../utils/token-storage";
 
-export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 10000,
+let queryClientRef: QueryClient | null = null;
+let isRedirecting = false;
+
+export function setQueryClientReference(client: QueryClient): void {
+  queryClientRef = client;
+}
+
+export const api: AxiosInstance = axios.create({
+  baseURL:
+    (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000") + "/api/v1",
+  timeout: 15000,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
+// Attach bearer token to every request
 api.interceptors.request.use(
   (config) => {
-    const accessToken = tokenStorage.getAccessToken();
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+    const token = tokenStorage.getAccessToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
+// Unwrap the standard { success, data } envelope and handle 401
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // If the server returns { success, data }, unwrap to data.
+    // Some endpoints return { success, data: { ...fields } } and some
+    // return { success, data: [ ...items ] }.
+    const body = response.data;
+    if (
+      body &&
+      typeof body === "object" &&
+      "success" in body &&
+      "data" in body
+    ) {
+      return body.data;
+    }
+    return body;
+  },
   (error) => {
     const isLoginRequest = error.config?.url?.includes("/auth/login");
-    if (error.response?.status === 401 && !isLoginRequest) {
+    const status = error.response?.status;
+
+    if (status === 401 && !isLoginRequest && !isRedirecting) {
+      isRedirecting = true;
       tokenStorage.removeAccessToken();
-      window.location.href = "/auth/login";
+      if (queryClientRef) {
+        queryClientRef.clear();
+      }
+      if (window.location.pathname !== "/auth/login") {
+        window.location.href = "/auth/login";
+      }
+      setTimeout(() => {
+        isRedirecting = false;
+      }, 1_000);
     }
+
+    // Surface the server error message for toast/display
+    const serverError = error.response?.data;
+    if (serverError && typeof serverError === "object") {
+      const message =
+        serverError?.error?.message ?? serverError?.message ?? error.message;
+      return Promise.reject(Object.assign(error, { message }));
+    }
+
     return Promise.reject(error);
   },
 );

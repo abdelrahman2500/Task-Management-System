@@ -1,14 +1,16 @@
+const ACCESS_TOKEN_KEY = "accessToken";
+
 class TokenStorage {
-  getAccessToken() {
-    return localStorage.getItem("accessToken");
+  getAccessToken(): string | null {
+    return localStorage.getItem(ACCESS_TOKEN_KEY);
   }
 
-  setAccessToken(token: string) {
-    localStorage.setItem("accessToken", token);
+  setAccessToken(token: string): void {
+    localStorage.setItem(ACCESS_TOKEN_KEY, token);
   }
 
-  removeAccessToken() {
-    localStorage.removeItem("accessToken");
+  removeAccessToken(): void {
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
   }
 }
 

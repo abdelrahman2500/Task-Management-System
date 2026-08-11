@@ -5,17 +5,23 @@ import { ProjectSkeleton } from "../components/ProjectSkeleton";
 import { useProjects } from "../hooks/useProjects";
 import ProjectsHeader from "../components/ProjectsHeader";
 import CreateProjectModal from "../components/CreateProjectModal";
-import type { Project } from "../types";
+import type { ListProjectsParams, Project } from "../types";
 import EditProjectModal from "../components/EditProjectModal";
 import DeleteProjectDialog from "../components/DeleteProjectDialog";
+import { Pagination } from "../../../shared/components/ui/Pagination";
+import { ErrorState } from "../../../shared/components/ui/ErrorState";
+
+const PAGE_SIZE = 12;
 
 export default function ProjectsPage() {
-  const { data: projects, isLoading, isError } = useProjects();
-  const [open, setOpen] = useState(false);
-
+  const [params, setParams] = useState<ListProjectsParams>({
+    page: 1,
+    limit: PAGE_SIZE,
+  });
+  const { data, isLoading, isError, refetch, isFetching } = useProjects(params);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
-
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const handleEdit = (project: Project) => {
@@ -24,37 +30,55 @@ export default function ProjectsPage() {
   };
 
   const handleDelete = (id: number) => {
-    const project = projects?.find((p) => p.id === id);
+    const project = data?.data.find((p) => p.id === id);
     setSelectedProject(project ?? null);
     setIsDeleteOpen(true);
   };
 
-  if (isLoading) {
-    return <ProjectSkeleton />;
-  }
+  if (isLoading) return <ProjectSkeleton />;
 
   if (isError) {
-    return <div>Something went wrong.</div>;
-  }
-
-  if (!projects?.length) {
     return (
-      <>
-        <ProjectsHeader onCreate={() => setOpen(true)} />
-        <CreateProjectModal open={open} onClose={() => setOpen(false)} />
-        <EmptyProjects />;
-      </>
+      <ErrorState
+        title="Failed to load projects"
+        description="There was a problem fetching your projects. Please try again."
+        onRetry={() => void refetch()}
+        isRetrying={isFetching}
+      />
     );
   }
 
+  const projects = data?.data ?? [];
+
   return (
     <>
-      <ProjectsHeader onCreate={() => setOpen(true)} />
-      <CreateProjectModal open={open} onClose={() => setOpen(false)} />
-      <ProjectGrid
-        projects={projects}
-        onEdit={handleEdit}
-        onDelete={(id) => handleDelete(id)}
+      <ProjectsHeader onCreate={() => setIsCreateOpen(true)} />
+
+      {projects.length === 0 ? (
+        <EmptyProjects onCreateProject={() => setIsCreateOpen(true)} />
+      ) : (
+        <>
+          <ProjectGrid
+            projects={projects}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+          {data && data.totalPages > 1 && (
+            <Pagination
+              page={data.page}
+              totalPages={data.totalPages}
+              total={data.total}
+              pageSize={PAGE_SIZE}
+              onPageChange={(page) => setParams((p) => ({ ...p, page }))}
+              className="mt-6"
+            />
+          )}
+        </>
+      )}
+
+      <CreateProjectModal
+        open={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
       />
       <EditProjectModal
         open={isEditOpen}

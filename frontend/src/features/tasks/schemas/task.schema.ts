@@ -14,9 +14,14 @@ export const taskSchema = z.object({
 
   assigneeId: z.number().nullable().optional(),
 
-  projectId: z.number({ required_error: "Project is required" }),
+  projectId: z.number({ error: "Project is required" }),
 
-  dueDate: z.string().nullable().optional(),
+  dueDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Choose a valid due date")
+    .nullable()
+    .optional()
+    .or(z.literal("")),
 });
 
 export type TaskFormData = z.infer<typeof taskSchema>;

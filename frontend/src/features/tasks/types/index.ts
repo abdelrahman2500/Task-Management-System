@@ -9,11 +9,14 @@ export interface Task {
   status: TaskStatusEnum;
   assigneeId: number | null;
   priority: TaskPriorityEnum;
-  // ISO Date
+  /** ISO date string */
   dueDate: string | null;
   projectId: number;
   createdAt: string;
   updatedAt: string;
+  assignee?: { id: number; name: string; email: string } | null;
+  creator?: { id: number; name: string; email: string };
+  project?: { id: number; name: string; status: string };
 }
 
 export interface CreateTaskRequest {
@@ -23,7 +26,7 @@ export interface CreateTaskRequest {
   priority: TaskPriorityEnum;
   assigneeId?: number | null;
   projectId: number;
-  // ISO Date
+  /** ISO date string */
   dueDate: string | null;
 }
 
@@ -34,5 +37,15 @@ export interface GetTasksParams {
   status?: TaskStatusEnum;
   priority?: TaskPriorityEnum;
   projectId?: number;
+  assigneeId?: number;
 }
-export type UpdateTaskRequest = Partial<Omit<CreateTaskRequest, "projectId">>;
+
+export type UpdateTaskRequest = Partial<CreateTaskRequest>;
+
+export interface ListTasksResponse {
+  data: Task[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}

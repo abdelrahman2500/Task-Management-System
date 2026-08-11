@@ -1,5 +1,6 @@
 import { Button } from "../../../shared/components/ui/Button";
 import Dialog from "../../../shared/components/ui/Dialog/Dialog";
+import { AlertTriangle } from "lucide-react";
 import { useDeleteTask } from "../hooks/useDeleteTask";
 import type { Task } from "../types";
 
@@ -15,6 +16,11 @@ export default function DeleteTaskDialog({
   onClose,
 }: DeleteTaskDialogProps) {
   const deleteTask = useDeleteTask();
+  const isDeleting = deleteTask.isPending;
+
+  const handleClose = () => {
+    if (!isDeleting) onClose();
+  };
 
   const handleDelete = () => {
     if (!task) return;
@@ -24,28 +30,37 @@ export default function DeleteTaskDialog({
     });
   };
 
+  if (!task) return null;
+
   return (
-    <Dialog open={open} title="Delete Task" onClose={onClose}>
+    <Dialog open={open} title="Delete task" onClose={handleClose} closeDisabled={isDeleting}>
       <div className="space-y-6">
-        <p className="text-slate-600">
-          Are you sure you want to delete{" "}
-          <span className="font-semibold">"{task?.title}"</span>?
-        </p>
-
-        <p className="text-sm text-red-500">This action cannot be undone.</p>
-
+        <div className="flex gap-3">
+          <span className="rounded-full bg-red-100 p-2 text-red-600" aria-hidden="true">
+            <AlertTriangle size={20} />
+          </span>
+          <div>
+            <p className="font-medium text-slate-900">
+              Delete <span className="break-words">“{task.title}”</span>?
+            </p>
+            <p className="mt-1 text-sm leading-6 text-slate-600">
+              This permanently removes the task. This action cannot be undone.
+            </p>
+          </div>
+        </div>
         <div className="flex justify-end gap-3">
-          <Button variant="outline" className="w-auto" onClick={onClose}>
+          <Button variant="outline" className="w-auto" disabled={isDeleting} onClick={handleClose}>
             Cancel
           </Button>
 
           <Button
             variant="danger"
             className="w-auto"
-            loading={deleteTask.isPending}
+            loading={isDeleting}
+            disabled={isDeleting}
             onClick={handleDelete}
           >
-            Delete
+            Delete task
           </Button>
         </div>
       </div>

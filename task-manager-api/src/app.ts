@@ -4,6 +4,7 @@ import projectRoutes from "./routes/project.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import taskRoutes from "./routes/task.routes.js";
 import commentRoutes from "./routes/comment.routes.js";
+import settingsRoutes from "./routes/settings.routes.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 import authRoutes from "./routes/auth.routes.js";
 import { httpLogger } from "./middlewares/logger.middleware.js";
@@ -30,11 +31,12 @@ app.get("/", (_, res) => {
   });
 });
 
-app.use("/api/v1/projects", projectRoutes);
+app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/tasks", taskRoutes);
 app.use("/api/v1/comments", commentRoutes);
-app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/settings", settingsRoutes);
 
 app.use(errorHandler);
 

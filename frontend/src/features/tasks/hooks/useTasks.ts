@@ -7,5 +7,6 @@ export function useTasks(params: GetTasksParams = {}) {
   return useQuery({
     queryKey: taskKeys.list(params),
     queryFn: () => taskServices.getTasks(params),
+    placeholderData: (prev) => prev,
   });
 }

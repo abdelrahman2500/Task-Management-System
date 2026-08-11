@@ -1,24 +1,32 @@
-import type { ZodObject } from "zod";
+import { ZodError, type ZodSchema } from "zod";
 import type { Request, Response, NextFunction } from "express";
+import { AppError } from "../utils/errors/app-error.js";
 
-export const validate =
-  (schema: ZodObject) => (req: Request, res: Response, next: NextFunction) => {
+type ValidateTarget = "body" | "params" | "query";
+
+function buildDetails(error: ZodError) {
+  return error.issues.map((issue) => ({
+    field: issue.path.length === 0 ? "_" : issue.path.join("."),
+    message: issue.message,
+  }));
+}
+
+export function validate(schema: ZodSchema, target: ValidateTarget = "body") {
+  return (req: Request, _res: Response, next: NextFunction) => {
     try {
-      const data = schema.parse(req.body);
-      req.body = data;
-      next();
-    } catch (error: any) {
-      return res.status(422).json({
-        success: false,
-        error: {
-          code: "VALIDATION_FAILED",
-          details: [
-            {
-              field: error.path,
-              message: error.message,
-            },
-          ],
-        },
-      });
+      const input = req[target];
+      const parsed = schema.parse(input);
+      req[target] = parsed;
+      return next();
+    } catch (error: unknown) {
+      if (error instanceof ZodError) {
+        return next(
+          new AppError(422, "VALIDATION_FAILED", "Request validation failed.").withDetails(
+            buildDetails(error),
+          ),
+        );
+      }
+      return next(error);
     }
   };
+}

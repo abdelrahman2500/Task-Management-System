@@ -1,91 +1,143 @@
 import { useState } from "react";
-import { useTasks } from "../hooks/useTasks";
-import { TaskSkeleton } from "../components/TaskSkeleton";
-import { EmptyTasks } from "../components/EmptyTasks";
-import TaskList from "../components/TaskList";
-import TasksHeader from "../components/TasksHeader";
 import CreateTaskModal from "../components/CreateTaskModal";
-import EditTaskModal from "../components/EditTaskModal";
 import DeleteTaskDialog from "../components/DeleteTaskDialog";
-import type { Task, GetTasksParams } from "../types";
+import EditTaskModal from "../components/EditTaskModal";
+import { TaskDetailsDialog } from "../components/TaskDetailsDialog";
+import { TaskEmptyState } from "../components/TaskEmptyState";
+import { TaskErrorState } from "../components/TaskErrorState";
+import { TaskFilters } from "../components/TaskFilters";
+import { TaskPagination } from "../components/TaskPagination";
+import { TaskSkeleton } from "../components/TaskSkeleton";
+import { TaskStats } from "../components/TaskStats";
+import { TaskTable } from "../components/TaskTable";
+import TasksHeader from "../components/TasksHeader";
+import { useTasks } from "../hooks/useTasks";
+import type { GetTasksParams, Task } from "../types";
+
+const PAGE_SIZE = 10;
 
 export function TasksPage() {
-  // ─── Filter state (drives the query key) ───────────────────────────────────
-  const [filters, setFilters] = useState<GetTasksParams>({});
+  const [filters, setFilters] = useState<GetTasksParams>({
+    page: 1,
+    limit: PAGE_SIZE,
+  });
 
-  // ─── Data ──────────────────────────────────────────────────────────────────
-  const { data: tasks, isLoading, isError } = useTasks(filters);
+  const {
+    data: response,
+    isLoading,
+    isError,
+    refetch,
+    isFetching,
+  } = useTasks(filters);
 
-  // ─── Modal state ───────────────────────────────────────────────────────────
+  const tasks = response?.data ?? [];
+  const total = response?.total ?? 0;
+  const page = response?.page ?? filters.page ?? 1;
+  const pageCount = response?.totalPages ?? 1;
+
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [detailsTaskId, setDetailsTaskId] = useState<number | null>(null);
+
+  const hasFilters = Boolean(
+    filters.search || filters.status || filters.priority || filters.projectId,
+  );
+
+  const clearFilters = () => setFilters({ page: 1, limit: PAGE_SIZE });
 
   const handleEdit = (task: Task) => {
     setSelectedTask(task);
     setIsEditOpen(true);
   };
-
   const handleDelete = (task: Task) => {
     setSelectedTask(task);
     setIsDeleteOpen(true);
   };
-
+  const handleView = (task: Task) => setDetailsTaskId(task.id);
   const closeEdit = () => {
     setIsEditOpen(false);
     setSelectedTask(null);
   };
-
   const closeDelete = () => {
     setIsDeleteOpen(false);
     setSelectedTask(null);
   };
+  const handleEditFromDetails = (task: Task) => {
+    setDetailsTaskId(null);
+    handleEdit(task);
+  };
+  const handleDeleteFromDetails = (task: Task) => {
+    setDetailsTaskId(null);
+    handleDelete(task);
+  };
 
-  // ─── Render ────────────────────────────────────────────────────────────────
   return (
     <>
-      <TasksHeader
-        filters={filters}
-        onFilterChange={setFilters}
-        onCreate={() => setIsCreateOpen(true)}
-      />
+      <TasksHeader onCreate={() => setIsCreateOpen(true)} />
 
-      {/* Loading */}
+      {!isLoading && !isError && <TaskStats tasks={tasks} />}
+
+      <TaskFilters filters={filters} onChange={setFilters} />
+
       {isLoading && <TaskSkeleton />}
 
-      {/* Error */}
       {isError && (
-        <div className="rounded-2xl border border-red-200 bg-red-50 p-8 text-center">
-          <p className="font-medium text-red-600">
-            Something went wrong. Please try again.
-          </p>
-        </div>
+        <TaskErrorState
+          isRetrying={isFetching}
+          onRetry={() => void refetch()}
+        />
       )}
 
-      {/* Empty */}
-      {!isLoading && !isError && !tasks?.length && (
-        <EmptyTasks onCreate={() => setIsCreateOpen(true)} />
+      {!isLoading && !isError && tasks.length === 0 && (
+        <TaskEmptyState
+          hasFilters={hasFilters}
+          onCreate={() => setIsCreateOpen(true)}
+          onClearFilters={clearFilters}
+        />
       )}
 
-      {/* Tasks grid */}
-      {!isLoading && !isError && !!tasks?.length && (
-        <TaskList tasks={tasks} onEdit={handleEdit} onDelete={handleDelete} />
+      {!isLoading && !isError && tasks.length > 0 && (
+        <>
+          <TaskTable
+            tasks={tasks}
+            onView={handleView}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+          <TaskPagination
+            page={page}
+            pageCount={pageCount}
+            total={total}
+            pageSize={PAGE_SIZE}
+            onPageChange={(nextPage) =>
+              setFilters((prev) => ({ ...prev, page: nextPage }))
+            }
+          />
+        </>
       )}
 
-      {/* Modals */}
       <CreateTaskModal
         open={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
       />
-
-      <EditTaskModal open={isEditOpen} task={selectedTask} onClose={closeEdit} />
-
+      <EditTaskModal
+        open={isEditOpen}
+        task={selectedTask}
+        onClose={closeEdit}
+      />
       <DeleteTaskDialog
         open={isDeleteOpen}
         task={selectedTask}
         onClose={closeDelete}
+      />
+      <TaskDetailsDialog
+        open={detailsTaskId !== null}
+        taskId={detailsTaskId}
+        onClose={() => setDetailsTaskId(null)}
+        onEdit={handleEditFromDetails}
+        onDelete={handleDeleteFromDetails}
       />
     </>
   );

@@ -54,21 +54,32 @@ export function errorHandler(
   }
 
   if (error instanceof AppError) {
-    log.warn(
-      {
-        requestId: req.requestId,
-        err: error,
-      },
-      error.message,
-    );
+    if (error.statusCode >= 500) {
+      log.error(
+        { requestId: req.requestId, err: error },
+        error.message,
+      );
+    } else {
+      log.warn(
+        { requestId: req.requestId, code: error.code, statusCode: error.statusCode },
+        error.message,
+      );
+    }
 
-    return res.status(error.statusCode).json({
+    const payload: {
+      success: false;
+      error: { code: string; message: string; details?: unknown };
+    } = {
       success: false,
       error: {
         code: error.code,
         message: error.message,
       },
-    });
+    };
+    if (error.details && error.details.length > 0) {
+      payload.error.details = error.details;
+    }
+    return res.status(error.statusCode).json(payload);
   }
 
   log.error(

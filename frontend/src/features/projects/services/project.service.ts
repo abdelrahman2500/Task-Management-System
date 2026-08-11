@@ -3,38 +3,40 @@ import type {
   CreateProjectRequest,
   Project,
   UpdateProjectRequest,
+  ListProjectsResponse,
+  ListProjectsParams,
 } from "../types";
 
-interface ApiResponse<T> {
-  success: boolean;
-  data: T;
-}
-
 export const projectService = {
-  async getProjects() {
-    const response = await api.get<ApiResponse<Project[]>>("/projects");
-
-    return response.data.data;
+  async getProjects(
+    params?: ListProjectsParams,
+  ): Promise<ListProjectsResponse> {
+    return api.get<ListProjectsResponse>("/projects", {
+      params,
+    }) as unknown as Promise<ListProjectsResponse>;
   },
 
-  async getById(id: number) {
-    const response = await api.get<ApiResponse<Project>>(`/projects/${id}`);
-
-    return response.data.data;
+  async getById(id: number): Promise<Project> {
+    return api.get<Project>(`/projects/${id}`) as unknown as Promise<Project>;
   },
 
-  async createProject(data: CreateProjectRequest) {
-    const response = await api.post<ApiResponse<Project>>("/projects", data);
-
-    return response.data.data;
-  },
-  async updateProject(id: number, data: UpdateProjectRequest) {
-    const response = await api.patch<Project>(`/projects/${id}`, data);
-
-    return response.data;
+  async createProject(
+    data: Omit<CreateProjectRequest, "ownerId">,
+  ): Promise<Project> {
+    return api.post<Project>("/projects", data) as unknown as Promise<Project>;
   },
 
-  async deleteProject(id: number) {
+  async updateProject(
+    id: number,
+    data: UpdateProjectRequest,
+  ): Promise<Project> {
+    return api.patch<Project>(
+      `/projects/${id}`,
+      data,
+    ) as unknown as Promise<Project>;
+  },
+
+  async deleteProject(id: number): Promise<void> {
     await api.delete(`/projects/${id}`);
   },
 };

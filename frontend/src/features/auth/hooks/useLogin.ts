@@ -1,20 +1,30 @@
-import { useMutation } from "@tanstack/react-query";
-import { authServices } from "../api/auth.service";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { authServices } from "../api/auth.service";
+import { authKeys } from "../constants/authKeys";
+import type { LoginRequest } from "../types";
 
-export function useLogin(options?: { onSuccess?: () => void }) {
+export function useLogin() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return useMutation({
-    mutationFn: authServices.login,
+    mutationFn: (payload: LoginRequest) => authServices.login(payload),
 
-    onSuccess() {
+    onSuccess: () => {
+      // Bust the current-user cache so ProtectedRoute re-fetches with the new token
+      queryClient.invalidateQueries({ queryKey: authKeys.all });
       toast.success("Welcome back!");
-      options?.onSuccess?.();
+      const from = (location.state as { from?: string } | null)?.from ?? "/";
+      navigate(from, { replace: true });
     },
 
-    onError(error: any) {
-      console.dir(error);
-
-      toast.error(error?.response?.data?.message ?? "Login failed");
+    onError: (error: unknown) => {
+      const message =
+        error instanceof Error ? error.message : "Invalid email or password";
+      toast.error(message);
     },
   });
 }

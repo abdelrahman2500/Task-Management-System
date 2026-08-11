@@ -2,25 +2,53 @@ import { Router } from "express";
 import { UserController } from "../controllers/user.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js";
 import { validate } from "../middlewares/validation.middleware.js";
-import { createUserSchema, updateUserSchema } from "../schemas/user.schema.js";
-import { asyncHandler } from "../utils/async-handler.js";
+import {
+  updateMeSchema,
+  updateUserByAdminSchema,
+  createUserByAdminSchema,
+  listUsersQuerySchema,
+} from "../schemas/user.schema.js";
+import { requireAdmin, requireSelfOrAdmin } from "../permissions/index.js";
 
 const router = Router();
 const controller = new UserController();
 
-router.get("/", authMiddleware, asyncHandler(controller.getAllUsers));
+router.get("/me", authMiddleware, controller.getMe);
+router.patch("/me", authMiddleware, validate(updateMeSchema), controller.updateMe);
+
+router.get(
+  "/",
+  authMiddleware,
+  requireAdmin(),
+  validate(listUsersQuerySchema, "query"),
+  controller.listUsers,
+);
 router.post(
   "/",
-  validate(createUserSchema),
-  asyncHandler(controller.createUser),
+  authMiddleware,
+  requireAdmin(),
+  validate(createUserByAdminSchema),
+  controller.createUser,
 );
-router.get("/:userId", authMiddleware, asyncHandler(controller.getUserById));
+
+router.get(
+  "/:userId",
+  authMiddleware,
+  requireSelfOrAdmin("userId"),
+  controller.getUser,
+);
 router.patch(
   "/:userId",
   authMiddleware,
-  validate(updateUserSchema),
-  asyncHandler(controller.updateUser),
+  requireSelfOrAdmin("userId"),
+  validate(updateUserByAdminSchema),
+  controller.updateUser,
 );
-router.delete("/:userId", authMiddleware, asyncHandler(controller.deleteUser));
+router.delete(
+  "/:userId",
+  authMiddleware,
+  requireAdmin(),
+  controller.deleteUser,
+);
 
 export default router;

@@ -5,8 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import router from "./router";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
+import { setQueryClientReference } from "./shared/api/axios";
 
 const queryClient = new QueryClient();
+setQueryClientReference(queryClient);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -1,10 +1,10 @@
-import type { User } from "@prisma/client";
 import type { Logger } from "pino";
+import type { SafeUser } from "../../repositories/auth.repository.js";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: User;
+      user?: SafeUser;
       requestId?: string;
       log: Logger;
     }
