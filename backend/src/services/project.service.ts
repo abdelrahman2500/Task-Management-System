@@ -270,11 +270,21 @@ export async function removeMember(
 }
 
 // Access helpers
-function assertProjectAccess(
+async function assertProjectAccess(
   project: { id: number; ownerId?: number },
   userId: number,
 ) {
-  // Will be checked via membership query in real implementation
+  // Owner always has access
+  if (project.ownerId === userId) return;
+
+  // Check if user is a member of the project
+  const membership = await prisma.projectMember.findUnique({
+    where: { projectId_userId: { projectId: project.id, userId } },
+  });
+
+  if (!membership) {
+    throw new ForbiddenError("You don't have access to this project");
+  }
 }
 
 async function assertProjectAdmin(

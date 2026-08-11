@@ -1,5 +1,6 @@
 import prisma from "../config/prisma.js";
 import { safeUserSelect, type SafeUser } from "./auth.repository.js";
+import { type Role } from "@prisma/client";
 import type { User } from "@prisma/client";
 
 interface ListUsersParams {
@@ -26,7 +27,7 @@ interface UpdateSelfData {
 interface UpdateByAdminData {
   name?: string;
   email?: string;
-  role?: string;
+  role?: Role;
   isActive?: boolean;
 }
 
@@ -34,9 +35,10 @@ interface CreateByAdminData {
   name: string;
   email: string;
   passwordHash: string;
-  role?: string;
+  role?: Role;
   isActive?: boolean;
 }
+
 
 export class UserRepository {
   async findAllPaginated({

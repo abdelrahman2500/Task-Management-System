@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt, * as JWT from "jsonwebtoken";
 import { prisma } from "../lib/prisma";
 import { ConflictError, UnauthorizedError } from "../lib/errors";
 import type { RegisterInput, LoginInput } from "../schemas/auth.schemas";
@@ -93,5 +93,5 @@ function generateToken(userId: number, email: string): string {
 
   return jwt.sign({ userId, email }, secret, {
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",
-  });
+  } as JWT.SignOptions);
 }
