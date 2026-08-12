@@ -4,7 +4,7 @@ import { renderHook } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useProjects } from "./useProjects";
 import { useCreateProject } from "./useCreateProject";
-import { mockAuthUser, clearAuthUser } from "../../../tests/helpers";
+import { mockAuthUser } from "../../../tests/helpers";
 
 function createWrapper() {
   const queryClient = new QueryClient({

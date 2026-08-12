@@ -27,7 +27,7 @@ export interface CreateTaskRequest {
   assigneeId?: number | null;
   projectId: number;
   /** ISO date string */
-  dueDate: string | null;
+  dueDate?: string | null;
 }
 
 export interface GetTasksParams {

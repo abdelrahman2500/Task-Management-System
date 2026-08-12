@@ -28,11 +28,11 @@ describe("axios interceptors", () => {
     server.use(
       http.get("http://localhost:3000/api/v1/test", ({ request }) => {
         const authHeader = request.headers.get("authorization");
-        return HttpResponse.json({ authHeader });
+        return HttpResponse.json({ success: true, data: { authHeader } });
       }),
     );
 
-    const response = await api.get("/test");
+    const response: { authHeader: string | null } = await api.get("/test");
     expect(response.authHeader).toBe("Bearer test-token");
   });
 
@@ -42,11 +42,11 @@ describe("axios interceptors", () => {
     server.use(
       http.get("http://localhost:3000/api/v1/test", ({ request }) => {
         const authHeader = request.headers.get("authorization");
-        return HttpResponse.json({ authHeader });
+        return HttpResponse.json({ success: true, data: { authHeader } });
       }),
     );
 
-    const response = await api.get("/test");
+    const response: { authHeader: string | null } = await api.get("/test");
     expect(response.authHeader).toBeNull();
   });
 

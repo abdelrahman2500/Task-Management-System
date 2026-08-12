@@ -19,17 +19,6 @@ export interface PermissionUser {
   isActive?: boolean;
 }
 
-const ROLE_HIERARCHY: Record<UserRole, number> = {
-  OWNER: 4,
-  ADMIN: 3,
-  MEMBER: 2,
-  VIEWER: 1,
-};
-
-function hasRole(user: PermissionUser, required: UserRole): boolean {
-  return ROLE_HIERARCHY[user.role] >= ROLE_HIERARCHY[required];
-}
-
 function isSelf(
   user: PermissionUser,
   context: PermissionContext | undefined,

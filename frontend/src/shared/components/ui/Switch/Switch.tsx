@@ -13,7 +13,7 @@ interface SwitchProps {
   id?: string;
 }
 
-export default function Switch({
+function Switch({
   checked,
   onChange,
   onCheckedChange,

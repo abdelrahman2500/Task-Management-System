@@ -1,9 +1,10 @@
-import { ReactElement } from "react";
-import { render, RenderOptions } from "@testing-library/react";
+import type { ReactElement } from "react";
+import { render, type RenderOptions } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import { setQueryClientReference } from "../shared/api/axios";
+import { tokenStorage } from "../shared/utils/token-storage";
 
 // Create a test query client
 function createTestQueryClient() {
@@ -63,7 +64,6 @@ export function renderWithProviders(
 export function mockAuthUser() {
   // Mock token storage instead of localStorage directly
   try {
-    const { tokenStorage } = require("../shared/utils/token-storage");
     if (tokenStorage && tokenStorage.setAccessToken) {
       tokenStorage.setAccessToken("mock-jwt-token");
     }
@@ -76,7 +76,6 @@ export function mockAuthUser() {
 export function clearAuthUser() {
   // Clear token storage
   try {
-    const { tokenStorage } = require("../shared/utils/token-storage");
     if (tokenStorage && tokenStorage.removeAccessToken) {
       tokenStorage.removeAccessToken();
     }

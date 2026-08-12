@@ -1,4 +1,4 @@
-import type { UserRole } from "../../auth/types";
+import type { UserRole } from "../auth/types";
 
 export interface User {
   id: number;
@@ -36,6 +36,7 @@ export interface ListUsersParams {
   search?: string;
   role?: UserRole;
   isActive?: boolean;
+  [key: string]: unknown;
 }
 
 export interface ListUsersResponse {
