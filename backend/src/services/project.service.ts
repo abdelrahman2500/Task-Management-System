@@ -1,5 +1,14 @@
 import { prisma } from "../lib/prisma";
 import { ForbiddenError, NotFoundError } from "../lib/errors";
+import {
+  assertProjectAccess,
+  assertProjectAdmin,
+  assertProjectOwner,
+} from "../lib/authorization";
+import {
+  parsePaginationParams,
+  createPaginatedResponse,
+} from "../lib/pagination";
 import type {
   CreateProjectInput,
   UpdateProjectInput,
@@ -7,41 +16,58 @@ import type {
   UpdateMemberInput,
 } from "../schemas/project.schemas";
 
-export async function listProjects(userId: number) {
-  // Projects the user owns or is a member of
-  const projects = await prisma.project.findMany({
-    where: {
-      OR: [{ ownerId: userId }, { members: { some: { userId } } }],
-    },
-    include: {
-      owner: { select: { id: true, name: true, email: true } },
-      members: {
-        select: {
-          userId: true,
-          role: true,
-          user: { select: { id: true, name: true, email: true } },
-        },
-      },
-      _count: { select: { tasks: true, members: true } },
-    },
-    orderBy: { createdAt: "desc" },
-  });
+export async function listProjects(
+  userId: number,
+  page: number = 1,
+  limit: number = 20,
+) {
+  const { skip, take } = parsePaginationParams({ page, limit });
 
-  return projects;
+  // Projects the user owns or is a member of
+  // Optimized: Only fetch necessary fields to avoid N+1 on members
+  const [total, projects] = await Promise.all([
+    prisma.project.count({
+      where: {
+        OR: [{ ownerId: userId }, { members: { some: { userId } } }],
+      },
+    }),
+    prisma.project.findMany({
+      where: {
+        OR: [{ ownerId: userId }, { members: { some: { userId } } }],
+      },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        status: true,
+        createdAt: true,
+        updatedAt: true,
+        ownerId: true,
+        owner: { select: { id: true, name: true, email: true } },
+        _count: { select: { tasks: true, members: true } },
+      },
+      orderBy: { createdAt: "desc" },
+      skip,
+      take,
+    }),
+  ]);
+
+  return createPaginatedResponse(projects, page, limit, total);
 }
 
 export async function getProject(projectId: number, userId: number) {
   const project = await prisma.project.findUnique({
     where: { id: projectId },
-    include: {
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+      ownerId: true,
       owner: { select: { id: true, name: true, email: true } },
-      members: {
-        select: {
-          userId: true,
-          role: true,
-          user: { select: { id: true, name: true, email: true } },
-        },
-      },
+      _count: { select: { tasks: true, members: true } },
     },
   });
 
@@ -49,7 +75,7 @@ export async function getProject(projectId: number, userId: number) {
     throw new NotFoundError("Project");
   }
 
-  assertProjectAccess(project, userId);
+  await assertProjectAccess(project.id, userId);
 
   return project;
 }
@@ -92,20 +118,21 @@ export async function updateProject(
     throw new NotFoundError("Project");
   }
 
-  assertProjectAdmin(project, userId);
+  await assertProjectAdmin(project.id, userId);
 
   return prisma.project.update({
     where: { id: projectId },
     data,
-    include: {
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+      ownerId: true,
       owner: { select: { id: true, name: true, email: true } },
-      members: {
-        select: {
-          userId: true,
-          role: true,
-          user: { select: { id: true, name: true, email: true } },
-        },
-      },
+      _count: { select: { tasks: true, members: true } },
     },
   });
 }
@@ -120,7 +147,7 @@ export async function deleteProject(projectId: number, userId: number) {
     throw new NotFoundError("Project");
   }
 
-  assertProjectOwner(project, userId);
+  await assertProjectOwner(project.id, userId);
 
   await prisma.project.delete({ where: { id: projectId } });
 
@@ -128,24 +155,30 @@ export async function deleteProject(projectId: number, userId: number) {
 }
 
 // Members
-export async function listMembers(projectId: number, userId: number) {
-  const project = await prisma.project.findUnique({
-    where: { id: projectId },
-    select: { id: true },
-  });
+export async function listMembers(
+  projectId: number,
+  userId: number,
+  page: number = 1,
+  limit: number = 20,
+) {
+  await assertProjectAccess(projectId, userId);
 
-  if (!project) {
-    throw new NotFoundError("Project");
-  }
+  const { skip, take } = parsePaginationParams({ page, limit });
 
-  assertProjectAccess(project, userId);
+  const [total, members] = await Promise.all([
+    prisma.projectMember.count({ where: { projectId } }),
+    prisma.projectMember.findMany({
+      where: { projectId },
+      include: {
+        user: { select: { id: true, name: true, email: true } },
+      },
+      orderBy: { createdAt: "asc" },
+      skip,
+      take,
+    }),
+  ]);
 
-  return prisma.projectMember.findMany({
-    where: { projectId },
-    include: {
-      user: { select: { id: true, name: true, email: true } },
-    },
-  });
+  return createPaginatedResponse(members, page, limit, total);
 }
 
 export async function addMember(
@@ -162,7 +195,7 @@ export async function addMember(
     throw new NotFoundError("Project");
   }
 
-  assertProjectAdmin(project, userId);
+  await assertProjectAdmin(project.id, userId);
 
   // Check user exists
   const user = await prisma.user.findUnique({
@@ -210,7 +243,7 @@ export async function updateMember(
     throw new NotFoundError("Project");
   }
 
-  assertProjectAdmin(project, userId);
+  await assertProjectAdmin(project.id, userId);
 
   const member = await prisma.projectMember.findFirst({
     where: { projectId, userId: memberId },
@@ -248,7 +281,7 @@ export async function removeMember(
     throw new NotFoundError("Project");
   }
 
-  assertProjectAdmin(project, userId);
+  await assertProjectAdmin(project.id, userId);
 
   const member = await prisma.projectMember.findFirst({
     where: { projectId, userId: memberId },
@@ -269,47 +302,4 @@ export async function removeMember(
   return { message: "Member removed successfully" };
 }
 
-// Access helpers
-async function assertProjectAccess(
-  project: { id: number; ownerId?: number },
-  userId: number,
-) {
-  // Owner always has access
-  if (project.ownerId === userId) return;
-
-  // Check if user is a member of the project
-  const membership = await prisma.projectMember.findUnique({
-    where: { projectId_userId: { projectId: project.id, userId } },
-  });
-
-  if (!membership) {
-    throw new ForbiddenError("You don't have access to this project");
-  }
-}
-
-async function assertProjectAdmin(
-  project: { id: number; ownerId: number },
-  userId: number,
-) {
-  if (project.ownerId === userId) return;
-
-  const membership = await prisma.projectMember.findUnique({
-    where: { projectId_userId: { projectId: project.id, userId } },
-  });
-
-  if (
-    !membership ||
-    (membership.role !== "admin" && membership.role !== "owner")
-  ) {
-    throw new ForbiddenError();
-  }
-}
-
-function assertProjectOwner(
-  project: { id: number; ownerId: number },
-  userId: number,
-) {
-  if (project.ownerId !== userId) {
-    throw new ForbiddenError("Only the project owner can perform this action");
-  }
-}
+// Removed duplicate authorization functions - now imported from authorization.ts

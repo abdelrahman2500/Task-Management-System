@@ -8,9 +8,9 @@ export const taskSchema = z.object({
 
   description: z.string().max(1000).optional().nullable(),
 
-  status: z.enum(["TODO", "IN_PROGRESS", "IN_REVIEW", "DONE"]),
+  status: z.enum(["todo", "in_progress", "blocked", "done"]),
 
-  priority: z.enum(["LOW", "MEDIUM", "HIGH", "URGENT"]),
+  priority: z.enum(["low", "medium", "high", "urgent"]),
 
   assigneeId: z.number().nullable().optional(),
 

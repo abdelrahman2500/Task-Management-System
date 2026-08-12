@@ -33,7 +33,12 @@ export default function EditProjectModal({
     );
   };
   return (
-    <Dialog open={open} title="Edit Project" onClose={onClose}>
+    <Dialog
+      open={open}
+      title="Edit Project"
+      onClose={onClose}
+      closeDisabled={updateProject.isPending}
+    >
       <ProjectForm
         defaultValues={{
           name: project.name,

@@ -49,7 +49,7 @@ describe("useTasks", () => {
   });
 
   it("applies status filter", async () => {
-    const { result } = renderHook(() => useTasks({ status: "TODO" }), {
+    const { result } = renderHook(() => useTasks({ status: "todo" }), {
       wrapper: createWrapper(),
     });
 
@@ -59,7 +59,7 @@ describe("useTasks", () => {
   });
 
   it("applies priority filter", async () => {
-    const { result } = renderHook(() => useTasks({ priority: "HIGH" }), {
+    const { result } = renderHook(() => useTasks({ priority: "high" }), {
       wrapper: createWrapper(),
     });
 
@@ -88,8 +88,8 @@ describe("useCreateTask", () => {
     result.current.mutate({
       title: "New Task",
       description: "A new test task",
-      status: "TODO",
-      priority: "MEDIUM",
+      status: "todo",
+      priority: "medium",
       projectId: 1,
     });
 
@@ -110,8 +110,8 @@ describe("useCreateTask", () => {
     result.current.mutate({
       title: "Task with Due Date",
       description: "This task has a due date",
-      status: "TODO",
-      priority: "HIGH",
+      status: "todo",
+      priority: "high",
       projectId: 1,
       dueDate,
     });
@@ -129,8 +129,8 @@ describe("useCreateTask", () => {
     result.current.mutate({
       title: "Assigned Task",
       description: "This task is assigned to someone",
-      status: "IN_PROGRESS",
-      priority: "LOW",
+      status: "in_progress",
+      priority: "low",
       projectId: 1,
       assigneeId: 2,
     });

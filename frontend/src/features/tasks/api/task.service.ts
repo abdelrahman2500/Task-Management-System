@@ -1,35 +1,35 @@
-import { api } from "../../../shared/api/axios";
-import type {
-  CreateTaskRequest,
-  GetTasksParams,
-  Task,
-  UpdateTaskRequest,
-  ListTasksResponse,
-} from "../types";
+/**
+ * Task service using generated OpenAPI types
+ *
+ * Delegates to centralized API client for type-safe operations
+ * with automatic enum conversion and error handling.
+ */
+
+import { apiClient } from "../../../shared/api/client";
+import type { CreateTaskRequest, Task, ListTasksParams } from "../types";
 
 export const taskServices = {
-  async getTasks(params: GetTasksParams): Promise<ListTasksResponse> {
-    return api.get<ListTasksResponse>("/tasks", {
-      params,
-    }) as unknown as Promise<ListTasksResponse>;
+  async getTasks(params: ListTasksParams) {
+    // Use generated types from API client
+    return apiClient.tasks.list(params);
   },
 
   async getTaskById(taskId: number): Promise<Task> {
-    return api.get<Task>(`/tasks/${taskId}`) as unknown as Promise<Task>;
+    return apiClient.tasks.getById(taskId);
   },
 
   async createTask(payload: CreateTaskRequest): Promise<Task> {
-    return api.post<Task>("/tasks", payload) as unknown as Promise<Task>;
+    return apiClient.tasks.create(payload);
   },
 
-  async updateTask(taskId: number, payload: UpdateTaskRequest): Promise<Task> {
-    return api.patch<Task>(
-      `/tasks/${taskId}`,
-      payload,
-    ) as unknown as Promise<Task>;
+  async updateTask(
+    taskId: number,
+    payload: Partial<CreateTaskRequest>,
+  ): Promise<Task> {
+    return apiClient.tasks.update(taskId, payload);
   },
 
   async deleteTask(taskId: number): Promise<void> {
-    await api.delete(`/tasks/${taskId}`);
+    return apiClient.tasks.delete(taskId);
   },
 };

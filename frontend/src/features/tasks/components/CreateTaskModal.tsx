@@ -35,7 +35,12 @@ export default function CreateTaskModal({
   };
 
   return (
-    <Dialog open={open} title="New Task" onClose={onClose}>
+    <Dialog
+      open={open}
+      title="New Task"
+      onClose={onClose}
+      closeDisabled={createTask.isPending}
+    >
       <TaskForm
         loading={createTask.isPending}
         onSubmit={handleSubmit}

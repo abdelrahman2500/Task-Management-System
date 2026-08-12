@@ -10,7 +10,7 @@ export const useDeleteProject = () => {
   return useMutation({
     mutationFn: (id: number) => projectService.deleteProject(id),
 
-    onMutate: async (id) => {
+    onMutate: async (id): Promise<{ previousData: any[] }> => {
       await queryClient.cancelQueries({ queryKey: projectKeys.lists() });
 
       const previousData = queryClient.getQueriesData<ListProjectsResponse>({
@@ -20,12 +20,15 @@ export const useDeleteProject = () => {
       // Optimistically remove from every cached list
       queryClient.setQueriesData<ListProjectsResponse>(
         { queryKey: projectKeys.lists() },
-        (old) =>
+        (old: ListProjectsResponse | undefined) =>
           old
             ? {
                 ...old,
                 data: old.data.filter((p) => p.id !== id),
-                total: old.total - 1,
+                pagination: {
+                  ...old.pagination,
+                  total: Math.max(0, old.pagination.total - 1),
+                },
               }
             : old,
       );

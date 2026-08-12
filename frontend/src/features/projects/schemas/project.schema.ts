@@ -8,7 +8,7 @@ export const projectSchema = z.object({
 
   description: z.string().max(500).optional(),
 
-  status: z.enum(["ACTIVE", "COMPLETED", "ARCHIVED"]),
+  status: z.enum(["active", "archived"]),
 });
 
 export type ProjectFormData = z.infer<typeof projectSchema>;

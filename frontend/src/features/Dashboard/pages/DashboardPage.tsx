@@ -64,13 +64,13 @@ export default function DashboardPage() {
   const projects = projectsData?.data ?? [];
   const tasks = tasksData?.data ?? [];
 
-  const activeProjects = projects.filter((p) => p.status === "ACTIVE").length;
+  const activeProjects = projects.filter((p) => p.status === "active").length;
   const inProgressTasks = tasks.filter(
-    (t) => t.status === "IN_PROGRESS",
+    (t) => t.status === "in_progress",
   ).length;
-  const doneTasks = tasks.filter((t) => t.status === "DONE").length;
+  const doneTasks = tasks.filter((t) => t.status === "done").length;
   const urgentTasks = tasks.filter(
-    (t) => t.priority === "URGENT" && t.status !== "DONE",
+    (t) => t.priority === "urgent" && t.status !== "done",
   );
 
   const recentTasks = [...tasks]
@@ -239,15 +239,11 @@ export default function DashboardPage() {
                   </div>
                   <Badge
                     variant={
-                      project.status === "ACTIVE"
-                        ? "success"
-                        : project.status === "COMPLETED"
-                          ? "info"
-                          : "default"
+                      project.status === "active" ? "success" : "default"
                     }
                     size="sm"
                   >
-                    {project.status}
+                    {project.status === "active" ? "Active" : "Archived"}
                   </Badge>
                 </li>
               ))}

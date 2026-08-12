@@ -1,19 +1,34 @@
 import "dotenv/config";
 import { app } from "./app";
 import { prisma } from "./lib/prisma";
-
-const PORT = Number(process.env.PORT) || 3000;
+import { loadEnvironment, verifyJwtConfiguration } from "./config/environment";
 
 async function main() {
-  await prisma.$connect();
-  console.log("Database connected");
+  // Validate environment configuration first
+  try {
+    const config = loadEnvironment();
+    verifyJwtConfiguration();
 
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+    // Connect to database
+    await prisma.$connect();
+    console.log("✓ Database connected");
+
+    // Start server
+    app.listen(config.server.port, () => {
+      console.log(`✓ Server running on http://localhost:${config.server.port}`);
+      if (config.server.nodeEnv === "production") {
+        console.log(
+          "⚠ Production mode - ensure all security measures are in place",
+        );
+      }
+    });
+  } catch (err) {
+    console.error(
+      "❌ Failed to start server:",
+      err instanceof Error ? err.message : err,
+    );
+    process.exit(1);
+  }
 }
 
-main().catch((err) => {
-  console.error("Failed to start server:", err);
-  process.exit(1);
-});
+main();

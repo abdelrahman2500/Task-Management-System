@@ -1,13 +1,24 @@
-import type { UserRole } from "../auth/types";
+/**
+ * Users Feature Types
+ *
+ * Imports base User type from generated OpenAPI types.
+ * Defines custom user management request/response types.
+ */
 
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: UserRole;
-  createdAt: string;
-  updatedAt: string;
-  isActive: boolean;
+import type {
+  User as BaseUser,
+  PaginatedResponse,
+} from "../../../shared/api/generated/types";
+
+export type { PaginatedResponse };
+
+/**
+ * User type extended with role for frontend use
+ * Role is determined by ProjectMember entries, but we include it here
+ * for UI display purposes (backend may return it in auth context)
+ */
+export interface User extends BaseUser {
+  role?: string;
 }
 
 export interface UpdateMeRequest {
@@ -19,14 +30,14 @@ export interface CreateUserRequest {
   name: string;
   email: string;
   password: string;
-  role?: UserRole;
+  role?: string;
   isActive?: boolean;
 }
 
 export interface UpdateUserRequest {
   name?: string;
   email?: string;
-  role?: UserRole;
+  role?: string;
   isActive?: boolean;
 }
 
@@ -34,15 +45,9 @@ export interface ListUsersParams {
   page?: number;
   limit?: number;
   search?: string;
-  role?: UserRole;
+  role?: string;
   isActive?: boolean;
   [key: string]: unknown;
 }
 
-export interface ListUsersResponse {
-  data: User[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-}
+export type ListUsersResponse = PaginatedResponse<User>;

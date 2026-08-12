@@ -1,0 +1,68 @@
+FILE,TYPE_NAME,TYPE_KIND,PURPOSE,GENERATED_EQUIVALENT,NEEDS_MIGRATION,NOTES
+frontend/src/shared/api/generated/types.ts,BearerAuth,interface,API Security scheme,N/A (source of truth),No,Auto-generated from OpenAPI spec - do not edit manually
+frontend/src/shared/api/generated/types.ts,User,interface,API data model,N/A (source of truth),No,Generated from OpenAPI - represents backend User entity
+frontend/src/shared/api/generated/types.ts,AuthResponse,interface,API response type,N/A (source of truth),No,Login/authentication response wrapper
+frontend/src/shared/api/generated/types.ts,Project,interface,API data model,N/A (source of truth),No,Generated from OpenAPI - core project entity
+frontend/src/shared/api/generated/types.ts,ProjectMember,interface,API data model,N/A (source of truth),No,Project membership with role assignment
+frontend/src/shared/api/generated/types.ts,Task,interface,API data model,N/A (source of truth),No,Task entity with status and priority
+frontend/src/shared/api/generated/types.ts,Comment,interface,API data model,N/A (source of truth),No,Comment on a task with author
+frontend/src/shared/api/generated/types.ts,PaginationMetadata,interface,API response envelope,N/A (source of truth),No,Pagination info for list responses
+frontend/src/shared/api/generated/types.ts,ErrorResponse,interface,API error response,N/A (source of truth),No,Standardized error response format
+frontend/src/shared/api/generated/types.ts,RegisterRequest,interface,API request type,N/A (source of truth),No,User registration request body
+frontend/src/shared/api/generated/types.ts,LoginRequest,interface,API request type,N/A (source of truth),No,User login request body - duplicated in auth/types
+frontend/src/shared/api/generated/types.ts,CreateProjectRequest,interface,API request type,N/A (source of truth),No,Create project request body
+frontend/src/shared/api/generated/types.ts,UpdateProjectRequest,interface,API request type,N/A (source of truth),No,Update project request body
+frontend/src/shared/api/generated/types.ts,AddProjectMemberRequest,interface,API request type,N/A (source of truth),No,Add member to project request
+frontend/src/shared/api/generated/types.ts,UpdateProjectMemberRequest,interface,API request type,N/A (source of truth),No,Update project member role request
+frontend/src/shared/api/generated/types.ts,CreateTaskRequest,interface,API request type,N/A (source of truth),No,Create task request body
+frontend/src/shared/api/generated/types.ts,UpdateTaskRequest,interface,API request type,N/A (source of truth),No,Update task request body
+frontend/src/shared/api/generated/types.ts,CreateCommentRequest,interface,API request type,N/A (source of truth),No,Create comment request body
+frontend/src/shared/api/generated/types.ts,UpdateCommentRequest,interface,API request type,N/A (source of truth),No,Update comment request body
+frontend/src/shared/api/generated/types.ts,PaginatedResponse,interface,API response envelope,N/A (source of truth),No,Generic paginated response wrapper
+frontend/src/shared/api/generated/types.ts,ItemResponse,interface,API response envelope,N/A (source of truth),No,Single item response wrapper
+frontend/src/shared/api/generated/types.ts,SuccessResponse,interface,API response envelope,N/A (source of truth),No,Success response without data payload
+frontend/src/shared/api/generated/types.ts,ListProjectsParams,interface,API query parameters,N/A (source of truth),No,Query params for listing projects
+frontend/src/shared/api/generated/types.ts,ListTasksParams,interface,API query parameters,N/A (source of truth),No,Query params for listing tasks
+frontend/src/shared/api/generated/types.ts,ListCommentsParams,interface,API query parameters,N/A (source of truth),No,Query params for listing comments
+frontend/src/shared/api/generated/types.ts,ListProjectMembersParams,interface,API query parameters,N/A (source of truth),No,Query params for listing project members
+frontend/src/shared/api/generated/types.ts,ProjectsResponse,type alias,API response type,N/A (source of truth),No,Convenience alias: PaginatedResponse<Project>
+frontend/src/shared/api/generated/types.ts,TasksResponse,type alias,API response type,N/A (source of truth),No,Convenience alias: PaginatedResponse<Task>
+frontend/src/shared/api/generated/types.ts,CommentsResponse,type alias,API response type,N/A (source of truth),No,Convenience alias: PaginatedResponse<Comment>
+frontend/src/shared/api/generated/types.ts,ProjectMembersResponse,type alias,API response type,N/A (source of truth),No,Convenience alias: PaginatedResponse<ProjectMember>
+frontend/src/features/auth/types/index.ts,UserRole,type alias,UI authorization,Generated in shared/api/generated/types.ts,Yes,"UNION TYPE DUPLICATION: Also defined in shared/permissions/can.ts. Should consolidate to single source"
+frontend/src/features/auth/types/index.ts,LoginRequest,interface,API request type,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Also exists in generated/types.ts. Should import from generated instead"
+frontend/src/features/auth/types/index.ts,CurrentUser,interface,UI data model,Partial in shared/api/generated/User,Yes,"UI-specific extension of User. Add generated relation properties or use base User type"
+frontend/src/features/auth/types/index.ts,User,interface,API data model,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Simplified version of generated User. Should import from generated/types"
+frontend/src/features/auth/types/index.ts,LoginResponse,interface,API response type,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches AuthResponse structure. Should import from generated/types"
+frontend/src/features/projects/types.ts,ProjectStatus,type alias,API data model,Generated in shared/api/generated/types.ts,Yes,"UNION TYPE DUPLICATION: Generated has 'active|archived'. Local has 'ACTIVE|COMPLETED|ARCHIVED'. Mismatch - needs alignment"
+frontend/src/features/projects/types.ts,PaginationMetadata,interface,API response envelope,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Identical to generated version. Should import from generated/types instead"
+frontend/src/features/projects/types.ts,Project,interface,API data model,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Similar to generated with extra _count property. Should import from generated and extend if needed"
+frontend/src/features/projects/types.ts,CreateProjectRequest,interface,API request type,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches generated version. Should import from generated/types"
+frontend/src/features/projects/types.ts,UpdateProjectRequest,interface,API request type,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches generated version. Should import from generated/types"
+frontend/src/features/projects/types.ts,ListProjectsParams,interface,API query parameters,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches generated ListProjectsParams. Should import from generated/types"
+frontend/src/features/projects/types.ts,ListProjectsResponse,interface,API response envelope,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches ProjectsResponse type alias. Should use generated type alias"
+frontend/src/features/tasks/types/index.ts,TaskStatusEnum,type alias,API data model,Generated in shared/api/generated/types.ts (as union in Task.status),Yes,"UNION TYPE MISMATCH: Generated has 'todo|in_progress|blocked|done' (lowercase). Local has 'TODO|IN_PROGRESS|IN_REVIEW|DONE' (uppercase). CRITICAL: Status values differ"
+frontend/src/features/tasks/types/index.ts,TaskPriorityEnum,type alias,API data model,Generated in shared/api/generated/types.ts (as union in Task.priority),Yes,"UNION TYPE MISMATCH: Generated has 'low|medium|high|urgent' (lowercase). Local has 'LOW|MEDIUM|HIGH|URGENT' (uppercase). CRITICAL: Priority values differ"
+frontend/src/features/tasks/types/index.ts,Task,interface,API data model,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches structure but uses uppercase enums. Should consolidate - use generated enums"
+frontend/src/features/tasks/types/index.ts,CreateTaskRequest,interface,API request type,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Uses uppercase enums. Should import from generated and adapt if needed"
+frontend/src/features/tasks/types/index.ts,PaginationMetadata,interface,API response envelope,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Same as generated version. Should import from generated/types"
+frontend/src/features/tasks/types/index.ts,GetTasksParams,interface,API query parameters,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches ListTasksParams. Should import from generated/types"
+frontend/src/features/tasks/types/index.ts,UpdateTaskRequest,type alias,API request type,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Partial<CreateTaskRequest> matches generated. Should import from generated"
+frontend/src/features/tasks/types/index.ts,ListTasksResponse,interface,API response envelope,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Matches TasksResponse type alias. Should use generated type alias"
+frontend/src/features/users/types.ts,User,interface,API data model,Generated in shared/api/generated/types.ts,Yes,"DUPLICATION: Extended version with role field. Should import generated User or import base + extend"
+frontend/src/features/users/types.ts,UpdateMeRequest,interface,API request type,N/A (UI-specific),No,UI-specific request for updating current user - not in generated types
+frontend/src/features/users/types.ts,CreateUserRequest,interface,API request type,N/A (custom variation),Yes,"Not in generated types. Consider adding or verify if it's admin-specific functionality"
+frontend/src/features/users/types.ts,UpdateUserRequest,interface,API request type,N/A (custom variation),Yes,"Not in generated types. Consider adding or verify if it's admin-specific functionality"
+frontend/src/features/users/types.ts,ListUsersParams,interface,API query parameters,N/A (custom variation),Yes,"Similar to generated but with added role/isActive filters. Should use generated as base"
+frontend/src/features/users/types.ts,ListUsersResponse,interface,API response envelope,N/A (custom variation),Yes,"Similar to PaginatedResponse but with explicit total. Should use generated PaginatedResponse instead"
+frontend/src/features/settings/types/index.ts,UpdateProfileRequest,interface,API request type,N/A (custom),Yes,"Similar to UpdateUserRequest. Should consolidate or align with user management types"
+frontend/src/features/settings/types/index.ts,ChangePasswordRequest,interface,API request type,N/A (custom),No,Settings-specific password change request - not found in generated types
+frontend/src/features/settings/types/index.ts,UpdatePreferencesRequest,interface,API request type,N/A (custom),No,User preferences update - API-specific but not in generated types
+frontend/src/features/settings/types/index.ts,UserPreferences,interface,API data model,N/A (custom),No,User preferences entity - API data model not in generated types
+frontend/src/features/settings/types/index.ts,AccountInfo,interface,API data model,N/A (custom),No,Account summary entity - API data model not in generated types
+frontend/src/shared/permissions/can.ts,UserRole,type alias,UI authorization,Generated in shared/api/generated/types.ts,Yes,"UNION TYPE DUPLICATION: Also in auth/types. Use single source of truth from generated"
+frontend/src/shared/permissions/can.ts,Resource,type alias,UI authorization,N/A (UI-only),No,UI-only authorization model - no API equivalent needed
+frontend/src/shared/permissions/can.ts,Action,type alias,UI authorization,N/A (UI-only),No,UI-only authorization model - no API equivalent needed
+frontend/src/shared/permissions/can.ts,PermissionContext,interface,UI authorization,N/A (UI-only),No,UI-only authorization context for permission checking
+frontend/src/shared/permissions/can.ts,PermissionUser,interface,UI authorization,Partial match with generated User,No,UI-only subset of User for permission evaluation - minimal data needed
+frontend/src/shared/utils/errorHandling.ts,ApiErrorResponse,interface,UI error handling,N/A (matches ErrorResponse),No,Error handling utility - matches backend ErrorResponse structure

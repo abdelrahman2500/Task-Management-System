@@ -10,8 +10,8 @@ import { UserPagination } from "../components/UserPagination";
 import { CreateUserModal } from "../components/CreateUserModal";
 import { EditUserModal } from "../components/EditUserModal";
 import { DeleteUserDialog } from "../components/DeleteUserDialog";
+import { UserSkeleton } from "../components/UserSkeleton";
 import { Button } from "../../../shared/components/ui/Button";
-import { Skeleton } from "../../../shared/components/ui/Skeleton";
 import { ErrorState } from "../../../shared/components/ui/ErrorState";
 import { EmptyState } from "../../../shared/components/ui/EmptyState";
 import type { ListUsersParams, User } from "../types";
@@ -74,20 +74,7 @@ export default function UsersPage() {
       </div>
 
       {/* Content */}
-      {isLoading && (
-        <div className="space-y-3 rounded-2xl border border-slate-200 bg-white p-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <Skeleton variant="circular" width="40px" height="40px" />
-              <div className="flex-1 space-y-2">
-                <Skeleton className="h-4 w-1/3" />
-                <Skeleton className="h-3 w-1/4" />
-              </div>
-              <Skeleton className="h-6 w-16" />
-            </div>
-          ))}
-        </div>
-      )}
+      {isLoading && <UserSkeleton />}
 
       {isError && (
         <ErrorState
@@ -117,7 +104,7 @@ export default function UsersPage() {
       {!isLoading && !isError && (data?.data.length ?? 0) > 0 && (
         <>
           <UserTable
-            users={data!.data}
+            users={data!.data as User[]}
             onEdit={setEditUser}
             onDelete={setDeleteUser}
           />

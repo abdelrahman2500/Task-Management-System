@@ -1,8 +1,12 @@
 /**
  * Error handling utilities
+ *
+ * Provides standardized error parsing, type checking, and user-friendly message generation.
+ * All errors should be handled through these utilities to ensure consistency.
  */
 
 import { AxiosError } from "axios";
+import { getUserFriendlyErrorMessage } from "./errorMessages";
 
 // API Error Response interface (matching backend)
 interface ApiErrorResponse {
@@ -14,7 +18,10 @@ interface ApiErrorResponse {
   };
 }
 
-// Extract error message from various error types
+/**
+ * Extract error message from various error types
+ * Returns the most relevant error message available
+ */
 export function getErrorMessage(error: unknown): string {
   if (!error) return "An unexpected error occurred";
 
@@ -53,7 +60,9 @@ export function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred";
 }
 
-// Check if an error is a validation error
+/**
+ * Check if an error is a validation error
+ */
 export function isValidationError(error: unknown): boolean {
   if (
     typeof error === "object" &&
@@ -62,16 +71,21 @@ export function isValidationError(error: unknown): boolean {
     error.response &&
     typeof error.response === "object" &&
     "status" in error.response &&
-    error.response.status === 400
+    (error.response.status === 400 || error.response.status === 422)
   ) {
     const response = error.response as { data?: ApiErrorResponse };
-    return response.data?.error?.code === "VALIDATION_ERROR";
+    return (
+      response.data?.error?.code === "VALIDATION_ERROR" ||
+      response.data?.error?.code === "VALIDATION_FAILED"
+    );
   }
 
   return false;
 }
 
-// Extract field-specific validation errors
+/**
+ * Extract field-specific validation errors
+ */
 export function extractValidationErrors(
   error: unknown,
 ): Record<string, string> {
@@ -96,11 +110,15 @@ export function extractValidationErrors(
   return fieldErrors;
 }
 
-// Handle and log API errors consistently
+/**
+ * Handle and log API errors consistently
+ * Returns user-friendly error message
+ */
 export function handleApiError(error: unknown, context: string): string {
   console.error(`Error in ${context}:`, error);
 
-  const message = getErrorMessage(error);
+  // Use user-friendly message mapper for API errors
+  const message = getUserFriendlyErrorMessage(error) || getErrorMessage(error);
 
   // You could add additional logging, error reporting, or analytics here
   // Example: sendErrorToAnalytics(error, context);
@@ -108,7 +126,9 @@ export function handleApiError(error: unknown, context: string): string {
   return message;
 }
 
-// Create a formatted error for user display
+/**
+ * Create a formatted error for user display
+ */
 export function createUserFriendlyError(
   error: unknown,
   fallbackMessage: string = "Something went wrong. Please try again.",
@@ -122,13 +142,17 @@ export function createUserFriendlyError(
   return {
     message: isValidation
       ? "Please fix the errors below"
-      : getErrorMessage(error) || fallbackMessage,
+      : getUserFriendlyErrorMessage(error) || fallbackMessage,
     isValidation,
     fieldErrors: extractValidationErrors(error),
   };
 }
 
-// Retry logic for API calls
+/**
+ * Retry logic for API calls
+ * Retries on server errors (5xx) or network issues, but not client errors (4xx)
+ * Does NOT retry on rate limit errors (429) - these must be shown to user
+ */
 export async function retryApiCall<T>(
   apiCall: () => Promise<T>,
   maxRetries: number = 3,
@@ -143,6 +167,7 @@ export async function retryApiCall<T>(
       lastError = error;
 
       // Don't retry on client errors (4xx), only server errors (5xx) or network issues
+      // Special case: 429 (rate limit) must not be retried - show to user
       if (
         error instanceof AxiosError &&
         error.response?.status &&
@@ -165,18 +190,23 @@ export async function retryApiCall<T>(
   throw lastError;
 }
 
-// Common error types
+// Common error codes (matching backend)
 export const ERROR_CODES = {
   UNAUTHORIZED: "UNAUTHORIZED",
   FORBIDDEN: "FORBIDDEN",
   NOT_FOUND: "NOT_FOUND",
   VALIDATION_ERROR: "VALIDATION_ERROR",
+  VALIDATION_FAILED: "VALIDATION_FAILED",
+  CONFLICT: "CONFLICT",
+  RATE_LIMIT_EXCEEDED: "RATE_LIMIT_EXCEEDED",
   NETWORK_ERROR: "NETWORK_ERROR",
   SERVER_ERROR: "SERVER_ERROR",
   TIMEOUT: "TIMEOUT",
 } as const;
 
-// Check specific error types
+/**
+ * Check specific error types
+ */
 export function isUnauthorizedError(error: unknown): boolean {
   if (error instanceof AxiosError && error.response?.status === 401) {
     return true;
@@ -213,4 +243,22 @@ export function isNetworkError(error: unknown): boolean {
   }
 
   return false;
+}
+
+export function isConflictError(error: unknown): boolean {
+  if (error instanceof AxiosError && error.response?.status === 409) {
+    return true;
+  }
+
+  const response = (error as any)?.response;
+  return response?.data?.error?.code === ERROR_CODES.CONFLICT;
+}
+
+export function isRateLimitError(error: unknown): boolean {
+  if (error instanceof AxiosError && error.response?.status === 429) {
+    return true;
+  }
+
+  const response = (error as any)?.response;
+  return response?.data?.error?.code === "RATE_LIMIT_EXCEEDED";
 }

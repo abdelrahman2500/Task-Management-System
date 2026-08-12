@@ -15,19 +15,19 @@ export function TaskStats({ tasks }: TaskStatsProps) {
     },
     {
       label: "In Progress",
-      value: tasks.filter((t) => t.status === "IN_PROGRESS").length,
+      value: tasks.filter((t) => t.status === "in_progress").length,
       icon: Clock3,
       className: "bg-blue-100 text-blue-700",
     },
     {
-      label: "In Review",
-      value: tasks.filter((t) => t.status === "IN_REVIEW").length,
+      label: "Blocked",
+      value: tasks.filter((t) => t.status === "blocked").length,
       icon: CircleDashed,
       className: "bg-amber-100 text-amber-700",
     },
     {
       label: "Completed",
-      value: tasks.filter((t) => t.status === "DONE").length,
+      value: tasks.filter((t) => t.status === "done").length,
       icon: CheckCircle2,
       className: "bg-emerald-100 text-emerald-700",
     },

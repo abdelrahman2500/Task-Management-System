@@ -1,42 +1,45 @@
-import { api } from "../../../shared/api/axios";
+/**
+ * Project service using generated OpenAPI types
+ *
+ * Delegates to centralized API client for type-safe operations.
+ */
+
+import { apiClient } from "../../../shared/api/client";
 import type {
   CreateProjectRequest,
   Project,
   UpdateProjectRequest,
-  ListProjectsResponse,
   ListProjectsParams,
 } from "../types";
 
 export const projectService = {
-  async getProjects(
-    params?: ListProjectsParams,
-  ): Promise<ListProjectsResponse> {
-    return api.get<ListProjectsResponse>("/projects", {
-      params,
-    }) as unknown as Promise<ListProjectsResponse>;
+  async getProjects(params?: ListProjectsParams) {
+    return apiClient.projects.list(params);
   },
 
   async getById(id: number): Promise<Project> {
-    return api.get<Project>(`/projects/${id}`) as unknown as Promise<Project>;
+    const result = await apiClient.projects.getById(id);
+    return result as Project;
   },
 
   async createProject(
     data: Omit<CreateProjectRequest, "ownerId">,
   ): Promise<Project> {
-    return api.post<Project>("/projects", data) as unknown as Promise<Project>;
+    const result = await apiClient.projects.create(
+      data as CreateProjectRequest,
+    );
+    return result as Project;
   },
 
   async updateProject(
     id: number,
     data: UpdateProjectRequest,
   ): Promise<Project> {
-    return api.patch<Project>(
-      `/projects/${id}`,
-      data,
-    ) as unknown as Promise<Project>;
+    const result = await apiClient.projects.update(id, data);
+    return result as Project;
   },
 
   async deleteProject(id: number): Promise<void> {
-    await api.delete(`/projects/${id}`);
+    return apiClient.projects.delete(id);
   },
 };

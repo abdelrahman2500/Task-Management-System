@@ -33,8 +33,8 @@ export function TaskForm({
     defaultValues: {
       title: defaultValues?.title ?? "",
       description: defaultValues?.description ?? "",
-      status: defaultValues?.status ?? "TODO",
-      priority: defaultValues?.priority ?? "MEDIUM",
+      status: defaultValues?.status ?? "todo",
+      priority: defaultValues?.priority ?? "medium",
       assigneeId: defaultValues?.assigneeId ?? null,
       projectId: defaultValues?.projectId,
       dueDate: defaultValues?.dueDate?.slice(0, 10) ?? "",
@@ -87,10 +87,10 @@ export function TaskForm({
               className={selectClass}
               {...register("status")}
             >
-              <option value="TODO">To Do</option>
-              <option value="IN_PROGRESS">In Progress</option>
-              <option value="IN_REVIEW">In Review</option>
-              <option value="DONE">Done</option>
+              <option value="todo">To Do</option>
+              <option value="in_progress">In Progress</option>
+              <option value="blocked">Blocked</option>
+              <option value="done">Done</option>
             </select>
             {errors.status && (
               <p className="text-sm text-red-500">{errors.status.message}</p>
@@ -109,10 +109,10 @@ export function TaskForm({
               className={selectClass}
               {...register("priority")}
             >
-              <option value="LOW">Low</option>
-              <option value="MEDIUM">Medium</option>
-              <option value="HIGH">High</option>
-              <option value="URGENT">Urgent</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="urgent">Urgent</option>
             </select>
             {errors.priority && (
               <p className="text-sm text-red-500">{errors.priority.message}</p>

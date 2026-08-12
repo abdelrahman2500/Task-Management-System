@@ -28,73 +28,75 @@ export function ProjectForm({
     defaultValues: {
       name: defaultValues?.name ?? "",
       description: defaultValues?.description ?? "",
-      status: defaultValues?.status ?? "ACTIVE",
+      status: defaultValues?.status ?? "active",
     },
   });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <Input
-        label="Project Name"
-        placeholder="Task Manager"
-        error={errors.name?.message}
-        {...register("name")}
-      />
-
-      <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
-          Description
-        </label>
-
-        <textarea
-          rows={4}
-          placeholder="Write a short description..."
-          className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500"
-          {...register("description")}
+      <fieldset disabled={loading} className="space-y-6">
+        <Input
+          label="Project Name"
+          placeholder="Task Manager"
+          error={errors.name?.message}
+          {...register("name")}
         />
 
-        {errors.description && (
-          <p className="mt-1 text-sm text-red-500">
-            {errors.description.message}
-          </p>
-        )}
-      </div>
+        <div>
+          <label className="mb-2 block text-sm font-medium text-slate-700">
+            Description
+          </label>
 
-      <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
-          Status
-        </label>
+          <textarea
+            rows={4}
+            placeholder="Write a short description..."
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+            {...register("description")}
+          />
 
-        <select
-          className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500"
-          {...register("status")}
-        >
-          <option value="ACTIVE">Active</option>
-          <option value="COMPLETED">Completed</option>
-          <option value="ARCHIVED">Archived</option>
-        </select>
+          {errors.description && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.description.message}
+            </p>
+          )}
+        </div>
 
-        {errors.status && (
-          <p className="mt-1 text-sm text-red-500">{errors.status.message}</p>
-        )}
-      </div>
+        <div>
+          <label className="mb-2 block text-sm font-medium text-slate-700">
+            Status
+          </label>
 
-      <div className="flex justify-end gap-3">
-        {onCancel && (
-          <Button
-            type="button"
-            variant="outline"
-            className="w-auto"
-            onClick={onCancel}
+          <select
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+            {...register("status")}
           >
-            Cancel
-          </Button>
-        )}
+            <option value="active">Active</option>
+            <option value="archived">Archived</option>
+          </select>
 
-        <Button type="submit" loading={loading} className="w-auto">
-          Save Project
-        </Button>
-      </div>
+          {errors.status && (
+            <p className="mt-1 text-sm text-red-500">{errors.status.message}</p>
+          )}
+        </div>
+
+        <div className="flex justify-end gap-3">
+          {onCancel && (
+            <Button
+              type="button"
+              variant="outline"
+              className="w-auto"
+              onClick={onCancel}
+              disabled={loading}
+            >
+              Cancel
+            </Button>
+          )}
+
+          <Button type="submit" loading={loading} className="w-auto">
+            Save Project
+          </Button>
+        </div>
+      </fieldset>
     </form>
   );
 }

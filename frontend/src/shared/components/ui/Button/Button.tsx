@@ -39,17 +39,18 @@ export default function Button({
         className,
       )}
       disabled={loading || disabled}
+      aria-busy={loading}
       type={props.type ?? "button"}
       {...props}
     >
-      {loading && (
+      {loading ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           <span>Loading...</span>
         </>
+      ) : (
+        children
       )}
-
-      {children}
     </button>
   );
 }

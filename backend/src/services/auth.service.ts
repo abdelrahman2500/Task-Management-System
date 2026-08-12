@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt, * as JWT from "jsonwebtoken";
 import { prisma } from "../lib/prisma";
 import { ConflictError, UnauthorizedError } from "../lib/errors";
+import { getEnvironment } from "../config/environment";
 import type { RegisterInput, LoginInput } from "../schemas/auth.schemas";
 
 const SALT_ROUNDS = 12;
@@ -88,10 +89,12 @@ export async function getMe(userId: number) {
 }
 
 function generateToken(userId: number, email: string): string {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) throw new Error("JWT_SECRET not configured");
+  const config = getEnvironment();
 
-  return jwt.sign({ userId, email }, secret, {
-    expiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  return jwt.sign({ userId, email }, config.jwt.secret, {
+    algorithm: "HS256",
+    expiresIn: config.jwt.expiresIn,
+    issuer: "task-management-api",
+    subject: String(userId),
   } as JWT.SignOptions);
 }

@@ -1,40 +1,33 @@
-export type ProjectStatus = "ACTIVE" | "COMPLETED" | "ARCHIVED";
+import type {
+  Project as GeneratedProject,
+  CreateProjectRequest,
+  UpdateProjectRequest,
+  ListProjectsParams,
+  PaginationMetadata,
+  ProjectsResponse,
+} from "../../../shared/api/generated/types";
 
-export interface Project {
-  id: number;
-  ownerId: number;
-  name: string;
-  description: string | null;
-  status: ProjectStatus;
-  createdAt: string;
-  updatedAt: string;
-  owner?: { id: number; name: string; email: string };
+/**
+ * Project Status Enum
+ *
+ * CRITICAL: Must match backend OpenAPI spec
+ * Backend only supports "active" and "archived" (lowercase)
+ * "COMPLETED" is not a valid backend status
+ */
+export type ProjectStatus = "active" | "archived";
+
+export type {
+  CreateProjectRequest,
+  UpdateProjectRequest,
+  ListProjectsParams,
+  PaginationMetadata,
+};
+export type { ProjectsResponse as ListProjectsResponse }; // Backwards compat alias
+
+/**
+ * Project with optional metadata counts
+ * Extends generated Project to include _count if the API returns it
+ */
+export interface Project extends GeneratedProject {
   _count?: { members: number; tasks: number };
-}
-
-export interface CreateProjectRequest {
-  name: string;
-  description?: string;
-  status?: ProjectStatus;
-}
-
-export interface UpdateProjectRequest {
-  name?: string;
-  description?: string | null;
-  status?: ProjectStatus;
-}
-
-export interface ListProjectsParams {
-  page?: number;
-  limit?: number;
-  search?: string;
-  status?: ProjectStatus;
-}
-
-export interface ListProjectsResponse {
-  data: Project[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
 }

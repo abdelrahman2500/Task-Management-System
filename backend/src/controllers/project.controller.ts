@@ -1,7 +1,13 @@
 import type { Response, NextFunction } from "express";
 import type { AuthRequest } from "../types";
 import * as projectService from "../services/project.service";
-import { sendSuccess, sendCreated, sendMessage } from "../lib/response";
+import {
+  sendSuccess,
+  sendCreated,
+  sendMessage,
+  sendPaginated,
+} from "../lib/response";
+import { parsePaginationParams } from "../lib/pagination";
 
 export async function listProjects(
   req: AuthRequest,
@@ -9,8 +15,17 @@ export async function listProjects(
   next: NextFunction,
 ) {
   try {
-    const projects = await projectService.listProjects(req.user!.userId);
-    sendSuccess(res, projects);
+    const { page, limit } = parsePaginationParams({
+      page: req.query.page as string | undefined,
+      limit: req.query.limit as string | undefined,
+    });
+
+    const result = await projectService.listProjects(
+      req.user!.userId,
+      page,
+      limit,
+    );
+    sendPaginated(res, result);
   } catch (error) {
     next(error);
   }
@@ -92,11 +107,18 @@ export async function listMembers(
 ) {
   try {
     const projectId = Number(req.params.projectId);
-    const members = await projectService.listMembers(
+    const { page, limit } = parsePaginationParams({
+      page: req.query.page as string | undefined,
+      limit: req.query.limit as string | undefined,
+    });
+
+    const result = await projectService.listMembers(
       projectId,
       req.user!.userId,
+      page,
+      limit,
     );
-    sendSuccess(res, members);
+    sendPaginated(res, result);
   } catch (error) {
     next(error);
   }

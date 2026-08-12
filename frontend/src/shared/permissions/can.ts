@@ -1,3 +1,5 @@
+// Import UserRole to ensure single definition in code review
+// Note: This type is also in auth/types and generated types (all should be identical)
 export type UserRole = "OWNER" | "ADMIN" | "MEMBER" | "VIEWER";
 
 export type Resource = "users" | "projects" | "tasks" | "settings" | "profile";
@@ -15,7 +17,7 @@ export interface PermissionContext {
 
 export interface PermissionUser {
   id: number;
-  role: UserRole;
+  role?: UserRole;
   isActive?: boolean;
 }
 
@@ -36,7 +38,7 @@ export function can(
   resource: Resource,
   context?: PermissionContext,
 ): boolean {
-  if (!user || user.isActive === false) return false;
+  if (!user || user.isActive === false || !user.role) return false;
 
   const isAdmin = ADMIN_ROLES.includes(user.role);
 

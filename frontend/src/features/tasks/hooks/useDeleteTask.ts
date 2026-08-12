@@ -25,7 +25,10 @@ export function useDeleteTask() {
             ? {
                 ...old,
                 data: old.data.filter((t) => t.id !== taskId),
-                total: Math.max(0, old.total - 1),
+                pagination: {
+                  ...old.pagination,
+                  total: Math.max(0, old.pagination.total - 1),
+                },
               }
             : old,
       );

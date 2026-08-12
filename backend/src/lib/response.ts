@@ -1,4 +1,5 @@
 import type { Response } from "express";
+import type { PaginatedResponse } from "./pagination";
 
 export function sendSuccess<T>(res: Response, data: T, statusCode = 200) {
   return res.status(statusCode).json({ success: true, data });
@@ -14,13 +15,12 @@ export function sendMessage(res: Response, message: string, statusCode = 200) {
 
 export function sendPaginated<T>(
   res: Response,
-  data: T[],
-  nextCursor: string | null,
-  hasMore: boolean,
+  paginatedData: PaginatedResponse<T>,
+  statusCode = 200,
 ) {
-  return res.status(200).json({
+  return res.status(statusCode).json({
     success: true,
-    data,
-    page: { nextCursor, hasMore },
+    data: paginatedData.data,
+    pagination: paginatedData.pagination,
   });
 }

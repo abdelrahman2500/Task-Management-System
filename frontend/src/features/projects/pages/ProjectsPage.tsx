@@ -31,7 +31,7 @@ export default function ProjectsPage() {
 
   const handleDelete = (id: number) => {
     const project = data?.data.find((p) => p.id === id);
-    setSelectedProject(project ?? null);
+    setSelectedProject((project ?? null) as Project | null);
     setIsDeleteOpen(true);
   };
 
@@ -48,7 +48,8 @@ export default function ProjectsPage() {
     );
   }
 
-  const projects = data?.data ?? [];
+  const projects = (data?.data ?? []) as Project[];
+  const pagination = data?.pagination;
 
   return (
     <>
@@ -63,13 +64,15 @@ export default function ProjectsPage() {
             onEdit={handleEdit}
             onDelete={handleDelete}
           />
-          {data && data.totalPages > 1 && (
+          {pagination && pagination.totalPages > 1 && (
             <Pagination
-              page={data.page}
-              totalPages={data.totalPages}
-              total={data.total}
+              page={pagination.page}
+              totalPages={pagination.totalPages}
+              total={pagination.total}
               pageSize={PAGE_SIZE}
-              onPageChange={(page) => setParams((p) => ({ ...p, page }))}
+              onPageChange={(page: number) =>
+                setParams((p: ListProjectsParams) => ({ ...p, page }))
+              }
               className="mt-6"
             />
           )}

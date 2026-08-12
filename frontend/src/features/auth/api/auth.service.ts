@@ -1,27 +1,22 @@
-import { api } from "../../../shared/api/axios";
+/**
+ * Authentication service using generated OpenAPI types
+ *
+ * Handles login, logout, and current user fetching with generated types.
+ */
+
+import { apiClient } from "../../../shared/api/client";
 import { tokenStorage } from "../../../shared/utils/token-storage";
-import type { LoginRequest, CurrentUser } from "../types";
+import type { LoginRequest, User } from "../types";
 
 export const authServices = {
-  async login(
-    data: LoginRequest,
-  ): Promise<{ token: string; user: CurrentUser }> {
-    // The axios interceptor unwraps response.data → so the resolved value is
-    // already the inner "data" payload: { token, user }
-    const payload = await api.post<{ token: string; user: CurrentUser }>(
-      "/auth/login",
-      data,
-    );
-    // payload IS { token, user } after the interceptor unwrap
-    const result = payload as unknown as { token: string; user: CurrentUser };
+  async login(data: LoginRequest): Promise<{ token: string; user: User }> {
+    const result = await apiClient.auth.login(data);
     tokenStorage.setAccessToken(result.token);
     return result;
   },
 
-  async getMe(): Promise<CurrentUser> {
-    // Interceptor unwraps to { id, name, email, role, ... }
-    const user = await api.get<CurrentUser>("/users/me");
-    return user as unknown as CurrentUser;
+  async getMe(): Promise<User> {
+    return apiClient.auth.getCurrentUser();
   },
 
   logout(): void {

@@ -31,9 +31,10 @@ export function TasksPage() {
   } = useTasks(filters);
 
   const tasks = response?.data ?? [];
-  const total = response?.total ?? 0;
-  const page = response?.page ?? filters.page ?? 1;
-  const pageCount = response?.totalPages ?? 1;
+  const pagination = response?.pagination;
+  const page = pagination?.page ?? filters.page ?? 1;
+  const total = pagination?.total ?? 0;
+  const pageCount = pagination?.totalPages ?? 1;
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);

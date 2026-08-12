@@ -68,7 +68,7 @@ describe("useCreateProject", () => {
     result.current.mutate({
       name: "New Project",
       description: "A new test project",
-      status: "ACTIVE",
+      status: "active",
     });
 
     await waitFor(() => {
@@ -88,7 +88,7 @@ describe("useCreateProject", () => {
     result.current.mutate({
       name: "",
       description: "A project without name",
-      status: "ACTIVE",
+      status: "active",
     });
 
     await waitFor(() => {

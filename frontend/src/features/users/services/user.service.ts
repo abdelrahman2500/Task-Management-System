@@ -1,45 +1,49 @@
-import { api } from "../../../shared/api/axios";
+/**
+ * User service using generated OpenAPI types
+ *
+ * Delegates to centralized API client for user-related operations.
+ */
+
+import { apiClient } from "../../../shared/api/client";
+import type { User, PaginatedResponse } from "../types";
 import type {
-  User,
-  CreateUserRequest,
-  UpdateMeRequest,
-  UpdateUserRequest,
-  ListUsersParams,
-  ListUsersResponse,
-} from "../types";
+  RegisterRequest,
+  ListProjectsParams,
+} from "../../../shared/api/generated/types";
 
 export const userService = {
   async getMe(): Promise<User> {
-    // Interceptor unwraps { success, data } → data (which is the SafeUser object)
-    return api.get<User>("/users/me") as unknown as Promise<User>;
+    const result = await apiClient.users.getMe();
+    return result as User;
   },
 
-  async updateMe(data: UpdateMeRequest): Promise<User> {
-    return api.patch<User>("/users/me", data) as unknown as Promise<User>;
+  async updateMe(data: Partial<User>): Promise<User> {
+    const result = await apiClient.users.updateMe(data);
+    return result as User;
   },
 
-  async listUsers(params: ListUsersParams): Promise<ListUsersResponse> {
-    return api.get<ListUsersResponse>("/users", {
-      params,
-    }) as unknown as Promise<ListUsersResponse>;
-  },
-
-  async createUser(data: CreateUserRequest): Promise<User> {
-    return api.post<User>("/users", data) as unknown as Promise<User>;
+  async listUsers(
+    params?: ListProjectsParams,
+  ): Promise<PaginatedResponse<User>> {
+    return apiClient.users.listUsers(params);
   },
 
   async getUser(userId: number): Promise<User> {
-    return api.get<User>(`/users/${userId}`) as unknown as Promise<User>;
+    const result = await apiClient.users.getUser(userId);
+    return result as User;
   },
 
-  async updateUser(userId: number, data: UpdateUserRequest): Promise<User> {
-    return api.patch<User>(
-      `/users/${userId}`,
-      data,
-    ) as unknown as Promise<User>;
+  async createUser(data: RegisterRequest): Promise<User> {
+    const result = await apiClient.users.createUser(data);
+    return result as User;
+  },
+
+  async updateUser(userId: number, data: Partial<User>): Promise<User> {
+    const result = await apiClient.users.updateUser(userId, data);
+    return result as User;
   },
 
   async deleteUser(userId: number): Promise<void> {
-    await api.delete(`/users/${userId}`);
+    return apiClient.users.deleteUser(userId);
   },
 };

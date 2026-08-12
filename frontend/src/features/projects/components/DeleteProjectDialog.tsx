@@ -25,7 +25,12 @@ export default function DeleteProjectDialog({
     });
   };
   return (
-    <Dialog open={open} title="Delete Project" onClose={onClose}>
+    <Dialog
+      open={open}
+      title="Delete Project"
+      onClose={onClose}
+      closeDisabled={deleteProject.isPending}
+    >
       <div className="space-y-6">
         <p className="text-slate-600">
           Are you sure you want to delete
@@ -35,7 +40,12 @@ export default function DeleteProjectDialog({
         <p className="text-sm text-red-500">This action cannot be undone.</p>
 
         <div className="flex justify-end gap-3">
-          <Button variant="outline" className="w-auto" onClick={onClose}>
+          <Button
+            variant="outline"
+            className="w-auto"
+            onClick={onClose}
+            disabled={deleteProject.isPending}
+          >
             Cancel
           </Button>
 

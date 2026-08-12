@@ -1,7 +1,13 @@
 import type { Response, NextFunction } from "express";
 import type { AuthRequest } from "../types";
 import * as taskService from "../services/task.service";
-import { sendSuccess, sendCreated, sendMessage } from "../lib/response";
+import {
+  sendSuccess,
+  sendCreated,
+  sendMessage,
+  sendPaginated,
+} from "../lib/response";
+import { parsePaginationParams } from "../lib/pagination";
 
 export async function listTasks(
   req: AuthRequest,
@@ -10,8 +16,28 @@ export async function listTasks(
 ) {
   try {
     const projectId = Number(req.params.projectId);
-    const tasks = await taskService.listTasks(projectId, req.user!.userId);
-    sendSuccess(res, tasks);
+    const { page, limit } = parsePaginationParams({
+      page: req.query.page as string | undefined,
+      limit: req.query.limit as string | undefined,
+    });
+
+    const filters = {
+      search: req.query.search as string | undefined,
+      status: req.query.status as string | undefined,
+      priority: req.query.priority as string | undefined,
+      assigneeId: req.query.assigneeId
+        ? Number(req.query.assigneeId)
+        : undefined,
+    };
+
+    const result = await taskService.listTasks(
+      projectId,
+      req.user!.userId,
+      page,
+      limit,
+      filters,
+    );
+    sendPaginated(res, result);
   } catch (error) {
     next(error);
   }

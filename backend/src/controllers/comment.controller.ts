@@ -1,7 +1,13 @@
 import type { Response, NextFunction } from "express";
 import type { AuthRequest } from "../types";
 import * as commentService from "../services/comment.service";
-import { sendSuccess, sendCreated, sendMessage } from "../lib/response";
+import {
+  sendSuccess,
+  sendCreated,
+  sendMessage,
+  sendPaginated,
+} from "../lib/response";
+import { parsePaginationParams } from "../lib/pagination";
 
 export async function listComments(
   req: AuthRequest,
@@ -10,11 +16,18 @@ export async function listComments(
 ) {
   try {
     const taskId = Number(req.params.taskId);
-    const comments = await commentService.listComments(
+    const { page, limit } = parsePaginationParams({
+      page: req.query.page as string | undefined,
+      limit: req.query.limit as string | undefined,
+    });
+
+    const result = await commentService.listComments(
       taskId,
       req.user!.userId,
+      page,
+      limit,
     );
-    sendSuccess(res, comments);
+    sendPaginated(res, result);
   } catch (error) {
     next(error);
   }

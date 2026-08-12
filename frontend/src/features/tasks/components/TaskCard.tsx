@@ -8,23 +8,23 @@ const statusConfig: Record<
   TaskStatusEnum,
   { label: string; className: string }
 > = {
-  TODO: { label: "To Do", className: "bg-slate-100 text-slate-600" },
-  IN_PROGRESS: {
+  todo: { label: "To Do", className: "bg-slate-100 text-slate-600" },
+  in_progress: {
     label: "In Progress",
     className: "bg-blue-100 text-blue-700",
   },
-  IN_REVIEW: { label: "In Review", className: "bg-amber-100 text-amber-700" },
-  DONE: { label: "Done", className: "bg-green-100 text-green-700" },
+  blocked: { label: "Blocked", className: "bg-amber-100 text-amber-700" },
+  done: { label: "Done", className: "bg-green-100 text-green-700" },
 };
 
 const priorityConfig: Record<
   TaskPriorityEnum,
   { label: string; className: string }
 > = {
-  LOW: { label: "Low", className: "text-slate-400" },
-  MEDIUM: { label: "Medium", className: "text-blue-500" },
-  HIGH: { label: "High", className: "text-amber-500" },
-  URGENT: { label: "Urgent", className: "text-red-500" },
+  low: { label: "Low", className: "text-slate-400" },
+  medium: { label: "Medium", className: "text-blue-500" },
+  high: { label: "High", className: "text-amber-500" },
+  urgent: { label: "Urgent", className: "text-red-500" },
 };
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -41,7 +41,7 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
 
   const isOverdue =
     task.dueDate &&
-    task.status !== "DONE" &&
+    task.status !== "done" &&
     new Date(task.dueDate) < new Date();
 
   return (

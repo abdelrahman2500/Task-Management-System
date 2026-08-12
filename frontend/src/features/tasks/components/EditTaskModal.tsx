@@ -23,7 +23,7 @@ function getUpdatePayload(task: Task, data: TaskFormData): UpdateTaskRequest {
   if (data.status !== task.status) payload.status = data.status;
   if (data.priority !== task.priority) payload.priority = data.priority;
   if (data.assigneeId !== task.assigneeId) payload.assigneeId = data.assigneeId;
-  if (data.projectId !== task.projectId) payload.projectId = data.projectId;
+  // Note: projectId cannot be changed via update - it's part of task identity
   if ((data.dueDate || null) !== (task.dueDate?.slice(0, 10) ?? null)) {
     payload.dueDate = dueDate;
   }
@@ -59,7 +59,12 @@ export default function EditTaskModal({
   };
 
   return (
-    <Dialog open={open} title="Edit Task" onClose={onClose}>
+    <Dialog
+      open={open}
+      title="Edit Task"
+      onClose={onClose}
+      closeDisabled={updateTask.isPending}
+    >
       <TaskForm
         defaultValues={{
           title: task.title,
