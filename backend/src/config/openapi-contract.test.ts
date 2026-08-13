@@ -151,6 +151,52 @@ const EXPRESS_ROUTES = [
     label: "Delete Comment",
   },
 
+  // Auth profile and password routes
+  {
+    method: "PATCH",
+    path: "/api/v1/auth/me",
+    auth: true,
+    label: "Update Profile",
+  },
+  {
+    method: "PATCH",
+    path: "/api/v1/auth/me/password",
+    auth: true,
+    label: "Change Password",
+  },
+
+  // User management routes (all require auth)
+  {
+    method: "GET",
+    path: "/api/v1/users",
+    auth: true,
+    label: "List Users",
+  },
+  {
+    method: "POST",
+    path: "/api/v1/users",
+    auth: true,
+    label: "Create User",
+  },
+  {
+    method: "GET",
+    path: "/api/v1/users/:userId",
+    auth: true,
+    label: "Get User",
+  },
+  {
+    method: "PATCH",
+    path: "/api/v1/users/:userId",
+    auth: true,
+    label: "Update User",
+  },
+  {
+    method: "DELETE",
+    path: "/api/v1/users/:userId",
+    auth: true,
+    label: "Delete User",
+  },
+
   // Infrastructure routes (not part of OpenAPI spec)
   {
     method: "GET",
@@ -238,9 +284,9 @@ describe("OpenAPI Contract Verification", () => {
   });
 
   describe("Endpoint Inventory", () => {
-    it("should have 22 total Express routes (excluding infrastructure)", () => {
+    it("should have 29 total Express routes (excluding infrastructure)", () => {
       const apiRoutes = EXPRESS_ROUTES.filter((r) => !r.infrastructure);
-      expect(apiRoutes).toHaveLength(22);
+      expect(apiRoutes).toHaveLength(29);
     });
 
     it("should have correct count per category", () => {
@@ -256,11 +302,15 @@ describe("OpenAPI Contract Verification", () => {
       const comments = EXPRESS_ROUTES.filter(
         (r) => r.path.includes("/comments") && !r.infrastructure,
       );
+      const users = EXPRESS_ROUTES.filter(
+        (r) => r.path.includes("/users") && !r.infrastructure,
+      );
 
-      expect(auth).toHaveLength(4);
+      expect(auth).toHaveLength(6);
       expect(projects).toHaveLength(9);
       expect(tasks).toHaveLength(5);
       expect(comments).toHaveLength(4);
+      expect(users).toHaveLength(5);
     });
 
     it("should list OpenAPI endpoint count", () => {

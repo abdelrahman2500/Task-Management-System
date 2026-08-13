@@ -8,7 +8,7 @@ export function useUpdateMe() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: UpdateMeRequest) => userService.updateMe(data as any), // UpdateMeRequest is subset of Partial<User>
+    mutationFn: (data: UpdateMeRequest) => userService.updateMe(data),
 
     onSuccess() {
       toast.success("Profile updated successfully.");

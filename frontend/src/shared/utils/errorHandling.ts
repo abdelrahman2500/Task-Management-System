@@ -262,3 +262,19 @@ export function isRateLimitError(error: unknown): boolean {
   const response = (error as any)?.response;
   return response?.data?.error?.code === "RATE_LIMIT_EXCEEDED";
 }
+
+export function isServerError(error: unknown): boolean {
+  if (error instanceof AxiosError && error.response?.status) {
+    return error.response.status >= 500 && error.response.status < 600;
+  }
+
+  return false;
+}
+
+export function isClientError(error: unknown): boolean {
+  if (error instanceof AxiosError && error.response?.status) {
+    return error.response.status >= 400 && error.response.status < 500;
+  }
+
+  return false;
+}

@@ -468,28 +468,30 @@ const AuthAPI = {
   async logout(): Promise<void> {
     await api.post("/auth/logout", {});
   },
+
+  /**
+   * Update current user profile
+   */
+  async updateProfile(payload: Partial<User>): Promise<User> {
+    const response = await api.patch<User>("/auth/me", payload);
+    return response as unknown as User;
+  },
+
+  /**
+   * Change password for current user
+   */
+  async changePassword(payload: {
+    currentPassword: string;
+    newPassword: string;
+  }): Promise<void> {
+    await api.patch("/auth/me/password", payload);
+  },
 };
 
 /**
  * User API client
  */
 const UserAPI = {
-  /**
-   * Get current user profile
-   */
-  async getMe(): Promise<User> {
-    const response = await api.get<User>("/users/me");
-    return response as unknown as User;
-  },
-
-  /**
-   * Update current user
-   */
-  async updateMe(payload: Partial<User>): Promise<User> {
-    const response = await api.patch<User>("/users/me", payload);
-    return response as unknown as User;
-  },
-
   /**
    * List all users (admin only)
    */

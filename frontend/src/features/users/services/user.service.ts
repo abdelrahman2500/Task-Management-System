@@ -13,12 +13,12 @@ import type {
 
 export const userService = {
   async getMe(): Promise<User> {
-    const result = await apiClient.users.getMe();
+    const result = await apiClient.auth.getCurrentUser();
     return result as User;
   },
 
   async updateMe(data: Partial<User>): Promise<User> {
-    const result = await apiClient.users.updateMe(data);
+    const result = await apiClient.auth.updateProfile(data);
     return result as User;
   },
 

@@ -42,3 +42,39 @@ export async function getMe(
     next(error);
   }
 }
+
+/**
+ * Update current user's profile
+ */
+export async function updateMe(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    const user = await authService.updateMe(req.user!.userId, req.body);
+    sendSuccess(res, user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+/**
+ * Change password for current user
+ */
+export async function changePassword(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    await authService.changePassword(
+      req.user!.userId,
+      req.body.currentPassword,
+      req.body.newPassword,
+    );
+    sendMessage(res, "Password changed successfully");
+  } catch (error) {
+    next(error);
+  }
+}

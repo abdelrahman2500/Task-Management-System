@@ -88,6 +88,84 @@ export async function getMe(userId: number) {
   return user;
 }
 
+/**
+ * Update current user's profile
+ */
+export async function updateMe(
+  userId: number,
+  data: {
+    name?: string;
+    email?: string;
+  },
+) {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new UnauthorizedError("User not found");
+  }
+
+  // If email is being changed, verify it's not already taken
+  if (data.email && data.email !== user.email) {
+    const existing = await prisma.user.findUnique({
+      where: { email: data.email },
+    });
+
+    if (existing) {
+      throw new ConflictError("Email is already in use");
+    }
+  }
+
+  const updated = await prisma.user.update({
+    where: { id: userId },
+    data: {
+      name: data.name,
+      email: data.email,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      isActive: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+
+  return updated;
+}
+
+/**
+ * Change password for current user
+ */
+export async function changePassword(
+  userId: number,
+  currentPassword: string,
+  newPassword: string,
+) {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new UnauthorizedError("User not found");
+  }
+
+  // Verify current password
+  const valid = await bcrypt.compare(currentPassword, user.passwordHash);
+  if (!valid) {
+    throw new UnauthorizedError("Current password is incorrect");
+  }
+
+  // Hash and update new password
+  const passwordHash = await bcrypt.hash(newPassword, SALT_ROUNDS);
+  await prisma.user.update({
+    where: { id: userId },
+    data: { passwordHash },
+  });
+}
+
 function generateToken(userId: number, email: string): string {
   const config = getEnvironment();
 
