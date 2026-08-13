@@ -1,0 +1,640 @@
+<testsuites id="" name="" tests="82" failures="3" skipped="0" errors="11" time="387.45374699999996">
+<testsuite name="api-resilience.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="9" failures="0" skipped="0" time="13.207" errors="0">
+<testcase name="API Resilience › should handle 422 validation errors from API" classname="api-resilience.spec.ts" time="2.187">
+</testcase>
+<testcase name="API Resilience › should handle 401 authentication errors" classname="api-resilience.spec.ts" time="0.073">
+</testcase>
+<testcase name="API Resilience › should handle 403 forbidden errors" classname="api-resilience.spec.ts" time="2.87">
+</testcase>
+<testcase name="API Resilience › should handle 404 not found errors" classname="api-resilience.spec.ts" time="0.557">
+</testcase>
+<testcase name="API Resilience › should handle successful responses correctly" classname="api-resilience.spec.ts" time="0.588">
+</testcase>
+<testcase name="API Resilience › should show dashboard when authenticated" classname="api-resilience.spec.ts" time="3.288">
+</testcase>
+<testcase name="API Resilience › should handle repeated API calls" classname="api-resilience.spec.ts" time="1.346">
+</testcase>
+<testcase name="API Resilience › should handle concurrent requests" classname="api-resilience.spec.ts" time="1.301">
+</testcase>
+<testcase name="API Resilience › should handle rate limiting gracefully" classname="api-resilience.spec.ts" time="0.997">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="6" failures="0" skipped="0" time="28.903" errors="0">
+<testcase name="Authentication › should allow user login via UI" classname="auth.spec.ts" time="4.702">
+</testcase>
+<testcase name="Authentication › should reject login with invalid credentials" classname="auth.spec.ts" time="6.317">
+</testcase>
+<testcase name="Authentication › should allow user logout" classname="auth.spec.ts" time="5.806">
+</testcase>
+<testcase name="Authentication › should persist auth token across page reloads" classname="auth.spec.ts" time="6.772">
+</testcase>
+<testcase name="Authentication › should register new user via API" classname="auth.spec.ts" time="1.916">
+</testcase>
+<testcase name="Authentication › should handle login page redirect when not authenticated" classname="auth.spec.ts" time="3.39">
+</testcase>
+</testsuite>
+<testsuite name="authorization.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="6" failures="0" skipped="0" time="7.247" errors="0">
+<testcase name="Authorization › should require authentication for protected endpoints" classname="authorization.spec.ts" time="0.028">
+</testcase>
+<testcase name="Authorization › should reject requests with invalid token" classname="authorization.spec.ts" time="0.015">
+</testcase>
+<testcase name="Authorization › should allow users to access their own projects" classname="authorization.spec.ts" time="1.586">
+</testcase>
+<testcase name="Authorization › should prevent users from deleting other users&apos; projects" classname="authorization.spec.ts" time="3.453">
+</testcase>
+<testcase name="Authorization › should handle 404 for non-existent resources" classname="authorization.spec.ts" time="1.141">
+</testcase>
+<testcase name="Authorization › should handle validation errors gracefully" classname="authorization.spec.ts" time="1.024">
+</testcase>
+</testsuite>
+<testsuite name="comments.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="3" failures="0" skipped="0" time="1.961" errors="0">
+<testcase name="Comments › should create and retrieve a comment via API" classname="comments.spec.ts" time="0.651">
+</testcase>
+<testcase name="Comments › should list comments on a task via API" classname="comments.spec.ts" time="0.629">
+</testcase>
+<testcase name="Comments › should delete a comment via API" classname="comments.spec.ts" time="0.681">
+</testcase>
+</testsuite>
+<testsuite name="projects.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="5" failures="0" skipped="0" time="5.547" errors="0">
+<testcase name="Projects › should create and retrieve a project via API" classname="projects.spec.ts" time="0.685">
+</testcase>
+<testcase name="Projects › should list projects via API" classname="projects.spec.ts" time="0.593">
+</testcase>
+<testcase name="Projects › should delete a project via API" classname="projects.spec.ts" time="0.591">
+</testcase>
+<testcase name="Projects › should add and remove project members via API" classname="projects.spec.ts" time="1.166">
+</testcase>
+<testcase name="Projects › should navigate to projects page when authenticated" classname="projects.spec.ts" time="2.512">
+</testcase>
+</testsuite>
+<testsuite name="routes.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="7" failures="0" skipped="0" time="31.777" errors="0">
+<testcase name="Route Protection › should redirect unauthenticated users to login page" classname="routes.spec.ts" time="4.265">
+</testcase>
+<testcase name="Route Protection › should allow access to login page without token" classname="routes.spec.ts" time="2.621">
+</testcase>
+<testcase name="Route Protection › should allow authenticated users to access protected dashboard" classname="routes.spec.ts" time="4.279">
+</testcase>
+<testcase name="Route Protection › should redirect to login when accessing protected route without token" classname="routes.spec.ts" time="3.662">
+</testcase>
+<testcase name="Route Protection › should maintain auth state during navigation" classname="routes.spec.ts" time="6.642">
+</testcase>
+<testcase name="Route Protection › should allow navigation to tasks page when authenticated" classname="routes.spec.ts" time="6.429">
+</testcase>
+<testcase name="Route Protection › should allow navigation to settings page when authenticated" classname="routes.spec.ts" time="3.879">
+</testcase>
+</testsuite>
+<testsuite name="tasks.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="chromium" tests="5" failures="0" skipped="0" time="10.818" errors="0">
+<testcase name="Tasks › should create and retrieve a task via API" classname="tasks.spec.ts" time="1.191">
+</testcase>
+<testcase name="Tasks › should list tasks via API" classname="tasks.spec.ts" time="1.222">
+</testcase>
+<testcase name="Tasks › should filter tasks by status via API" classname="tasks.spec.ts" time="1.266">
+</testcase>
+<testcase name="Tasks › should delete a task via API" classname="tasks.spec.ts" time="1.81">
+</testcase>
+<testcase name="Tasks › should navigate to tasks page when authenticated" classname="tasks.spec.ts" time="5.329">
+</testcase>
+</testsuite>
+<testsuite name="api-resilience.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="9" failures="0" skipped="0" time="17.697" errors="0">
+<testcase name="API Resilience › should handle 422 validation errors from API" classname="api-resilience.spec.ts" time="1.181">
+</testcase>
+<testcase name="API Resilience › should handle 401 authentication errors" classname="api-resilience.spec.ts" time="0.032">
+</testcase>
+<testcase name="API Resilience › should handle 403 forbidden errors" classname="api-resilience.spec.ts" time="1.512">
+</testcase>
+<testcase name="API Resilience › should handle 404 not found errors" classname="api-resilience.spec.ts" time="0.554">
+</testcase>
+<testcase name="API Resilience › should handle successful responses correctly" classname="api-resilience.spec.ts" time="0.561">
+</testcase>
+<testcase name="API Resilience › should show dashboard when authenticated" classname="api-resilience.spec.ts" time="10.497">
+</testcase>
+<testcase name="API Resilience › should handle repeated API calls" classname="api-resilience.spec.ts" time="0.71">
+</testcase>
+<testcase name="API Resilience › should handle concurrent requests" classname="api-resilience.spec.ts" time="1.059">
+</testcase>
+<testcase name="API Resilience › should handle rate limiting gracefully" classname="api-resilience.spec.ts" time="1.591">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="6" failures="0" skipped="0" time="51.016" errors="0">
+<testcase name="Authentication › should allow user login via UI" classname="auth.spec.ts" time="10.456">
+</testcase>
+<testcase name="Authentication › should reject login with invalid credentials" classname="auth.spec.ts" time="10.069">
+</testcase>
+<testcase name="Authentication › should allow user logout" classname="auth.spec.ts" time="9.1">
+</testcase>
+<testcase name="Authentication › should persist auth token across page reloads" classname="auth.spec.ts" time="10.498">
+</testcase>
+<testcase name="Authentication › should register new user via API" classname="auth.spec.ts" time="0.8">
+</testcase>
+<testcase name="Authentication › should handle login page redirect when not authenticated" classname="auth.spec.ts" time="10.093">
+</testcase>
+</testsuite>
+<testsuite name="authorization.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="6" failures="3" skipped="0" time="5.101" errors="0">
+<testcase name="Authorization › should require authentication for protected endpoints" classname="authorization.spec.ts" time="0.013">
+</testcase>
+<testcase name="Authorization › should reject requests with invalid token" classname="authorization.spec.ts" time="0.013">
+</testcase>
+<testcase name="Authorization › should allow users to access their own projects" classname="authorization.spec.ts" time="0.67">
+</testcase>
+<testcase name="Authorization › should prevent users from deleting other users&apos; projects" classname="authorization.spec.ts" time="2.465">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-996f5-leting-other-users-projects-firefox\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toContain(expected) // indexOf" type="expect.toContain">
+<![CDATA[  [firefox] › authorization.spec.ts:77:3 › Authorization › should prevent users from deleting other users' projects 
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected value: 429
+    Received array: [401, 403]
+
+      103 |
+      104 |     // Should fail (403 Forbidden or 401)
+    > 105 |     expect([401, 403]).toContain(response.status);
+          |                        ^
+      106 |
+      107 |     // Cleanup
+      108 |     await cleanupUserData(ownerReg.token);
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:105:24
+
+    Error Context: ..\..\test-results\authorization-Authorizatio-996f5-leting-other-users-projects-firefox\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Authorization › should handle 404 for non-existent resources" classname="authorization.spec.ts" time="0.932">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-8860b--for-non-existent-resources-firefox\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  [firefox] › authorization.spec.ts:112:3 › Authorization › should handle 404 for non-existent resources 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 404
+    Received: 429
+
+      128 |
+      129 |     // Should return 404
+    > 130 |     expect(response.status).toBe(404);
+          |                             ^
+      131 |
+      132 |     // Cleanup
+      133 |     await cleanupUserData(registered.token);
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:130:29
+
+    Error Context: ..\..\test-results\authorization-Authorizatio-8860b--for-non-existent-resources-firefox\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Authorization › should handle validation errors gracefully" classname="authorization.spec.ts" time="1.008">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-7a21c-alidation-errors-gracefully-firefox\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  [firefox] › authorization.spec.ts:136:3 › Authorization › should handle validation errors gracefully 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 422
+    Received: 429
+
+      153 |
+      154 |     // Should return 422 (Unprocessable Entity)
+    > 155 |     expect(response.status).toBe(422);
+          |                             ^
+      156 |
+      157 |     // Cleanup
+      158 |     await cleanupUserData(registered.token);
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:155:29
+
+    Error Context: ..\..\test-results\authorization-Authorizatio-7a21c-alidation-errors-gracefully-firefox\error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="comments.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="3" failures="0" skipped="0" time="3.909" errors="3">
+<testcase name="Comments › should create and retrieve a comment via API" classname="comments.spec.ts" time="1.319">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › comments.spec.ts:23:3 › Comments › should create and retrieve a comment via API ──────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:29:21
+
+    Error Context: ..\..\test-results\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Comments › should list comments on a task via API" classname="comments.spec.ts" time="1.346">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\comments-Comments-should-list-comments-on-a-task-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › comments.spec.ts:58:3 › Comments › should list comments on a task via API ────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:64:21
+
+    Error Context: ..\..\test-results\comments-Comments-should-list-comments-on-a-task-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Comments › should delete a comment via API" classname="comments.spec.ts" time="1.244">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\comments-Comments-should-delete-a-comment-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › comments.spec.ts:99:3 › Comments › should delete a comment via API ───────────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:105:21
+
+    Error Context: ..\..\test-results\comments-Comments-should-delete-a-comment-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+</testsuite>
+<testsuite name="projects.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="5" failures="0" skipped="0" time="21.024" errors="4">
+<testcase name="Projects › should create and retrieve a project via API" classname="projects.spec.ts" time="1.464">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › projects.spec.ts:24:3 › Projects › should create and retrieve a project via API ──────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:30:24
+
+    Error Context: ..\..\test-results\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Projects › should list projects via API" classname="projects.spec.ts" time="1.3">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\projects-Projects-should-list-projects-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › projects.spec.ts:48:3 › Projects › should list projects via API ──────────────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:54:22
+
+    Error Context: ..\..\test-results\projects-Projects-should-list-projects-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Projects › should delete a project via API" classname="projects.spec.ts" time="1.546">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\projects-Projects-should-delete-a-project-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › projects.spec.ts:76:3 › Projects › should delete a project via API ───────────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:82:21
+
+    Error Context: ..\..\test-results\projects-Projects-should-delete-a-project-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Projects › should add and remove project members via API" classname="projects.spec.ts" time="2.253">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\projects-Projects-should-a-812b6-ove-project-members-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › projects.spec.ts:101:3 › Projects › should add and remove project members via API ────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:110:21
+
+    Error Context: ..\..\test-results\projects-Projects-should-a-812b6-ove-project-members-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Projects › should navigate to projects page when authenticated" classname="projects.spec.ts" time="14.461">
+<system-err>
+<![CDATA[Error during cleanup: Error: Failed to list projects
+    at listProjects [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:354:11[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at cleanupUserData [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:391:30[90m)[39m
+    at [90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/tests/projects.spec.ts:153:5
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1644:9
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1133:11
+    at TimeoutManager.withRunnable [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:403:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1131:7[90m)[39m
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1642:7
+    at WorkerMain._runTest [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1615:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1510:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1997:25[90m)[39m
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="routes.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="7" failures="0" skipped="0" time="75.593" errors="0">
+<testcase name="Route Protection › should redirect unauthenticated users to login page" classname="routes.spec.ts" time="8.783">
+</testcase>
+<testcase name="Route Protection › should allow access to login page without token" classname="routes.spec.ts" time="9.172">
+</testcase>
+<testcase name="Route Protection › should allow authenticated users to access protected dashboard" classname="routes.spec.ts" time="12.337">
+<system-err>
+<![CDATA[Error during cleanup: Error: Failed to list projects
+    at listProjects [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:354:11[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at cleanupUserData [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:391:30[90m)[39m
+    at [90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/tests/routes.spec.ts:62:5
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1644:9
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1133:11
+    at TimeoutManager.withRunnable [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:403:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1131:7[90m)[39m
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1642:7
+    at WorkerMain._runTest [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1615:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1510:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1997:25[90m)[39m
+]]>
+</system-err>
+</testcase>
+<testcase name="Route Protection › should redirect to login when accessing protected route without token" classname="routes.spec.ts" time="10.248">
+</testcase>
+<testcase name="Route Protection › should maintain auth state during navigation" classname="routes.spec.ts" time="10.563">
+<system-err>
+<![CDATA[Error during cleanup: Error: Failed to list projects
+    at listProjects [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:354:11[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at cleanupUserData [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:391:30[90m)[39m
+    at [90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/tests/routes.spec.ts:103:5
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1644:9
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1133:11
+    at TimeoutManager.withRunnable [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:403:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1131:7[90m)[39m
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1642:7
+    at WorkerMain._runTest [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1615:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1510:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1997:25[90m)[39m
+]]>
+</system-err>
+</testcase>
+<testcase name="Route Protection › should allow navigation to tasks page when authenticated" classname="routes.spec.ts" time="11.913">
+<system-err>
+<![CDATA[Error during cleanup: Error: Failed to list projects
+    at listProjects [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:354:11[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at cleanupUserData [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:391:30[90m)[39m
+    at [90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/tests/routes.spec.ts:124:5
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1644:9
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1133:11
+    at TimeoutManager.withRunnable [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:403:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1131:7[90m)[39m
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1642:7
+    at WorkerMain._runTest [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1615:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1510:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1997:25[90m)[39m
+]]>
+</system-err>
+</testcase>
+<testcase name="Route Protection › should allow navigation to settings page when authenticated" classname="routes.spec.ts" time="12.577">
+<system-err>
+<![CDATA[Error during cleanup: Error: Failed to list projects
+    at listProjects [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:354:11[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at cleanupUserData [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:391:30[90m)[39m
+    at [90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/tests/routes.spec.ts:145:5
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1644:9
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1133:11
+    at TimeoutManager.withRunnable [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:403:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1131:7[90m)[39m
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1642:7
+    at WorkerMain._runTest [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1615:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1510:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1997:25[90m)[39m
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="tasks.spec.ts" timestamp="2026-08-13T10:48:25.088Z" hostname="firefox" tests="5" failures="0" skipped="0" time="22.686" errors="4">
+<testcase name="Tasks › should create and retrieve a task via API" classname="tasks.spec.ts" time="1.256">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-create-and-retrieve-a-task-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › tasks.spec.ts:24:3 › Tasks › should create and retrieve a task via API ───────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:30:21
+
+    Error Context: ..\..\test-results\tasks-Tasks-should-create-and-retrieve-a-task-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Tasks › should list tasks via API" classname="tasks.spec.ts" time="1.85">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-list-tasks-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › tasks.spec.ts:55:3 › Tasks › should list tasks via API ───────────────────────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:61:21
+
+    Error Context: ..\..\test-results\tasks-Tasks-should-list-tasks-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Tasks › should filter tasks by status via API" classname="tasks.spec.ts" time="1.816">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-filter-tasks-by-status-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › tasks.spec.ts:94:3 › Tasks › should filter tasks by status via API ───────────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:100:21
+
+    Error Context: ..\..\test-results\tasks-Tasks-should-filter-tasks-by-status-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Tasks › should delete a task via API" classname="tasks.spec.ts" time="1.533">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-delete-a-task-via-API-firefox\error-context.md]]
+]]>
+</system-out>
+<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
+<![CDATA[  [firefox] › tasks.spec.ts:132:3 › Tasks › should delete a task via API ───────────────────────────
+
+    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+
+       at ..\fixtures\database.ts:89
+
+      87 |   if (!response.ok) {
+      88 |     const error = await response.json();
+    > 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+         |           ^
+      90 |   }
+      91 |
+      92 |   return responseData<TestProject>(response);
+        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:89:11)
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:138:21
+
+    Error Context: ..\..\test-results\tasks-Tasks-should-delete-a-task-via-API-firefox\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="Tasks › should navigate to tasks page when authenticated" classname="tasks.spec.ts" time="16.231">
+<system-err>
+<![CDATA[Error during cleanup: Error: Failed to list projects
+    at listProjects [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:354:11[90m)[39m
+[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+    at cleanupUserData [90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/fixtures/database.ts:391:30[90m)[39m
+    at [90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/[39me2e/tests/tasks.spec.ts:182:5
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1644:9
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1133:11
+    at TimeoutManager.withRunnable [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:403:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1131:7[90m)[39m
+    at [90mC:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1642:7
+    at WorkerMain._runTest [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1615:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1510:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1997:25[90m)[39m
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

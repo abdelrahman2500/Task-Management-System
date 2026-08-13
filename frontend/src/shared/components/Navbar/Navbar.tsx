@@ -47,7 +47,7 @@ export default function Navbar() {
             <div className="hidden text-left lg:block">
               <p className="font-medium text-slate-900">{currentUser.name}</p>
               <p className="text-sm text-slate-500 capitalize">
-                {currentUser.role.toLowerCase()}
+                {currentUser.role?.toLowerCase() ?? "member"}
               </p>
             </div>
           </Link>

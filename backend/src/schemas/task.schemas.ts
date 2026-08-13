@@ -6,7 +6,6 @@ export const createTaskSchema = z.object({
   status: z.enum(["todo", "in_progress", "blocked", "done"]).default("todo"),
   priority: z.enum(["low", "medium", "high", "urgent"]).default("medium"),
   assigneeId: z.number().int().positive().nullable().optional(),
-  projectId: z.number().int().positive(),
   dueDate: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be YYYY-MM-DD")
@@ -20,7 +19,6 @@ export const updateTaskSchema = z.object({
   status: z.enum(["todo", "in_progress", "blocked", "done"]).optional(),
   priority: z.enum(["low", "medium", "high", "urgent"]).optional(),
   assigneeId: z.number().int().positive().nullable().optional(),
-  projectId: z.number().int().positive().optional(),
   dueDate: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be YYYY-MM-DD")

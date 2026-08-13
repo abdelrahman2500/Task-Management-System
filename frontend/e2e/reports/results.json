@@ -1,0 +1,3457 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/e2e/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\global-setup.ts",
+    "globalTeardown": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "e2e/reports/html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "e2e/reports/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "e2e/reports/junit.xml"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "api-resilience.spec.ts",
+      "file": "api-resilience.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "API Resilience",
+          "file": "api-resilience.spec.ts",
+          "line": 16,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should handle 422 validation errors from API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2187,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:27.215Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-819f99c77b3682d0b77e",
+              "file": "api-resilience.spec.ts",
+              "line": 17,
+              "column": 3
+            },
+            {
+              "title": "should handle 401 authentication errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 73,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:29.607Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-c67b5fb2be12cf4ca30c",
+              "file": "api-resilience.spec.ts",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "should handle 403 forbidden errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2870,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:29.790Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-4a30dd92a4be624719ba",
+              "file": "api-resilience.spec.ts",
+              "line": 53,
+              "column": 3
+            },
+            {
+              "title": "should handle 404 not found errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 557,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:32.764Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-89f8b19f2cba38a80f99",
+              "file": "api-resilience.spec.ts",
+              "line": 88,
+              "column": 3
+            },
+            {
+              "title": "should handle successful responses correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 588,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:33.348Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-6c3a60ff9d936f3ee6e3",
+              "file": "api-resilience.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "should show dashboard when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3288,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:33.963Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-8f40e6ab0a5e70acc810",
+              "file": "api-resilience.spec.ts",
+              "line": 132,
+              "column": 3
+            },
+            {
+              "title": "should handle repeated API calls",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1346,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:37.547Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-0dea3714e5fa5e15e5d6",
+              "file": "api-resilience.spec.ts",
+              "line": 151,
+              "column": 3
+            },
+            {
+              "title": "should handle concurrent requests",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1301,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:38.944Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-a884d17eff2fd1e7662d",
+              "file": "api-resilience.spec.ts",
+              "line": 173,
+              "column": 3
+            },
+            {
+              "title": "should handle rate limiting gracefully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 997,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:40.298Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-9939524d5ad3e3b407af",
+              "file": "api-resilience.spec.ts",
+              "line": 203,
+              "column": 3
+            },
+            {
+              "title": "should handle 422 validation errors from API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1181,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:17.182Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-d32ff4c1afdb40cc49e6",
+              "file": "api-resilience.spec.ts",
+              "line": 17,
+              "column": 3
+            },
+            {
+              "title": "should handle 401 authentication errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 32,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:18.493Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-1bc408f0f7bb70697b60",
+              "file": "api-resilience.spec.ts",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "should handle 403 forbidden errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1512,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:18.574Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-99b9fcd8ca8b4b63bca1",
+              "file": "api-resilience.spec.ts",
+              "line": 53,
+              "column": 3
+            },
+            {
+              "title": "should handle 404 not found errors",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 554,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:20.113Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-0ddde208cc30059f5fa9",
+              "file": "api-resilience.spec.ts",
+              "line": 88,
+              "column": 3
+            },
+            {
+              "title": "should handle successful responses correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 561,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:20.691Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-e26a3da8dd480c334b0b",
+              "file": "api-resilience.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "should show dashboard when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10497,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:21.282Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-c4b4a79106e8fd232afb",
+              "file": "api-resilience.spec.ts",
+              "line": 132,
+              "column": 3
+            },
+            {
+              "title": "should handle repeated API calls",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 710,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:32.975Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-9a00c30323014fe997ee",
+              "file": "api-resilience.spec.ts",
+              "line": 151,
+              "column": 3
+            },
+            {
+              "title": "should handle concurrent requests",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1059,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:33.715Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-7357be38b1e75f7851da",
+              "file": "api-resilience.spec.ts",
+              "line": 173,
+              "column": 3
+            },
+            {
+              "title": "should handle rate limiting gracefully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1591,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:34.810Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f03720fc545d27878a1-f94161d9142c9e3ebbcb",
+              "file": "api-resilience.spec.ts",
+              "line": 203,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "auth.spec.ts",
+      "file": "auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication",
+          "file": "auth.spec.ts",
+          "line": 20,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should allow user login via UI",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4702,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:41.360Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-7b44850fdcbb3ec07ad9",
+              "file": "auth.spec.ts",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "should reject login with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6317,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:46.120Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-71bb815e54131ef1b985",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "should allow user logout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5806,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:52.482Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-51549701379784080efc",
+              "file": "auth.spec.ts",
+              "line": 82,
+              "column": 3
+            },
+            {
+              "title": "should persist auth token across page reloads",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6772,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:48:58.322Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-a03abb25040f117f6b85",
+              "file": "auth.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "should register new user via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1916,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:05.286Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-0d8a62838015311adb58",
+              "file": "auth.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "should handle login page redirect when not authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3390,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:07.294Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-1ab7591d520d04698633",
+              "file": "auth.spec.ts",
+              "line": 157,
+              "column": 3
+            },
+            {
+              "title": "should allow user login via UI",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10456,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:36.454Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-73cb55d4316852164757",
+              "file": "auth.spec.ts",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "should reject login with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10069,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:46.968Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-69d0f49d4d332b35a8e4",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 3
+            },
+            {
+              "title": "should allow user logout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9100,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:57.106Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-f362bea8f50ee3ed979b",
+              "file": "auth.spec.ts",
+              "line": 82,
+              "column": 3
+            },
+            {
+              "title": "should persist auth token across page reloads",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10498,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:06.246Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-1ef5fee2ee971dbe8634",
+              "file": "auth.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "should register new user via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 800,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:16.789Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-9cc2da13e2327e4d5de3",
+              "file": "auth.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "should handle login page redirect when not authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10093,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:17.631Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-e43c3c4d081e4ae84465",
+              "file": "auth.spec.ts",
+              "line": 157,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "authorization.spec.ts",
+      "file": "authorization.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authorization",
+          "file": "authorization.spec.ts",
+          "line": 19,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should require authentication for protected endpoints",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 28,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:10.811Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-bff26d77762fb312cc54",
+              "file": "authorization.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should reject requests with invalid token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 15,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:10.928Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-d36a55e7311e0f7d9613",
+              "file": "authorization.spec.ts",
+              "line": 32,
+              "column": 3
+            },
+            {
+              "title": "should allow users to access their own projects",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1586,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:11.029Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-1d4891139fa78d829304",
+              "file": "authorization.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "should prevent users from deleting other users' projects",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3453,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:12.722Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-3c697479534d6ad83ef6",
+              "file": "authorization.spec.ts",
+              "line": 77,
+              "column": 3
+            },
+            {
+              "title": "should handle 404 for non-existent resources",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1141,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:16.269Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-76156bdc8584ba78f0de",
+              "file": "authorization.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "should handle validation errors gracefully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1024,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:17.476Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-dc3a2a3a0e36a789d047",
+              "file": "authorization.spec.ts",
+              "line": 136,
+              "column": 3
+            },
+            {
+              "title": "should require authentication for protected endpoints",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:27.788Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-2245b35fd828bec369fc",
+              "file": "authorization.spec.ts",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "should reject requests with invalid token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:27.832Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-fb8491cf227136f29231",
+              "file": "authorization.spec.ts",
+              "line": 32,
+              "column": 3
+            },
+            {
+              "title": "should allow users to access their own projects",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 670,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:27.874Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-b6384ebc3fd10b459e3f",
+              "file": "authorization.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "should prevent users from deleting other users' projects",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2465,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m429\u001b[39m\nReceived array: \u001b[31m[401, 403]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m429\u001b[39m\nReceived array: \u001b[31m[401, 403]\u001b[39m\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts:105:24",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                          "column": 24,
+                          "line": 105
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 103 |\u001b[39m\n \u001b[90m 104 |\u001b[39m     \u001b[90m// Should fail (403 Forbidden or 401)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 105 |\u001b[39m     expect([\u001b[35m401\u001b[39m\u001b[33m,\u001b[39m \u001b[35m403\u001b[39m])\u001b[33m.\u001b[39mtoContain(response\u001b[33m.\u001b[39mstatus)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 106 |\u001b[39m\n \u001b[90m 107 |\u001b[39m     \u001b[90m// Cleanup\u001b[39m\n \u001b[90m 108 |\u001b[39m     \u001b[36mawait\u001b[39m cleanupUserData(ownerReg\u001b[33m.\u001b[39mtoken)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                            "column": 24,
+                            "line": 105
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m429\u001b[39m\nReceived array: \u001b[31m[401, 403]\u001b[39m\n\n  103 |\n  104 |     // Should fail (403 Forbidden or 401)\n> 105 |     expect([401, 403]).toContain(response.status);\n      |                        ^\n  106 |\n  107 |     // Cleanup\n  108 |     await cleanupUserData(ownerReg.token);\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts:105:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:28.573Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\authorization-Authorizatio-996f5-leting-other-users-projects-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                        "column": 24,
+                        "line": 105
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-849d96db7fe28826c2e6",
+              "file": "authorization.spec.ts",
+              "line": 77,
+              "column": 3
+            },
+            {
+              "title": "should handle 404 for non-existent resources",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 932,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m404\u001b[39m\nReceived: \u001b[31m429\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m404\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts:130:29",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                          "column": 29,
+                          "line": 130
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 128 |\u001b[39m\n \u001b[90m 129 |\u001b[39m     \u001b[90m// Should return 404\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 130 |\u001b[39m     expect(response\u001b[33m.\u001b[39mstatus)\u001b[33m.\u001b[39mtoBe(\u001b[35m404\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 131 |\u001b[39m\n \u001b[90m 132 |\u001b[39m     \u001b[90m// Cleanup\u001b[39m\n \u001b[90m 133 |\u001b[39m     \u001b[36mawait\u001b[39m cleanupUserData(registered\u001b[33m.\u001b[39mtoken)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                            "column": 29,
+                            "line": 130
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m404\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n  128 |\n  129 |     // Should return 404\n> 130 |     expect(response.status).toBe(404);\n      |                             ^\n  131 |\n  132 |     // Cleanup\n  133 |     await cleanupUserData(registered.token);\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts:130:29"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:38.686Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\authorization-Authorizatio-8860b--for-non-existent-resources-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                        "column": 29,
+                        "line": 130
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-0acc67196136981c5078",
+              "file": "authorization.spec.ts",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "should handle validation errors gracefully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1008,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m422\u001b[39m\nReceived: \u001b[31m429\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m422\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts:155:29",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                          "column": 29,
+                          "line": 155
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 153 |\u001b[39m\n \u001b[90m 154 |\u001b[39m     \u001b[90m// Should return 422 (Unprocessable Entity)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 155 |\u001b[39m     expect(response\u001b[33m.\u001b[39mstatus)\u001b[33m.\u001b[39mtoBe(\u001b[35m422\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 156 |\u001b[39m\n \u001b[90m 157 |\u001b[39m     \u001b[90m// Cleanup\u001b[39m\n \u001b[90m 158 |\u001b[39m     \u001b[36mawait\u001b[39m cleanupUserData(registered\u001b[33m.\u001b[39mtoken)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                            "column": 29,
+                            "line": 155
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m422\u001b[39m\nReceived: \u001b[31m429\u001b[39m\n\n  153 |\n  154 |     // Should return 422 (Unprocessable Entity)\n> 155 |     expect(response.status).toBe(422);\n      |                             ^\n  156 |\n  157 |     // Cleanup\n  158 |     await cleanupUserData(registered.token);\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts:155:29"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:41.310Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\authorization-Authorizatio-7a21c-alidation-errors-gracefully-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\authorization.spec.ts",
+                        "column": 29,
+                        "line": 155
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c8e9044bb5446d642548-7287e059ae857e8f6d05",
+              "file": "authorization.spec.ts",
+              "line": 136,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "comments.spec.ts",
+      "file": "comments.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Comments",
+          "file": "comments.spec.ts",
+          "line": 22,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should create and retrieve a comment via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 651,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:18.543Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0b076f0868dfee4c3-dda5c7f5d81d12bc0c29",
+              "file": "comments.spec.ts",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "should list comments on a task via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 629,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:19.210Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0b076f0868dfee4c3-d336ccd54ba8c68070e0",
+              "file": "comments.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "should delete a comment via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 681,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:19.857Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0b076f0868dfee4c3-7447f43bd14e78833b00",
+              "file": "comments.spec.ts",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "should create and retrieve a comment via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1319,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\comments.spec.ts:29:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\comments.spec.ts:29:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:45.287Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0dd0b076f0868dfee4c3-1d02e914d51170466854",
+              "file": "comments.spec.ts",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "should list comments on a task via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1346,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\comments.spec.ts:64:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\comments.spec.ts:64:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:48.847Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\comments-Comments-should-list-comments-on-a-task-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0dd0b076f0868dfee4c3-7bf59e1b80aa20fe5d77",
+              "file": "comments.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "should delete a comment via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1244,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\comments.spec.ts:105:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\comments.spec.ts:105:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:52.947Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\comments-Comments-should-delete-a-comment-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0dd0b076f0868dfee4c3-3445d61833470696fd16",
+              "file": "comments.spec.ts",
+              "line": 99,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "projects.spec.ts",
+      "file": "projects.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Projects",
+          "file": "projects.spec.ts",
+          "line": 23,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should create and retrieve a project via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 685,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:20.580Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-d92dbee90ba9e1531dd5",
+              "file": "projects.spec.ts",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should list projects via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 593,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:21.279Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-0b50b67f5e57ff7a67f7",
+              "file": "projects.spec.ts",
+              "line": 48,
+              "column": 3
+            },
+            {
+              "title": "should delete a project via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 591,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:21.894Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-f7b229c057cb694bb557",
+              "file": "projects.spec.ts",
+              "line": 76,
+              "column": 3
+            },
+            {
+              "title": "should add and remove project members via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1166,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:22.499Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-3b9d2f2f2515c38d5ffb",
+              "file": "projects.spec.ts",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "should navigate to projects page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2512,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:23.683Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-b61c0659d1daebfe3b26",
+              "file": "projects.spec.ts",
+              "line": 135,
+              "column": 3
+            },
+            {
+              "title": "should create and retrieve a project via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1464,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:30:24",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:30:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:51:57.003Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-7ccb813b91b22ed5618f",
+              "file": "projects.spec.ts",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should list projects via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1300,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:54:22",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:54:22"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:02.085Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\projects-Projects-should-list-projects-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-65b20786b212e0f81d7b",
+              "file": "projects.spec.ts",
+              "line": 48,
+              "column": 3
+            },
+            {
+              "title": "should delete a project via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1546,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:82:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:82:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:06.550Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\projects-Projects-should-delete-a-project-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-57c0d25c293695361c79",
+              "file": "projects.spec.ts",
+              "line": 76,
+              "column": 3
+            },
+            {
+              "title": "should add and remove project members via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2253,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:110:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\projects.spec.ts:110:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:11.715Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\projects-Projects-should-a-812b6-ove-project-members-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-988d23ac51c744992240",
+              "file": "projects.spec.ts",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "should navigate to projects page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 14461,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error during cleanup: Error: Failed to list projects\n    at listProjects \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:354:11\u001b[90m)\u001b[39m\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at cleanupUserData \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:391:30\u001b[90m)\u001b[39m\n    at \u001b[90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/tests/projects.spec.ts:153:5\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1644:9\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1133:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:403:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1131:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1642:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1615:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1510:9\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\index.js:1997:25\u001b[90m)\u001b[39m\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:17.781Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3a2958b1096c5d9a8472-610f392b1745e6755eaa",
+              "file": "projects.spec.ts",
+              "line": 135,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "routes.spec.ts",
+      "file": "routes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Route Protection",
+          "file": "routes.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should redirect unauthenticated users to login page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4265,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:26.254Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-b2b100a18d5a06108f17",
+              "file": "routes.spec.ts",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "should allow access to login page without token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2621,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:30.593Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-22f0ec5eb988da39874c",
+              "file": "routes.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "should allow authenticated users to access protected dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4279,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:33.311Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-06d08f3ade380f217eef",
+              "file": "routes.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should redirect to login when accessing protected route without token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3662,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:37.661Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-1dab45432a3677b48c27",
+              "file": "routes.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "should maintain auth state during navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6642,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:41.389Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-0b8bd9c573726c976281",
+              "file": "routes.spec.ts",
+              "line": 80,
+              "column": 3
+            },
+            {
+              "title": "should allow navigation to tasks page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6429,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:48.120Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-5920ec6fed6084895996",
+              "file": "routes.spec.ts",
+              "line": 106,
+              "column": 3
+            },
+            {
+              "title": "should allow navigation to settings page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3879,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:54.610Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-0361cba3804d1e4216ec",
+              "file": "routes.spec.ts",
+              "line": 127,
+              "column": 3
+            },
+            {
+              "title": "should redirect unauthenticated users to login page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8783,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:34.576Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-15b1234d9f33f3202eb2",
+              "file": "routes.spec.ts",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "should allow access to login page without token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9172,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:43.423Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-fd9b764e3876153cd9de",
+              "file": "routes.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "should allow authenticated users to access protected dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12337,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error during cleanup: Error: Failed to list projects\n    at listProjects \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:354:11\u001b[90m)\u001b[39m\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at cleanupUserData \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:391:30\u001b[90m)\u001b[39m\n    at \u001b[90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/tests/routes.spec.ts:62:5\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1644:9\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1133:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:403:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1131:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1642:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1615:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1510:9\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\index.js:1997:25\u001b[90m)\u001b[39m\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:52:52.721Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-c3383cd1a7e8082bf5d8",
+              "file": "routes.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "should redirect to login when accessing protected route without token",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:53:05.120Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-44d98899df11bba304af",
+              "file": "routes.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "should maintain auth state during navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10563,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error during cleanup: Error: Failed to list projects\n    at listProjects \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:354:11\u001b[90m)\u001b[39m\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at cleanupUserData \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:391:30\u001b[90m)\u001b[39m\n    at \u001b[90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/tests/routes.spec.ts:103:5\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1644:9\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1133:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:403:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1131:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1642:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1615:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1510:9\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\index.js:1997:25\u001b[90m)\u001b[39m\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:53:15.499Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-3dbfb21495935cf70f46",
+              "file": "routes.spec.ts",
+              "line": 80,
+              "column": 3
+            },
+            {
+              "title": "should allow navigation to tasks page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11913,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error during cleanup: Error: Failed to list projects\n    at listProjects \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:354:11\u001b[90m)\u001b[39m\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at cleanupUserData \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:391:30\u001b[90m)\u001b[39m\n    at \u001b[90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/tests/routes.spec.ts:124:5\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1644:9\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1133:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:403:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1131:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1642:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1615:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1510:9\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\index.js:1997:25\u001b[90m)\u001b[39m\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:53:26.100Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-45f1928ba5a86775f1b6",
+              "file": "routes.spec.ts",
+              "line": 106,
+              "column": 3
+            },
+            {
+              "title": "should allow navigation to settings page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12577,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error during cleanup: Error: Failed to list projects\n    at listProjects \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:354:11\u001b[90m)\u001b[39m\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at cleanupUserData \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:391:30\u001b[90m)\u001b[39m\n    at \u001b[90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/tests/routes.spec.ts:145:5\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1644:9\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1133:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:403:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1131:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1642:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1615:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1510:9\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\index.js:1997:25\u001b[90m)\u001b[39m\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:53:38.066Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "598fdabf36083b33787e-335346daa335d4fb2bde",
+              "file": "routes.spec.ts",
+              "line": 127,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tasks.spec.ts",
+      "file": "tasks.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Tasks",
+          "file": "tasks.spec.ts",
+          "line": 23,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should create and retrieve a task via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1191,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:58.570Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-ef274246db89d6c9d74d",
+              "file": "tasks.spec.ts",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should list tasks via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1222,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:49:59.829Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-f67a11cbd78ed7725955",
+              "file": "tasks.spec.ts",
+              "line": 55,
+              "column": 3
+            },
+            {
+              "title": "should filter tasks by status via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1266,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:01.095Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-fc08d436b6cb1e920d11",
+              "file": "tasks.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "should delete a task via API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1810,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:02.424Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-cdcdd3952b87729a6ff2",
+              "file": "tasks.spec.ts",
+              "line": 132,
+              "column": 3
+            },
+            {
+              "title": "should navigate to tasks page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5329,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:50:04.378Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-4a6a4ffff6f1769ea3bc",
+              "file": "tasks.spec.ts",
+              "line": 166,
+              "column": 3
+            },
+            {
+              "title": "should create and retrieve a task via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1256,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:30:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:30:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:53:50.775Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\tasks-Tasks-should-create-and-retrieve-a-task-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-62b812e94ef77c4c203a",
+              "file": "tasks.spec.ts",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "should list tasks via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1850,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:61:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:61:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:53:58.250Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\tasks-Tasks-should-list-tasks-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-1fea74acedc43d3c3871",
+              "file": "tasks.spec.ts",
+              "line": 55,
+              "column": 3
+            },
+            {
+              "title": "should filter tasks by status via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1816,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:100:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:100:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:54:03.091Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\tasks-Tasks-should-filter-tasks-by-status-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-2c6fc460cacfcc8b1323",
+              "file": "tasks.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "should delete a task via API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1533,
+                      "error": {
+                        "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}",
+                        "stack": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:138:21",
+                        "location": {
+                          "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                          "column": 11,
+                          "line": 89
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\database.ts:89\n\n\u001b[0m \u001b[90m 87 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mresponse\u001b[33m.\u001b[39mok) {\n \u001b[90m 88 |\u001b[39m     \u001b[36mconst\u001b[39m error \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 89 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Failed to create project: ${JSON.stringify(error)}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 90 |\u001b[39m   }\n \u001b[90m 91 |\u001b[39m\n \u001b[90m 92 |\u001b[39m   \u001b[36mreturn\u001b[39m responseData\u001b[33m<\u001b[39m\u001b[33mTestProject\u001b[39m\u001b[33m>\u001b[39m(response)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                            "column": 11,
+                            "line": 89
+                          },
+                          "message": "Error: Failed to create project: {\"success\":false,\"error\":{\"code\":\"RATE_LIMIT_EXCEEDED\",\"message\":\"Too many requests. Please try again later.\"}}\n\n   at ..\\fixtures\\database.ts:89\n\n  87 |   if (!response.ok) {\n  88 |     const error = await response.json();\n> 89 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);\n     |           ^\n  90 |   }\n  91 |\n  92 |   return responseData<TestProject>(response);\n    at createProject (C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts:89:11)\n    at C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\tests\\tasks.spec.ts:138:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:54:08.574Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\test-results\\tasks-Tasks-should-delete-a-task-via-API-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\e2e\\fixtures\\database.ts",
+                        "column": 11,
+                        "line": 89
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-a817dbafb72c99a37b26",
+              "file": "tasks.spec.ts",
+              "line": 132,
+              "column": 3
+            },
+            {
+              "title": "should navigate to tasks page when authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 16231,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Error during cleanup: Error: Failed to list projects\n    at listProjects \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:354:11\u001b[90m)\u001b[39m\n\u001b[90m    at processTicksAndRejections (node:internal/process/task_queues:105:5)\u001b[39m\n    at cleanupUserData \u001b[90m(file:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/fixtures/database.ts:391:30\u001b[90m)\u001b[39m\n    at \u001b[90mfile:///C:/Users/USER/Documents/Codex/2026-07-07/task-management-system-docs-api-design/Task-Management-System/frontend/\u001b[39me2e/tests/tasks.spec.ts:182:5\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1644:9\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1133:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:403:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1131:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1642:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1615:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerProcessEntry.js:1510:9\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\USER\\Documents\\Codex\\2026-07-07\\task-management-system-docs-api-design\\Task-Management-System\\frontend\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\index.js:1997:25\u001b[90m)\u001b[39m\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-08-13T10:54:14.008Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-75fd639f8e2ae31b1a30",
+              "file": "tasks.spec.ts",
+              "line": 166,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-08-13T10:48:10.537Z",
+    "duration": 387453.747,
+    "expected": 68,
+    "skipped": 0,
+    "unexpected": 14,
+    "flaky": 0
+  }
+}

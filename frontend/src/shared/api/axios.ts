@@ -6,13 +6,16 @@ import { getConfiguredTimeout } from "./cancellation";
 let queryClientRef: QueryClient | null = null;
 let isRedirecting = false;
 
+const configuredApiUrl =
+  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
+const apiBaseUrl = configuredApiUrl.replace(/\/api\/v1\/?$/, "") + "/api/v1";
+
 export function setQueryClientReference(client: QueryClient): void {
   queryClientRef = client;
 }
 
 export const api: AxiosInstance = axios.create({
-  baseURL:
-    (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000") + "/api/v1",
+  baseURL: apiBaseUrl,
   timeout: getConfiguredTimeout(),
   headers: {
     "Content-Type": "application/json",
