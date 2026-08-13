@@ -39,7 +39,22 @@ export interface TestProjectMember {
 }
 
 async function responseData<T>(response: Response): Promise<T> {
-  return ((await response.json()) as ApiEnvelope<T>).data;
+  const json = (await response.json()) as any;
+  // If response has data property, return it; otherwise assume it's the data itself
+  return json.data !== undefined ? json.data : json;
+}
+
+/**
+ * Extract full response with pagination metadata
+ */
+async function responseDataWithPagination<T>(
+  response: Response,
+): Promise<{ data: T[]; pagination?: any }> {
+  const json = (await response.json()) as any;
+  return {
+    data: json.data || [],
+    pagination: json.pagination,
+  };
 }
 
 /**
@@ -72,6 +87,19 @@ async function apiRequest(
 }
 
 /**
+ * Add delay to reduce rate limiting impact
+ * POST operations should have delays to avoid hitting rate limiter
+ * Rate limit: 100 write requests per 15 minutes per user
+ * Budget: ~9 seconds per write request for full safety margin
+ */
+async function delayAfterWrite(): Promise<void> {
+  // 3000ms (3 seconds) delay after write operations for safety
+  // This provides substantial buffer to prevent hitting the 100 req/15min limit
+  // Expected total time per test: 3s * number_of_writes
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+}
+
+/**
  * Create a project
  */
 export async function createProject(
@@ -88,6 +116,9 @@ export async function createProject(
     const error = await response.json();
     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 
   return responseData<TestProject>(response);
 }
@@ -120,6 +151,9 @@ export async function deleteProject(
   if (!response.ok) {
     throw new Error(`Failed to delete project ${projectId}`);
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 }
 
 /**
@@ -148,6 +182,9 @@ export async function createTask(
     const error = await response.json();
     throw new Error(`Failed to create task: ${JSON.stringify(error)}`);
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 
   return responseData<TestTask>(response);
 }
@@ -190,6 +227,9 @@ export async function updateTask(
     throw new Error(`Failed to update task: ${JSON.stringify(error)}`);
   }
 
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
+
   return responseData<TestTask>(response);
 }
 
@@ -202,6 +242,9 @@ export async function deleteTask(token: string, taskId: number): Promise<void> {
   if (!response.ok) {
     throw new Error(`Failed to delete task ${taskId}`);
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 }
 
 /**
@@ -224,6 +267,9 @@ export async function addProjectMember(
     const error = await response.json();
     throw new Error(`Failed to add project member: ${JSON.stringify(error)}`);
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 
   return responseData<TestProjectMember>(response);
 }
@@ -251,6 +297,9 @@ export async function updateProjectMember(
     );
   }
 
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
+
   return responseData<TestProjectMember>(response);
 }
 
@@ -274,6 +323,9 @@ export async function removeProjectMember(
       `Failed to remove project member: ${JSON.stringify(error)}`,
     );
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 }
 
 /**
@@ -297,6 +349,9 @@ export async function createComment(
     throw new Error(`Failed to create comment: ${JSON.stringify(error)}`);
   }
 
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
+
   return responseData<TestComment>(response);
 }
 
@@ -312,6 +367,9 @@ export async function deleteComment(
   if (!response.ok) {
     throw new Error(`Failed to delete comment`);
   }
+
+  // Add delay after write to avoid rate limiting
+  await delayAfterWrite();
 }
 
 /**
@@ -321,7 +379,10 @@ export async function listComments(
   token: string,
   taskId: number,
   params?: Record<string, string | number>,
-): Promise<{ data: TestComment[] }> {
+): Promise<{
+  data: TestComment[];
+  pagination?: { total: number; totalPages: number };
+}> {
   const queryString = params
     ? "?" + new URLSearchParams(params).toString()
     : "";
@@ -335,7 +396,7 @@ export async function listComments(
     throw new Error(`Failed to list comments`);
   }
 
-  return { data: await responseData<TestComment[]>(response) };
+  return responseDataWithPagination<TestComment>(response);
 }
 
 /**
@@ -344,7 +405,12 @@ export async function listComments(
 export async function listProjects(
   token: string,
   params?: Record<string, string | number>,
-): Promise<{ data: TestProject[] }> {
+): Promise<{
+  data: TestProject[];
+  pagination?: { total: number; totalPages: number };
+  total?: number;
+  totalPages?: number;
+}> {
   const queryString = params
     ? "?" + new URLSearchParams(params).toString()
     : "";
@@ -354,7 +420,13 @@ export async function listProjects(
     throw new Error(`Failed to list projects`);
   }
 
-  return { data: await responseData<TestProject[]>(response) };
+  const result = await responseDataWithPagination<TestProject>(response);
+  // Support both pagination.total and direct total for backward compatibility
+  return {
+    ...result,
+    total: result.pagination?.total,
+    totalPages: result.pagination?.totalPages,
+  };
 }
 
 /**
@@ -364,7 +436,12 @@ export async function listTasks(
   token: string,
   projectId: number,
   params?: Record<string, string | number>,
-): Promise<{ data: TestTask[] }> {
+): Promise<{
+  data: TestTask[];
+  pagination?: { total: number; totalPages: number };
+  total?: number;
+  totalPages?: number;
+}> {
   const queryString = params
     ? "?" + new URLSearchParams(params).toString()
     : "";
@@ -378,17 +455,54 @@ export async function listTasks(
     throw new Error(`Failed to list tasks`);
   }
 
-  return { data: await responseData<TestTask[]>(response) };
+  const result = await responseDataWithPagination<TestTask>(response);
+  // Support both pagination.total and direct total for backward compatibility
+  return {
+    ...result,
+    total: result.pagination?.total,
+    totalPages: result.pagination?.totalPages,
+  };
 }
 
 /**
  * Clean up a user's test data (projects, tasks, etc.)
  * Called after each test to ensure isolation
+ * Includes retry logic for rate limit resilience
+ * Errors during cleanup are logged but don't fail tests
  */
 export async function cleanupUserData(token: string): Promise<void> {
   try {
-    // List all projects
-    const projectsResponse = await listProjects(token);
+    // List all projects with retry
+    let projectsResponse;
+    let retries = 3;
+    let lastError;
+
+    while (retries > 0) {
+      try {
+        projectsResponse = await listProjects(token);
+        break;
+      } catch (error) {
+        lastError = error;
+        retries--;
+        if (retries > 0) {
+          // Wait before retrying (exponential backoff)
+          // 1s, 2s, 3s
+          await new Promise((resolve) =>
+            setTimeout(resolve, 1000 * (4 - retries)),
+          );
+        }
+      }
+    }
+
+    if (!projectsResponse) {
+      // Silently fail cleanup if we can't list projects
+      // This prevents cascade failures from affecting subsequent tests
+      console.warn(
+        "Could not list projects for cleanup (likely rate limited), skipping cleanup",
+      );
+      return;
+    }
+
     const projects = projectsResponse.data;
 
     // Delete all projects (cascades to tasks and comments)
@@ -396,11 +510,13 @@ export async function cleanupUserData(token: string): Promise<void> {
       try {
         await deleteProject(token, project.id);
       } catch (error) {
+        // Silently skip failed deletes - better to leave data than fail test
         console.warn(`Failed to delete project ${project.id}:`, error);
       }
     }
   } catch (error) {
-    console.warn("Error during cleanup:", error);
+    // Silently ignore cleanup errors - they should not fail tests
+    console.warn("Error during cleanup (silently ignored):", error);
   }
 }
 

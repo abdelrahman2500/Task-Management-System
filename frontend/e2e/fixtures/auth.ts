@@ -69,12 +69,18 @@ export async function registerUser(user: TestUser): Promise<AuthTokens> {
   }
 
   const payload = (await response.json()) as ApiEnvelope<AuthTokens>;
+
+  // Add delay after registration to avoid rate limiting
+  // (significantly increased to ensure rate limiter doesn't block)
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+
   return payload.data;
 }
 
 function testClientIp(seed: string): string {
   let hash = 0;
-  for (const character of seed) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  for (const character of seed)
+    hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
   return `10.${(hash >>> 16) & 255}.${(hash >>> 8) & 255}.${hash & 255}`;
 }
 
