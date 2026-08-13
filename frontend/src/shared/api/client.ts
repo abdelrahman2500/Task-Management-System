@@ -2,10 +2,11 @@
  * Centralized API client
  *
  * Provides type-safe API methods using generated OpenAPI types.
- * Handles authentication, error transformation, and enum conversion.
+ * Handles authentication, error transformation, enum conversion, and AbortSignal propagation.
  */
 
 import { api } from "./axios";
+import type { RequestOptions } from "./cancellation";
 import type {
   User,
   Project,
@@ -177,7 +178,10 @@ const TaskAPI = {
   /**
    * Get all tasks with optional filters
    */
-  async list(params: ListTasksParams = {}): Promise<TasksResponse> {
+  async list(
+    params: ListTasksParams = {},
+    options?: RequestOptions,
+  ): Promise<TasksResponse> {
     // Convert frontend enum values to backend format
     const backendParams = {
       ...params,
@@ -193,6 +197,8 @@ const TaskAPI = {
     // In a real app, you might pass it as a param
     const response = await api.get<TasksResponse>("/tasks", {
       params: backendParams,
+      signal: options?.signal,
+      timeout: options?.timeout,
     });
     return response as unknown as TasksResponse;
   },
@@ -200,15 +206,21 @@ const TaskAPI = {
   /**
    * Get a single task by ID
    */
-  async getById(taskId: number): Promise<Task> {
-    const response = await api.get<Task>(`/tasks/${taskId}`);
+  async getById(taskId: number, options?: RequestOptions): Promise<Task> {
+    const response = await api.get<Task>(`/tasks/${taskId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as Task;
   },
 
   /**
    * Create a new task
    */
-  async create(payload: CreateTaskRequest): Promise<Task> {
+  async create(
+    payload: CreateTaskRequest,
+    options?: RequestOptions,
+  ): Promise<Task> {
     // Convert frontend enums to backend format
     const backendPayload = {
       ...payload,
@@ -216,14 +228,21 @@ const TaskAPI = {
       priority: EnumConverters.priorityToBackend(payload.priority),
     };
 
-    const response = await api.post<Task>("/tasks", backendPayload);
+    const response = await api.post<Task>("/tasks", backendPayload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as Task;
   },
 
   /**
    * Update an existing task
    */
-  async update(taskId: number, payload: UpdateTaskRequest): Promise<Task> {
+  async update(
+    taskId: number,
+    payload: UpdateTaskRequest,
+    options?: RequestOptions,
+  ): Promise<Task> {
     // Convert frontend enums to backend format
     const backendPayload = {
       ...payload,
@@ -235,15 +254,21 @@ const TaskAPI = {
       }),
     };
 
-    const response = await api.put<Task>(`/tasks/${taskId}`, backendPayload);
+    const response = await api.put<Task>(`/tasks/${taskId}`, backendPayload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as Task;
   },
 
   /**
    * Delete a task
    */
-  async delete(taskId: number): Promise<void> {
-    await api.delete(`/tasks/${taskId}`);
+  async delete(taskId: number, options?: RequestOptions): Promise<void> {
+    await api.delete(`/tasks/${taskId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
   },
 };
 
@@ -254,7 +279,10 @@ const ProjectAPI = {
   /**
    * Get all projects with optional filters
    */
-  async list(params: ListProjectsParams = {}): Promise<ProjectsResponse> {
+  async list(
+    params: ListProjectsParams = {},
+    options?: RequestOptions,
+  ): Promise<ProjectsResponse> {
     // Convert frontend status to backend format
     const backendParams = {
       ...params,
@@ -265,6 +293,8 @@ const ProjectAPI = {
 
     const response = await api.get<ProjectsResponse>("/projects", {
       params: backendParams,
+      signal: options?.signal,
+      timeout: options?.timeout,
     });
     return response as unknown as ProjectsResponse;
   },
@@ -272,15 +302,21 @@ const ProjectAPI = {
   /**
    * Get a single project
    */
-  async getById(projectId: number): Promise<Project> {
-    const response = await api.get<Project>(`/projects/${projectId}`);
+  async getById(projectId: number, options?: RequestOptions): Promise<Project> {
+    const response = await api.get<Project>(`/projects/${projectId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as Project;
   },
 
   /**
    * Create a new project
    */
-  async create(payload: CreateProjectRequest): Promise<Project> {
+  async create(
+    payload: CreateProjectRequest,
+    options?: RequestOptions,
+  ): Promise<Project> {
     const backendPayload = {
       ...payload,
       ...(payload.status && {
@@ -288,7 +324,10 @@ const ProjectAPI = {
       }),
     };
 
-    const response = await api.post<Project>("/projects", backendPayload);
+    const response = await api.post<Project>("/projects", backendPayload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as Project;
   },
 
@@ -298,6 +337,7 @@ const ProjectAPI = {
   async update(
     projectId: number,
     payload: UpdateProjectRequest,
+    options?: RequestOptions,
   ): Promise<Project> {
     const backendPayload = {
       ...payload,
@@ -309,6 +349,10 @@ const ProjectAPI = {
     const response = await api.put<Project>(
       `/projects/${projectId}`,
       backendPayload,
+      {
+        signal: options?.signal,
+        timeout: options?.timeout,
+      },
     );
     return response as unknown as Project;
   },
@@ -316,8 +360,11 @@ const ProjectAPI = {
   /**
    * Delete a project
    */
-  async delete(projectId: number): Promise<void> {
-    await api.delete(`/projects/${projectId}`);
+  async delete(projectId: number, options?: RequestOptions): Promise<void> {
+    await api.delete(`/projects/${projectId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
   },
 
   /**
@@ -327,10 +374,15 @@ const ProjectAPI = {
     async list(
       projectId: number,
       params: ListProjectMembersParams = {},
+      options?: RequestOptions,
     ): Promise<ProjectMembersResponse> {
       const response = await api.get<ProjectMembersResponse>(
         `/projects/${projectId}/members`,
-        { params },
+        {
+          params,
+          signal: options?.signal,
+          timeout: options?.timeout,
+        },
       );
       return response as unknown as ProjectMembersResponse;
     },
@@ -338,6 +390,7 @@ const ProjectAPI = {
     async add(
       projectId: number,
       payload: AddProjectMemberRequest,
+      options?: RequestOptions,
     ): Promise<ProjectMember> {
       const backendPayload = {
         ...payload,
@@ -347,6 +400,10 @@ const ProjectAPI = {
       const response = await api.post<ProjectMember>(
         `/projects/${projectId}/members`,
         backendPayload,
+        {
+          signal: options?.signal,
+          timeout: options?.timeout,
+        },
       );
       return response as unknown as ProjectMember;
     },
@@ -355,6 +412,7 @@ const ProjectAPI = {
       projectId: number,
       memberId: number,
       payload: UpdateProjectMemberRequest,
+      options?: RequestOptions,
     ): Promise<ProjectMember> {
       const backendPayload = {
         role: EnumConverters.roleToBackend(payload.role),
@@ -363,12 +421,23 @@ const ProjectAPI = {
       const response = await api.put<ProjectMember>(
         `/projects/${projectId}/members/${memberId}`,
         backendPayload,
+        {
+          signal: options?.signal,
+          timeout: options?.timeout,
+        },
       );
       return response as unknown as ProjectMember;
     },
 
-    async remove(projectId: number, memberId: number): Promise<void> {
-      await api.delete(`/projects/${projectId}/members/${memberId}`);
+    async remove(
+      projectId: number,
+      memberId: number,
+      options?: RequestOptions,
+    ): Promise<void> {
+      await api.delete(`/projects/${projectId}/members/${memberId}`, {
+        signal: options?.signal,
+        timeout: options?.timeout,
+      });
     },
   },
 };
@@ -383,11 +452,14 @@ const CommentAPI = {
   async list(
     taskId: number,
     params: ListCommentsParams = {},
+    options?: RequestOptions,
   ): Promise<CommentsResponse> {
     const response = await api.get<CommentsResponse>(
       `/comments/task/${taskId}`,
       {
         params,
+        signal: options?.signal,
+        timeout: options?.timeout,
       },
     );
     return response as unknown as CommentsResponse;
@@ -399,10 +471,15 @@ const CommentAPI = {
   async create(
     taskId: number,
     payload: CreateCommentRequest,
+    options?: RequestOptions,
   ): Promise<Comment> {
     const response = await api.post<Comment>(
       `/comments/task/${taskId}`,
       payload,
+      {
+        signal: options?.signal,
+        timeout: options?.timeout,
+      },
     );
     return response as unknown as Comment;
   },
@@ -413,16 +490,23 @@ const CommentAPI = {
   async update(
     commentId: number,
     payload: UpdateCommentRequest,
+    options?: RequestOptions,
   ): Promise<Comment> {
-    const response = await api.put<Comment>(`/comments/${commentId}`, payload);
+    const response = await api.put<Comment>(`/comments/${commentId}`, payload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as Comment;
   },
 
   /**
    * Delete a comment
    */
-  async delete(commentId: number): Promise<void> {
-    await api.delete(`/comments/${commentId}`);
+  async delete(commentId: number, options?: RequestOptions): Promise<void> {
+    await api.delete(`/comments/${commentId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
   },
 };
 
@@ -435,10 +519,15 @@ const AuthAPI = {
    */
   async register(
     payload: RegisterRequest,
+    options?: RequestOptions,
   ): Promise<{ token: string; user: User }> {
     const response = await api.post<{ token: string; user: User }>(
       "/auth/register",
       payload,
+      {
+        signal: options?.signal,
+        timeout: options?.timeout,
+      },
     );
     return response as unknown as { token: string; user: User };
   },
@@ -446,10 +535,17 @@ const AuthAPI = {
   /**
    * Login user
    */
-  async login(payload: LoginRequest): Promise<{ token: string; user: User }> {
+  async login(
+    payload: LoginRequest,
+    options?: RequestOptions,
+  ): Promise<{ token: string; user: User }> {
     const response = await api.post<{ token: string; user: User }>(
       "/auth/login",
       payload,
+      {
+        signal: options?.signal,
+        timeout: options?.timeout,
+      },
     );
     return response as unknown as { token: string; user: User };
   },
@@ -457,34 +553,56 @@ const AuthAPI = {
   /**
    * Get current user
    */
-  async getCurrentUser(): Promise<User> {
-    const response = await api.get<User>("/auth/me");
+  async getCurrentUser(options?: RequestOptions): Promise<User> {
+    const response = await api.get<User>("/auth/me", {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as User;
   },
 
   /**
    * Logout
    */
-  async logout(): Promise<void> {
-    await api.post("/auth/logout", {});
+  async logout(options?: RequestOptions): Promise<void> {
+    await api.post(
+      "/auth/logout",
+      {},
+      {
+        signal: options?.signal,
+        timeout: options?.timeout,
+      },
+    );
   },
 
   /**
    * Update current user profile
    */
-  async updateProfile(payload: Partial<User>): Promise<User> {
-    const response = await api.patch<User>("/auth/me", payload);
+  async updateProfile(
+    payload: Partial<User>,
+    options?: RequestOptions,
+  ): Promise<User> {
+    const response = await api.patch<User>("/auth/me", payload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as User;
   },
 
   /**
    * Change password for current user
    */
-  async changePassword(payload: {
-    currentPassword: string;
-    newPassword: string;
-  }): Promise<void> {
-    await api.patch("/auth/me/password", payload);
+  async changePassword(
+    payload: {
+      currentPassword: string;
+      newPassword: string;
+    },
+    options?: RequestOptions,
+  ): Promise<void> {
+    await api.patch("/auth/me/password", payload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
   },
 };
 
@@ -497,9 +615,12 @@ const UserAPI = {
    */
   async listUsers(
     params: ListProjectsParams = {},
+    options?: RequestOptions,
   ): Promise<PaginatedResponse<User>> {
     const response = await api.get<PaginatedResponse<User>>("/users", {
       params,
+      signal: options?.signal,
+      timeout: options?.timeout,
     });
     return response as unknown as PaginatedResponse<User>;
   },
@@ -507,32 +628,51 @@ const UserAPI = {
   /**
    * Get a specific user by ID (admin only)
    */
-  async getUser(userId: number): Promise<User> {
-    const response = await api.get<User>(`/users/${userId}`);
+  async getUser(userId: number, options?: RequestOptions): Promise<User> {
+    const response = await api.get<User>(`/users/${userId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as User;
   },
 
   /**
    * Create a new user (admin only)
    */
-  async createUser(payload: RegisterRequest): Promise<User> {
-    const response = await api.post<User>("/users", payload);
+  async createUser(
+    payload: RegisterRequest,
+    options?: RequestOptions,
+  ): Promise<User> {
+    const response = await api.post<User>("/users", payload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as User;
   },
 
   /**
    * Update a user (admin only)
    */
-  async updateUser(userId: number, payload: Partial<User>): Promise<User> {
-    const response = await api.patch<User>(`/users/${userId}`, payload);
+  async updateUser(
+    userId: number,
+    payload: Partial<User>,
+    options?: RequestOptions,
+  ): Promise<User> {
+    const response = await api.patch<User>(`/users/${userId}`, payload, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
     return response as unknown as User;
   },
 
   /**
    * Delete a user (admin only)
    */
-  async deleteUser(userId: number): Promise<void> {
-    await api.delete(`/users/${userId}`);
+  async deleteUser(userId: number, options?: RequestOptions): Promise<void> {
+    await api.delete(`/users/${userId}`, {
+      signal: options?.signal,
+      timeout: options?.timeout,
+    });
   },
 };
 

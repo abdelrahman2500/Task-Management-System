@@ -6,7 +6,7 @@ import type { GetTasksParams } from "../types";
 export function useTasks(params: GetTasksParams = {}) {
   return useQuery({
     queryKey: taskKeys.list(params),
-    queryFn: () => taskServices.getTasks(params),
+    queryFn: ({ signal }) => taskServices.getTasks(params, { signal }),
     placeholderData: (prev) => prev,
   });
 }

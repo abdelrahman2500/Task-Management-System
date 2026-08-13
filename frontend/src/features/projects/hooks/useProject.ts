@@ -5,7 +5,8 @@ import { projectKeys } from "../constants/queryKeys";
 export function useProject(projectId: number | null) {
   return useQuery({
     queryKey: projectKeys.detail(projectId ?? 0),
-    queryFn: () => projectService.getById(projectId as number),
+    queryFn: ({ signal }) =>
+      projectService.getById(projectId as number, { signal }),
     enabled: !!projectId,
   });
 }

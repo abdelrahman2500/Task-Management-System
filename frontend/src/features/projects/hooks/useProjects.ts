@@ -9,7 +9,7 @@ export function useProjects(
 ): UseQueryResult<ProjectsResponse & { data: Project[] }, Error> {
   return useQuery({
     queryKey: projectKeys.list(params),
-    queryFn: () => projectService.getProjects(params),
+    queryFn: ({ signal }) => projectService.getProjects(params, { signal }),
     placeholderData: (prev) => prev,
   });
 }

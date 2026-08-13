@@ -1,6 +1,7 @@
 import axios, { type AxiosInstance } from "axios";
 import type { QueryClient } from "@tanstack/react-query";
 import { tokenStorage } from "../utils/token-storage";
+import { getConfiguredTimeout } from "./cancellation";
 
 let queryClientRef: QueryClient | null = null;
 let isRedirecting = false;
@@ -12,10 +13,12 @@ export function setQueryClientReference(client: QueryClient): void {
 export const api: AxiosInstance = axios.create({
   baseURL:
     (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000") + "/api/v1",
-  timeout: 15000,
+  timeout: getConfiguredTimeout(),
   headers: {
     "Content-Type": "application/json",
   },
+  // Use fetch adapter to support MSW in tests
+  adapter: typeof window !== "undefined" ? "fetch" : "http",
 });
 
 // Attach bearer token to every request

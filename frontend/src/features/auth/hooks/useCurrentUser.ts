@@ -7,7 +7,7 @@ import type { CurrentUser } from "../types";
 export function useCurrentUser() {
   return useQuery({
     queryKey: authKeys.me(),
-    queryFn: () => authServices.getMe(),
+    queryFn: ({ signal }) => authServices.getMe({ signal }),
     // Only attempt the request when a token exists
     enabled: !!tokenStorage.getAccessToken(),
     staleTime: 1000 * 60 * 5,

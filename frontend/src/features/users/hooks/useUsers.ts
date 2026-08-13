@@ -8,7 +8,7 @@ export function useUsers(
 ): UseQueryResult<ListUsersResponse & { data: User[] }, Error> {
   return useQuery({
     queryKey: userKeys.list(params),
-    queryFn: () => userService.listUsers(params),
+    queryFn: ({ signal }) => userService.listUsers(params, { signal }),
     placeholderData: (previousData) => previousData,
   });
 }

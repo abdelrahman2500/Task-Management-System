@@ -3,10 +3,16 @@
  *
  * Provides standardized error parsing, type checking, and user-friendly message generation.
  * All errors should be handled through these utilities to ensure consistency.
+ * Includes timeout and cancellation error classification.
  */
 
 import { AxiosError } from "axios";
 import { getUserFriendlyErrorMessage } from "./errorMessages";
+import {
+  isAbortError,
+  isTimeoutError,
+  getTimeoutCancellationMessage,
+} from "../api/cancellation";
 
 // API Error Response interface (matching backend)
 interface ApiErrorResponse {
@@ -277,4 +283,12 @@ export function isClientError(error: unknown): boolean {
   }
 
   return false;
+}
+
+export function isAbortedError(error: unknown): boolean {
+  return isAbortError(error);
+}
+
+export function isTimeoutErrorType(error: unknown): boolean {
+  return isTimeoutError(error);
 }

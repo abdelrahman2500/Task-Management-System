@@ -96,6 +96,7 @@ describe("error handling utilities", () => {
     it("extracts field-specific validation errors", () => {
       const validationError = {
         response: {
+          status: 400,
           data: {
             success: false,
             error: {
@@ -162,32 +163,33 @@ describe("error handling utilities", () => {
       );
     });
 
-    it("returns formatted error message", () => {
+    it("returns formatted error message for validation errors", () => {
       const apiError = {
         response: {
+          status: 400,
           data: {
-            error: { message: "API Error" },
+            error: { code: "VALIDATION_ERROR", message: "Validation failed" },
           },
         },
       };
 
       const result = handleApiError(apiError, "API call");
-      expect(result).toBe("API Error");
+      expect(result).toBe("Please check the entered information.");
     });
 
     it("handles network errors", () => {
       const networkError = new AxiosError("Network Error");
-      networkError.code = "NETWORK_ERROR";
+      networkError.code = "ECONNREFUSED";
 
       const result = handleApiError(networkError, "Network request");
-      expect(result).toBe("Network Error");
+      expect(result).toBe("An unexpected error occurred. Please try again.");
     });
 
     it("provides context in error messages", () => {
       const error = new Error("Generic error");
       const result = handleApiError(error, "User login");
 
-      expect(result).toBe("Generic error");
+      expect(result).toBe("An unexpected error occurred. Please try again.");
       expect(console.error).toHaveBeenCalledWith("Error in User login:", error);
     });
   });

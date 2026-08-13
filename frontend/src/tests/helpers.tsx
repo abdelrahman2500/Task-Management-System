@@ -1,6 +1,5 @@
 import type { ReactElement } from "react";
 import { render, type RenderOptions } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import { setQueryClientReference } from "../shared/api/axios";
@@ -25,6 +24,7 @@ function createTestQueryClient() {
 interface CustomRenderOptions extends Omit<RenderOptions, "wrapper"> {
   queryClient?: QueryClient;
   initialRoute?: string;
+  skipRouter?: boolean;
 }
 
 export function renderWithProviders(
@@ -32,18 +32,31 @@ export function renderWithProviders(
   {
     queryClient = createTestQueryClient(),
     initialRoute = "/",
+    skipRouter = false,
     ...renderOptions
   }: CustomRenderOptions = {},
 ) {
   // Set the query client reference for axios interceptor
   setQueryClientReference(queryClient);
 
-  // Set initial route
-  if (initialRoute !== "/") {
+  // Set initial route if needed and not skipping router
+  if (!skipRouter && initialRoute !== "/") {
     window.history.pushState({}, "", initialRoute);
   }
 
   function Wrapper({ children }: { children: React.ReactNode }) {
+    // If the UI component (like App) already provides routing, don't wrap in router
+    if (skipRouter) {
+      return (
+        <QueryClientProvider client={queryClient}>
+          {children}
+          <Toaster />
+        </QueryClientProvider>
+      );
+    }
+
+    // For component tests, provide routing wrapper
+    const { BrowserRouter } = require("react-router-dom");
     return (
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
@@ -62,25 +75,15 @@ export function renderWithProviders(
 
 // Auth helpers
 export function mockAuthUser() {
-  // Mock token storage instead of localStorage directly
-  try {
-    if (tokenStorage && tokenStorage.setAccessToken) {
-      tokenStorage.setAccessToken("mock-jwt-token");
-    }
-  } catch {
-    // Fallback to localStorage
+  // Set localStorage directly (now available via polyfill in setup.ts)
+  if (typeof localStorage !== "undefined") {
     localStorage.setItem("accessToken", "mock-jwt-token");
   }
 }
 
 export function clearAuthUser() {
-  // Clear token storage
-  try {
-    if (tokenStorage && tokenStorage.removeAccessToken) {
-      tokenStorage.removeAccessToken();
-    }
-  } catch {
-    // Fallback to localStorage
+  // Clear localStorage
+  if (typeof localStorage !== "undefined") {
     localStorage.removeItem("accessToken");
   }
 }

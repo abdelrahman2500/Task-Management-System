@@ -3,6 +3,7 @@
  *
  * Implements a production-safe retry strategy that:
  * - Never retries deterministic errors (4xx errors except 429)
+ * - Never retries abort/cancellation errors
  * - Retries transient errors (5xx, 429, network errors)
  * - Uses bounded exponential backoff
  * - Respects Retry-After headers
@@ -12,6 +13,7 @@
 
 import { AxiosError } from "axios";
 import type { DefaultError } from "@tanstack/react-query";
+import { shouldNotRetryError } from "./cancellation";
 
 /**
  * Configuration for retry behavior
@@ -129,6 +131,11 @@ export function shouldRetryOnError(
 ): boolean {
   // Maximum retries reached
   if (failureCount > RETRY_CONFIG.MAX_RETRIES) {
+    return false;
+  }
+
+  // Never retry abort/cancellation errors
+  if (shouldNotRetryError(error)) {
     return false;
   }
 

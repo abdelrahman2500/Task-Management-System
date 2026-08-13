@@ -5,7 +5,8 @@ import { taskKeys } from "../constants/queryKeys";
 export function useTask(taskId: number | null) {
   return useQuery({
     queryKey: taskKeys.detail(taskId ?? 0),
-    queryFn: () => taskServices.getTaskById(taskId as number),
+    queryFn: ({ signal }) =>
+      taskServices.getTaskById(taskId as number, { signal }),
     enabled: !!taskId,
   });
 }

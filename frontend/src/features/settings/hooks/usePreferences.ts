@@ -5,7 +5,7 @@ import { settingsKeys } from "../constants/settingsKeys";
 export function usePreferences() {
   return useQuery({
     queryKey: settingsKeys.preferences(),
-    queryFn: () => settingsService.getPreferences(),
+    queryFn: ({ signal }) => settingsService.getPreferences({ signal }),
     staleTime: 1000 * 60 * 5,
   });
 }
