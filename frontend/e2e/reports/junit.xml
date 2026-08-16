@@ -1,1926 +1,407 @@
-<testsuites id="" name="" tests="158" failures="9" skipped="17" errors="47" time="772.37589">
-<testsuite name="api-resilience.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="9" failures="0" skipped="0" time="19.041" errors="2">
-<testcase name="API Resilience › should handle 422 validation errors from API" classname="api-resilience.spec.ts" time="2.236">
-</testcase>
-<testcase name="API Resilience › should handle 401 authentication errors" classname="api-resilience.spec.ts" time="0.008">
-</testcase>
-<testcase name="API Resilience › should handle 403 forbidden errors" classname="api-resilience.spec.ts" time="3.314">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-2de24-handle-403-forbidden-errors-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;e6a6edbb-4335-415c-8b93-daf399fd9789&quot;}}" type="Error">
-<![CDATA[  [chromium] › api-resilience.spec.ts:53:3 › API Resilience › should handle 403 forbidden errors ───
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"e6a6edbb-4335-415c-8b93-daf399fd9789"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:62:21
-
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-2de24-handle-403-forbidden-errors-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="API Resilience › should handle 404 not found errors" classname="api-resilience.spec.ts" time="2.125">
-</testcase>
-<testcase name="API Resilience › should handle successful responses correctly" classname="api-resilience.spec.ts" time="1.679">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-d4a93-cessful-responses-correctly-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;a81d8aed-e425-437f-b57c-97ba856e4a16&quot;}}" type="Error">
-<![CDATA[  [chromium] › api-resilience.spec.ts:112:3 › API Resilience › should handle successful responses correctly 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"a81d8aed-e425-437f-b57c-97ba856e4a16"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:118:21
-
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-d4a93-cessful-responses-correctly-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="API Resilience › should show dashboard when authenticated" classname="api-resilience.spec.ts" time="4.192">
-</testcase>
-<testcase name="API Resilience › should handle repeated API calls" classname="api-resilience.spec.ts" time="1.872">
-</testcase>
-<testcase name="API Resilience › should handle concurrent requests" classname="api-resilience.spec.ts" time="1.986">
-</testcase>
-<testcase name="API Resilience › should handle rate limiting gracefully" classname="api-resilience.spec.ts" time="1.629">
-</testcase>
-</testsuite>
-<testsuite name="auth-edge-cases.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="8" failures="0" skipped="0" time="18.715" errors="2">
-<testcase name="Authentication Edge Cases › should reject login with empty email field" classname="auth-edge-cases.spec.ts" time="3.047">
-</testcase>
-<testcase name="Authentication Edge Cases › should reject login with empty password field" classname="auth-edge-cases.spec.ts" time="2.037">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\test-failed-1.png]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\video.webm]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="page.fill: value: expected string, got undefined" type="Error">
-<![CDATA[  [chromium] › auth-edge-cases.spec.ts:56:3 › Authentication Edge Cases › should reject login with empty password field 
-
-    Error: page.fill: value: expected string, got undefined
-
-      60 |
-      61 |     // Fill email but leave password empty
-    > 62 |     await page.fill("#email", registered.email);
-         |                ^
-      63 |
-      64 |     // Try to submit
-      65 |     await page.click('button[type="submit"]');
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-edge-cases.spec.ts:62:16
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\error-context.md
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Authentication Edge Cases › should reject login with both fields empty" classname="auth-edge-cases.spec.ts" time="2.928">
-</testcase>
-<testcase name="Authentication Edge Cases › should handle rapid consecutive login attempts gracefully" classname="auth-edge-cases.spec.ts" time="0.427">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\test-failed-1.png]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\video.webm]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="page.evaluate: SecurityError: Failed to read the &apos;localStorage&apos; property from &apos;Window&apos;: Access is denied for this document." type="Error">
-<![CDATA[  [chromium] › auth-edge-cases.spec.ts:93:3 › Authentication Edge Cases › should handle rapid consecutive login attempts gracefully 
-
-    Error: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
-        at UtilityScript.evaluate (<anonymous>:313:16)
-        at UtilityScript.<anonymous> (<anonymous>:1:44)
-        at UtilityScript.evaluate (<anonymous>:313:16)
-        at UtilityScript.<anonymous> (<anonymous>:1:44)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-edge-cases.spec.ts:99:16
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\error-context.md
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Authentication Edge Cases › should clear auth token on explicit logout" classname="auth-edge-cases.spec.ts" time="3.265">
-</testcase>
-<testcase name="Authentication Edge Cases › should preserve auth state through navigation" classname="auth-edge-cases.spec.ts" time="4.051">
-</testcase>
-<testcase name="Authentication Edge Cases › should handle protected route access without token" classname="auth-edge-cases.spec.ts" time="2.947">
-</testcase>
-<testcase name="Authentication Edge Cases › should prevent re-registration with same email" classname="auth-edge-cases.spec.ts" time="0.013">
-</testcase>
-</testsuite>
-<testsuite name="auth.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="6" failures="0" skipped="0" time="27.384" errors="0">
-<testcase name="Authentication › should allow user login via UI" classname="auth.spec.ts" time="5.075">
-</testcase>
-<testcase name="Authentication › should reject login with invalid credentials" classname="auth.spec.ts" time="6.169">
-</testcase>
-<testcase name="Authentication › should allow user logout" classname="auth.spec.ts" time="5.59">
-</testcase>
-<testcase name="Authentication › should persist auth token across page reloads" classname="auth.spec.ts" time="5.613">
-</testcase>
-<testcase name="Authentication › should register new user via API" classname="auth.spec.ts" time="1.992">
-</testcase>
-<testcase name="Authentication › should handle login page redirect when not authenticated" classname="auth.spec.ts" time="2.945">
-</testcase>
-</testsuite>
-<testsuite name="authorization.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="6" failures="0" skipped="0" time="9.209" errors="2">
-<testcase name="Authorization › should require authentication for protected endpoints" classname="authorization.spec.ts" time="0.009">
-</testcase>
-<testcase name="Authorization › should reject requests with invalid token" classname="authorization.spec.ts" time="0.008">
-</testcase>
-<testcase name="Authorization › should allow users to access their own projects" classname="authorization.spec.ts" time="1.964">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-b8cbb-o-access-their-own-projects-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;13bf292c-a2da-43ed-af3f-7e02334e9b98&quot;}}" type="Error">
-<![CDATA[  [chromium] › authorization.spec.ts:46:3 › Authorization › should allow users to access their own projects 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"13bf292c-a2da-43ed-af3f-7e02334e9b98"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:52:21
-
-    Error Context: ..\..\test-results\authorization-Authorizatio-b8cbb-o-access-their-own-projects-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Authorization › should prevent users from deleting other users&apos; projects" classname="authorization.spec.ts" time="3.586">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-996f5-leting-other-users-projects-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;99a97688-854e-4f60-add4-f0f7417f2d44&quot;}}" type="Error">
-<![CDATA[  [chromium] › authorization.spec.ts:77:3 › Authorization › should prevent users from deleting other users' projects 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"99a97688-854e-4f60-add4-f0f7417f2d44"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:86:21
-
-    Error Context: ..\..\test-results\authorization-Authorizatio-996f5-leting-other-users-projects-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Authorization › should handle 404 for non-existent resources" classname="authorization.spec.ts" time="1.798">
-</testcase>
-<testcase name="Authorization › should handle validation errors gracefully" classname="authorization.spec.ts" time="1.844">
-</testcase>
-</testsuite>
-<testsuite name="comments.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="3" failures="0" skipped="0" time="5.513" errors="3">
-<testcase name="Comments › should create and retrieve a comment via API" classname="comments.spec.ts" time="1.596">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;161cfcdb-4dd4-4c71-a101-0d5cf2a554e2&quot;}}" type="Error">
-<![CDATA[  [chromium] › comments.spec.ts:23:3 › Comments › should create and retrieve a comment via API ─────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"161cfcdb-4dd4-4c71-a101-0d5cf2a554e2"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:29:21
-
-    Error Context: ..\..\test-results\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Comments › should list comments on a task via API" classname="comments.spec.ts" time="2.007">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\comments-Comments-should-list-comments-on-a-task-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;2973944f-1c84-475a-afd7-5afaf07debc8&quot;}}" type="Error">
-<![CDATA[  [chromium] › comments.spec.ts:58:3 › Comments › should list comments on a task via API ───────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"2973944f-1c84-475a-afd7-5afaf07debc8"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:64:21
-
-    Error Context: ..\..\test-results\comments-Comments-should-list-comments-on-a-task-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Comments › should delete a comment via API" classname="comments.spec.ts" time="1.91">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\comments-Comments-should-delete-a-comment-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;b4a168a6-df9c-4f9f-be57-6045a87dc237&quot;}}" type="Error">
-<![CDATA[  [chromium] › comments.spec.ts:99:3 › Comments › should delete a comment via API ──────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"b4a168a6-df9c-4f9f-be57-6045a87dc237"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:105:21
-
-    Error Context: ..\..\test-results\comments-Comments-should-delete-a-comment-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-</testsuite>
-<testsuite name="crud-operations.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="11" failures="0" skipped="0" time="111.863" errors="1">
-<testcase name="CRUD Operations › should update project details" classname="crud-operations.spec.ts" time="1.878">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-84863-ould-update-project-details-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;c1f54370-47dc-4e85-8cd5-b5ac484f340b&quot;}}" type="Error">
-<![CDATA[  [chromium] › crud-operations.spec.ts:26:3 › CRUD Operations › should update project details ──────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"c1f54370-47dc-4e85-8cd5-b5ac484f340b"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:32:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-84863-ould-update-project-details-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should partially update project" classname="crud-operations.spec.ts" time="7.915">
-</testcase>
-<testcase name="CRUD Operations › should update task details" classname="crud-operations.spec.ts" time="13.731">
-</testcase>
-<testcase name="CRUD Operations › should update only task status" classname="crud-operations.spec.ts" time="13.663">
-</testcase>
-<testcase name="CRUD Operations › should update comment body" classname="crud-operations.spec.ts" time="13.654">
-</testcase>
-<testcase name="CRUD Operations › should prevent updating another user&apos;s project" classname="crud-operations.spec.ts" time="9.177">
-</testcase>
-<testcase name="CRUD Operations › should prevent updating another user&apos;s task" classname="crud-operations.spec.ts" time="12.178">
-</testcase>
-<testcase name="CRUD Operations › should prevent updating another user&apos;s comment" classname="crud-operations.spec.ts" time="15.241">
-</testcase>
-<testcase name="CRUD Operations › should handle delete of non-existent resource" classname="crud-operations.spec.ts" time="1.593">
-</testcase>
-<testcase name="CRUD Operations › should prevent deleting another user&apos;s resource" classname="crud-operations.spec.ts" time="9.195">
-</testcase>
-<testcase name="CRUD Operations › should delete task successfully" classname="crud-operations.spec.ts" time="13.638">
-</testcase>
-</testsuite>
-<testsuite name="filtering-pagination.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="8" failures="0" skipped="0" time="21.203" errors="0">
-<testcase name="Filtering &amp; Pagination › should filter tasks by priority" classname="filtering-pagination.spec.ts" time="3.034">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should filter tasks by status" classname="filtering-pagination.spec.ts" time="3.034">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should handle empty filter results gracefully" classname="filtering-pagination.spec.ts" time="0.004">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should list tasks with pagination support" classname="filtering-pagination.spec.ts" time="3.022">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should list projects with pagination" classname="filtering-pagination.spec.ts" time="3.028">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should support pagination parameters" classname="filtering-pagination.spec.ts" time="3.029">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should handle filters with paginated results" classname="filtering-pagination.spec.ts" time="3.03">
-</testcase>
-<testcase name="Filtering &amp; Pagination › should support page navigation" classname="filtering-pagination.spec.ts" time="3.022">
-</testcase>
-</testsuite>
-<testsuite name="form-validation.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="11" failures="0" skipped="0" time="0.102" errors="0">
-<testcase name="Form Validation › should validate required project name" classname="form-validation.spec.ts" time="0.007">
-</testcase>
-<testcase name="Form Validation › should validate project name minimum length" classname="form-validation.spec.ts" time="0.008">
-</testcase>
-<testcase name="Form Validation › should validate required task title" classname="form-validation.spec.ts" time="0.009">
-</testcase>
-<testcase name="Form Validation › should validate task title minimum length" classname="form-validation.spec.ts" time="0.007">
-</testcase>
-<testcase name="Form Validation › should validate invalid task status" classname="form-validation.spec.ts" time="0.007">
-</testcase>
-<testcase name="Form Validation › should validate invalid task priority" classname="form-validation.spec.ts" time="0.007">
-</testcase>
-<testcase name="Form Validation › should validate invalid task due date format" classname="form-validation.spec.ts" time="0.007">
-</testcase>
-<testcase name="Form Validation › should validate required comment body" classname="form-validation.spec.ts" time="0.018">
-</testcase>
-<testcase name="Form Validation › should accept valid project with special characters" classname="form-validation.spec.ts" time="0.012">
-</testcase>
-<testcase name="Form Validation › should accept valid task with long description" classname="form-validation.spec.ts" time="0.012">
-</testcase>
-<testcase name="Form Validation › should reject task description exceeding maximum length" classname="form-validation.spec.ts" time="0.008">
-</testcase>
-</testsuite>
-<testsuite name="projects.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="5" failures="0" skipped="0" time="14.685" errors="4">
-<testcase name="Projects › should create and retrieve a project via API" classname="projects.spec.ts" time="1.642">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;000b4c96-7104-4dd3-b19f-5d88336756de&quot;}}" type="Error">
-<![CDATA[  [chromium] › projects.spec.ts:24:3 › Projects › should create and retrieve a project via API ─────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"000b4c96-7104-4dd3-b19f-5d88336756de"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:30:24
-
-    Error Context: ..\..\test-results\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should list projects via API" classname="projects.spec.ts" time="2.316">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-list-projects-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;9c6e62ba-e672-404d-a52f-8cacacc5d507&quot;}}" type="Error">
-<![CDATA[  [chromium] › projects.spec.ts:48:3 › Projects › should list projects via API ─────────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"9c6e62ba-e672-404d-a52f-8cacacc5d507"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:54:22
-
-    Error Context: ..\..\test-results\projects-Projects-should-list-projects-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should delete a project via API" classname="projects.spec.ts" time="2.107">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-delete-a-project-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;893ffe9a-ae79-4438-9c65-2f52bca3b430&quot;}}" type="Error">
-<![CDATA[  [chromium] › projects.spec.ts:76:3 › Projects › should delete a project via API ──────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"893ffe9a-ae79-4438-9c65-2f52bca3b430"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:82:21
-
-    Error Context: ..\..\test-results\projects-Projects-should-delete-a-project-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should add and remove project members via API" classname="projects.spec.ts" time="4.03">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-a-812b6-ove-project-members-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;fef061b5-695e-4b18-b270-a891883957c4&quot;}}" type="Error">
-<![CDATA[  [chromium] › projects.spec.ts:101:3 › Projects › should add and remove project members via API ───
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"fef061b5-695e-4b18-b270-a891883957c4"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:110:21
-
-    Error Context: ..\..\test-results\projects-Projects-should-a-812b6-ove-project-members-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should navigate to projects page when authenticated" classname="projects.spec.ts" time="4.59">
-</testcase>
-</testsuite>
-<testsuite name="routes.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="7" failures="0" skipped="0" time="29.456" errors="0">
-<testcase name="Route Protection › should redirect unauthenticated users to login page" classname="routes.spec.ts" time="2.883">
-</testcase>
-<testcase name="Route Protection › should allow access to login page without token" classname="routes.spec.ts" time="2.521">
-</testcase>
-<testcase name="Route Protection › should allow authenticated users to access protected dashboard" classname="routes.spec.ts" time="4.838">
-</testcase>
-<testcase name="Route Protection › should redirect to login when accessing protected route without token" classname="routes.spec.ts" time="2.981">
-</testcase>
-<testcase name="Route Protection › should maintain auth state during navigation" classname="routes.spec.ts" time="5.755">
-</testcase>
-<testcase name="Route Protection › should allow navigation to tasks page when authenticated" classname="routes.spec.ts" time="5.534">
-</testcase>
-<testcase name="Route Protection › should allow navigation to settings page when authenticated" classname="routes.spec.ts" time="4.944">
-</testcase>
-</testsuite>
-<testsuite name="tasks.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="chromium" tests="5" failures="0" skipped="0" time="12.675" errors="4">
-<testcase name="Tasks › should create and retrieve a task via API" classname="tasks.spec.ts" time="2.155">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-create-and-retrieve-a-task-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;f60218ed-cb4b-4d22-b882-77692a13cead&quot;}}" type="Error">
-<![CDATA[  [chromium] › tasks.spec.ts:24:3 › Tasks › should create and retrieve a task via API ──────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"f60218ed-cb4b-4d22-b882-77692a13cead"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:30:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-create-and-retrieve-a-task-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should list tasks via API" classname="tasks.spec.ts" time="1.904">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-list-tasks-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;e646347d-6819-4f3d-8d87-fbed5c6f2c6d&quot;}}" type="Error">
-<![CDATA[  [chromium] › tasks.spec.ts:55:3 › Tasks › should list tasks via API ──────────────────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"e646347d-6819-4f3d-8d87-fbed5c6f2c6d"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:61:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-list-tasks-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should filter tasks by status via API" classname="tasks.spec.ts" time="2.136">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-filter-tasks-by-status-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;671e5421-f33a-497e-8fdd-0153a3bc5609&quot;}}" type="Error">
-<![CDATA[  [chromium] › tasks.spec.ts:94:3 › Tasks › should filter tasks by status via API ──────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"671e5421-f33a-497e-8fdd-0153a3bc5609"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:100:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-filter-tasks-by-status-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should delete a task via API" classname="tasks.spec.ts" time="2.096">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-delete-a-task-via-API-chromium\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;2837993d-7860-42e3-a52b-dcd4e9c2cb24&quot;}}" type="Error">
-<![CDATA[  [chromium] › tasks.spec.ts:132:3 › Tasks › should delete a task via API ──────────────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"2837993d-7860-42e3-a52b-dcd4e9c2cb24"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:138:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-delete-a-task-via-API-chromium\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should navigate to tasks page when authenticated" classname="tasks.spec.ts" time="4.384">
-</testcase>
-</testsuite>
-<testsuite name="api-resilience.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="9" failures="3" skipped="0" time="35.367" errors="2">
-<testcase name="API Resilience › should handle 422 validation errors from API" classname="api-resilience.spec.ts" time="1.988">
-</testcase>
-<testcase name="API Resilience › should handle 401 authentication errors" classname="api-resilience.spec.ts" time="0.01">
-</testcase>
-<testcase name="API Resilience › should handle 403 forbidden errors" classname="api-resilience.spec.ts" time="3.525">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-2de24-handle-403-forbidden-errors-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;VALIDATION_FAILED&quot;,&quot;message&quot;:&quot;The request contains invalid input parameters.&quot;,&quot;details&quot;:{&quot;&quot;:&quot;Unrecognized key(s) in object: &apos;status&apos;&quot;},&quot;requestId&quot;:&quot;5272a01f-835a-41d9-8051-335cdc574113&quot;}}" type="Error">
-<![CDATA[  [firefox] › api-resilience.spec.ts:53:3 › API Resilience › should handle 403 forbidden errors ────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"5272a01f-835a-41d9-8051-335cdc574113"}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:62:21
-
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-2de24-handle-403-forbidden-errors-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="API Resilience › should handle 404 not found errors" classname="api-resilience.spec.ts" time="7.343">
+<testsuites id="" name="" tests="24" failures="5" skipped="0" errors="3" time="272.138212">
+<testsuite name="auth-signup.spec.ts" timestamp="2026-08-16T08:15:21.445Z" hostname="chromium" tests="12" failures="2" skipped="0" time="77.909" errors="2">
+<testcase name="User Signup › should allow user signup via UI" classname="auth-signup.spec.ts" time="8.559">
 <system-err>
 <![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
 ]]>
 </system-err>
 </testcase>
-<testcase name="API Resilience › should handle successful responses correctly" classname="api-resilience.spec.ts" time="1.584">
+<testcase name="User Signup › should show validation error for empty name" classname="auth-signup.spec.ts" time="2.622">
+</testcase>
+<testcase name="User Signup › should show validation error for invalid email" classname="auth-signup.spec.ts" time="2.966">
+</testcase>
+<testcase name="User Signup › should show validation error for short password" classname="auth-signup.spec.ts" time="2.717">
+</testcase>
+<testcase name="User Signup › should show validation error when passwords don&apos;t match" classname="auth-signup.spec.ts" time="2.94">
+</testcase>
+<testcase name="User Signup › should show error for duplicate email" classname="auth-signup.spec.ts" time="3.009">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-d4a93-cessful-responses-correctly-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-chromium\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-chromium\error-context.md]]
 ]]>
 </system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › api-resilience.spec.ts:112:3 › API Resilience › should handle successful responses correctly 
+<error message="page.goto: net::ERR_ABORTED at http://localhost:5173/auth/login" type="Error">
+<![CDATA[  [chromium] › auth-signup.spec.ts:162:3 › User Signup › should show error for duplicate email ─────
 
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+    Error: page.goto: net::ERR_ABORTED at http://localhost:5173/auth/login
+    Call log:
+      - navigating to "http://localhost:5173/auth/login", waiting until "load"
 
-       at ..\fixtures\database.ts:117
 
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:118:21
+      179 |
+      180 |     // Logout to go back to signup
+    > 181 |     await page.goto("/auth/login");
+          |                ^
+      182 |     await page.waitForLoadState("networkidle");
+      183 |
+      184 |     // Try to signup again with same email
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:181:16
 
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-d4a93-cessful-responses-correctly-firefox\error-context.md
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-chromium\error-context.md
 ]]>
 </error>
 </testcase>
-<testcase name="API Resilience › should show dashboard when authenticated" classname="api-resilience.spec.ts" time="15.544">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-</testcase>
-<testcase name="API Resilience › should handle repeated API calls" classname="api-resilience.spec.ts" time="1.651">
+<testcase name="User Signup › should show loading state during signup" classname="auth-signup.spec.ts" time="7.146">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-7aa2d-d-handle-repeated-API-calls-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-chromium\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-chromium\error-context.md]]
 ]]>
 </system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › api-resilience.spec.ts:151:3 › API Resilience › should handle repeated API calls ─────
+<failure message="expect(locator).toBeDisabled() failed" type="expect.toBeDisabled">
+<![CDATA[  [chromium] › auth-signup.spec.ts:210:3 › User Signup › should show loading state during signup ───
 
-    Error: expect(received).toBe(expected) // Object.is equality
+    Error: expect(locator).toBeDisabled() failed
 
-    Expected: 200
-    Received: 429
+    Locator: locator('button:has-text("Create Account")')
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
 
-      164 |       });
-      165 |
-    > 166 |       expect(response.status).toBe(200);
-          |                               ^
-      167 |     }
-      168 |
-      169 |     // Cleanup
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:166:31
+    Call log:
+      - Expect "toBeDisabled" with timeout 5000ms
+      - waiting for locator('button:has-text("Create Account")')
 
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-7aa2d-d-handle-repeated-API-calls-firefox\error-context.md
+
+      225 |
+      226 |     // Button should be disabled/loading
+    > 227 |     await expect(submitButton).toBeDisabled();
+          |                                ^
+      228 |
+      229 |     // Wait for response and redirect
+      230 |     await page.waitForURL("/", { timeout: 10000 });
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:227:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-chromium\error-context.md
 ]]>
 </failure>
 </testcase>
-<testcase name="API Resilience › should handle concurrent requests" classname="api-resilience.spec.ts" time="1.824">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-6cccd--handle-concurrent-requests-firefox\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › api-resilience.spec.ts:173:3 › API Resilience › should handle concurrent requests ────
-
-    Error: expect(received).toBe(expected) // Object.is equality
-
-    Expected: 200
-    Received: 429
-
-      194 |     // All should succeed
-      195 |     responses.forEach((response) => {
-    > 196 |       expect(response.status).toBe(200);
-          |                               ^
-      197 |     });
-      198 |
-      199 |     // Cleanup
-        at forEach (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:196:31)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:195:15
-
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-6cccd--handle-concurrent-requests-firefox\error-context.md
-]]>
-</failure>
+<testcase name="User Signup › should navigate to login from signup page" classname="auth-signup.spec.ts" time="1.93">
 </testcase>
-<testcase name="API Resilience › should handle rate limiting gracefully" classname="api-resilience.spec.ts" time="1.898">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\api-resilience-API-Resilie-91d34-le-rate-limiting-gracefully-firefox\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBeGreaterThan(expected)" type="expect.toBeGreaterThan">
-<![CDATA[  [firefox] › api-resilience.spec.ts:203:3 › API Resilience › should handle rate limiting gracefully 
-
-    Error: expect(received).toBeGreaterThan(expected)
-
-    Expected: > 0
-    Received:   0
-
-      235 |
-      236 |     // Most should succeed
-    > 237 |     expect(successCount).toBeGreaterThan(0);
-          |                          ^
-      238 |
-      239 |     // Cleanup
-      240 |     await cleanupUserData(registered.token);
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\api-resilience.spec.ts:237:26
-
-    Error Context: ..\..\test-results\api-resilience-API-Resilie-91d34-le-rate-limiting-gracefully-firefox\error-context.md
-]]>
-</failure>
+<testcase name="User Signup › should navigate to signup from login page" classname="auth-signup.spec.ts" time="1.77">
 </testcase>
-</testsuite>
-<testsuite name="auth-edge-cases.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="8" failures="1" skipped="0" time="52.804" errors="2">
-<testcase name="Authentication Edge Cases › should reject login with empty email field" classname="auth-edge-cases.spec.ts" time="9.635">
-</testcase>
-<testcase name="Authentication Edge Cases › should reject login with empty password field" classname="auth-edge-cases.spec.ts" time="5.912">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\test-failed-1.png]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\video.webm]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\error-context.md]]
-]]>
-</system-out>
+<testcase name="User Signup › should allow user to login after signup" classname="auth-signup.spec.ts" time="8.803">
 <system-err>
 <![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
 ]]>
 </system-err>
-<error message="page.fill: value: expected string, got undefined" type="Error">
-<![CDATA[  [firefox] › auth-edge-cases.spec.ts:56:3 › Authentication Edge Cases › should reject login with empty password field 
-
-    Error: page.fill: value: expected string, got undefined
-
-      60 |
-      61 |     // Fill email but leave password empty
-    > 62 |     await page.fill("#email", registered.email);
-         |                ^
-      63 |
-      64 |     // Try to submit
-      65 |     await page.click('button[type="submit"]');
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-edge-cases.spec.ts:62:16
-
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\error-context.md
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-4c7a1-n-with-empty-password-field-firefox\error-context.md
-]]>
-</error>
 </testcase>
-<testcase name="Authentication Edge Cases › should reject login with both fields empty" classname="auth-edge-cases.spec.ts" time="10.915">
-</testcase>
-<testcase name="Authentication Edge Cases › should handle rapid consecutive login attempts gracefully" classname="auth-edge-cases.spec.ts" time="0.595">
+<testcase name="User Signup › should prevent duplicate submission" classname="auth-signup.spec.ts" time="33.299">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\test-failed-1.png]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-chromium\test-failed-1.png]]
 
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\video.webm]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-chromium\video.webm]]
 
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-chromium\error-context.md]]
 ]]>
 </system-out>
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-<error message="page.evaluate: The operation is insecure." type="Error">
-<![CDATA[  [firefox] › auth-edge-cases.spec.ts:93:3 › Authentication Edge Cases › should handle rapid consecutive login attempts gracefully 
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  [chromium] › auth-signup.spec.ts:310:3 › User Signup › should prevent duplicate submission ───────
 
-    Error: page.evaluate: The operation is insecure.
-    @debugger eval code line 311 > eval:1:7
-    evaluate@debugger eval code:313:16
-    @debugger eval code:1:44
-    @debugger eval code:1:62
+    Test timeout of 30000ms exceeded.
 
-        at @debugger eval code line 311 > eval:1:7
-        at evaluate@debugger eval code:313:16
-        at @debugger eval code:1:44
-        at @debugger eval code:1:62
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-edge-cases.spec.ts:99:16
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('button:has-text("Create Account")')
 
-    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\test-failed-1.png
-    ────────────────────────────────────────────────────────────────────────────────────────────────
 
-    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
-    ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\video.webm
-    ────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\error-context.md
-
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-9dd1b-e-login-attempts-gracefully-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Authentication Edge Cases › should clear auth token on explicit logout" classname="auth-edge-cases.spec.ts" time="9.653">
-</testcase>
-<testcase name="Authentication Edge Cases › should preserve auth state through navigation" classname="auth-edge-cases.spec.ts" time="8.772">
-</testcase>
-<testcase name="Authentication Edge Cases › should handle protected route access without token" classname="auth-edge-cases.spec.ts" time="7.303">
-</testcase>
-<testcase name="Authentication Edge Cases › should prevent re-registration with same email" classname="auth-edge-cases.spec.ts" time="0.019">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-3b054-egistration-with-same-email-firefox\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\auth-edge-cases-Authentica-3b054-egistration-with-same-email-firefox\error-context.md]]
-]]>
-</system-out>
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-<failure message="expect(received).toContain(expected) // indexOf" type="expect.toContain">
-<![CDATA[  [firefox] › auth-edge-cases.spec.ts:204:3 › Authentication Edge Cases › should prevent re-registration with same email 
-
-    Error: expect(received).toContain(expected) // indexOf
-
-    Expected value: 429
-    Received array: [409, 422]
-
-      219 |
-      220 |     // Should get a conflict error (409 or 422)
-    > 221 |     expect([409, 422]).toContain(response.status);
+      323 |     const submitButton = page.locator('button:has-text("Create Account")');
+      324 |     await submitButton.click();
+    > 325 |     await submitButton.click();
           |                        ^
-      222 |   });
-      223 | });
-      224 |
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-edge-cases.spec.ts:221:24
+      326 |     await submitButton.click();
+      327 |
+      328 |     // Should only create one user and redirect once
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:325:24
 
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-3b054-egistration-with-same-email-firefox\error-context.md
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
 
-    Error Context: ..\..\test-results\auth-edge-cases-Authentica-3b054-egistration-with-same-email-firefox\error-context.md
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-chromium\error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="User Signup › should show form fields are properly labeled" classname="auth-signup.spec.ts" time="2.148">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-chromium\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [chromium] › auth-signup.spec.ts:340:3 › User Signup › should show form fields are properly labeled 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('label:has-text("Password")')
+    Expected: visible
+    Error: strict mode violation: locator('label:has-text("Password")') resolved to 2 elements:
+        1) <label for="password" class="block text-sm font-medium text-slate-700">Password</label> aka getByText('Password', { exact: true })
+        2) <label for="confirmPassword" class="block text-sm font-medium text-slate-700">Confirm Password</label> aka getByText('Confirm Password')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('label:has-text("Password")')
+
+
+      345 |     await expect(page.locator('label:has-text("Full Name")')).toBeVisible();
+      346 |     await expect(page.locator('label:has-text("Email")')).toBeVisible();
+    > 347 |     await expect(page.locator('label:has-text("Password")')).toBeVisible();
+          |                                                              ^
+      348 |     await expect(
+      349 |       page.locator('label:has-text("Confirm Password")'),
+      350 |     ).toBeVisible();
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:347:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-chromium\error-context.md
 ]]>
 </failure>
 </testcase>
 </testsuite>
-<testsuite name="auth.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="6" failures="0" skipped="0" time="64.318" errors="0">
-<testcase name="Authentication › should allow user login via UI" classname="auth.spec.ts" time="16.267">
+<testsuite name="auth-signup.spec.ts" timestamp="2026-08-16T08:15:21.445Z" hostname="firefox" tests="12" failures="3" skipped="0" time="159.236" errors="1">
+<testcase name="User Signup › should allow user signup via UI" classname="auth-signup.spec.ts" time="14.161">
 <system-err>
 <![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
 ]]>
 </system-err>
 </testcase>
-<testcase name="Authentication › should reject login with invalid credentials" classname="auth.spec.ts" time="8.931">
+<testcase name="User Signup › should show validation error for empty name" classname="auth-signup.spec.ts" time="6.716">
 </testcase>
-<testcase name="Authentication › should allow user logout" classname="auth.spec.ts" time="13.193">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
+<testcase name="User Signup › should show validation error for invalid email" classname="auth-signup.spec.ts" time="6.821">
 </testcase>
-<testcase name="Authentication › should persist auth token across page reloads" classname="auth.spec.ts" time="14.066">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
+<testcase name="User Signup › should show validation error for short password" classname="auth-signup.spec.ts" time="7.251">
 </testcase>
-<testcase name="Authentication › should register new user via API" classname="auth.spec.ts" time="6.635">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
+<testcase name="User Signup › should show validation error when passwords don&apos;t match" classname="auth-signup.spec.ts" time="7.464">
 </testcase>
-<testcase name="Authentication › should handle login page redirect when not authenticated" classname="auth.spec.ts" time="5.226">
-</testcase>
-</testsuite>
-<testsuite name="authorization.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="6" failures="4" skipped="0" time="9.235" errors="2">
-<testcase name="Authorization › should require authentication for protected endpoints" classname="authorization.spec.ts" time="0.016">
+<testcase name="User Signup › should show error for duplicate email" classname="auth-signup.spec.ts" time="18.243">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-ee2e2-ion-for-protected-endpoints-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-firefox\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-firefox\error-context.md]]
 ]]>
 </system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › authorization.spec.ts:20:3 › Authorization › should require authentication for protected endpoints 
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [firefox] › auth-signup.spec.ts:162:3 › User Signup › should show error for duplicate email ──────
 
-    Error: expect(received).toBe(expected) // Object.is equality
+    Error: expect(locator).toBeVisible() failed
 
-    Expected: 401
-    Received: 429
+    Locator: locator('text=An account with this email already exists')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
 
-      27 |
-      28 |     // Should return 401 (Unauthorized)
-    > 29 |     expect(response.status).toBe(401);
-         |                             ^
-      30 |   });
-      31 |
-      32 |   test("should reject requests with invalid token", async () => {
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:29:29
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=An account with this email already exists')
 
-    Error Context: ..\..\test-results\authorization-Authorizatio-ee2e2-ion-for-protected-endpoints-firefox\error-context.md
+
+      200 |       "text=An account with this email already exists",
+      201 |     );
+    > 202 |     await expect(errorMessage).toBeVisible();
+          |                                ^
+      203 |
+      204 |     // Cleanup
+      205 |     if (token) {
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:202:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-sh-447ca-w-error-for-duplicate-email-firefox\error-context.md
 ]]>
 </failure>
 </testcase>
-<testcase name="Authorization › should reject requests with invalid token" classname="authorization.spec.ts" time="0.088">
+<testcase name="User Signup › should show loading state during signup" classname="auth-signup.spec.ts" time="17.468">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-02723-requests-with-invalid-token-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-firefox\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-firefox\error-context.md]]
 ]]>
 </system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › authorization.spec.ts:32:3 › Authorization › should reject requests with invalid token 
+<failure message="expect(locator).toBeDisabled() failed" type="expect.toBeDisabled">
+<![CDATA[  [firefox] › auth-signup.spec.ts:210:3 › User Signup › should show loading state during signup ────
 
-    Error: expect(received).toBe(expected) // Object.is equality
+    Error: expect(locator).toBeDisabled() failed
 
-    Expected: 401
-    Received: 429
+    Locator: locator('button:has-text("Create Account")')
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
 
-      41 |
-      42 |     // Should return 401 (Unauthorized)
-    > 43 |     expect(response.status).toBe(401);
-         |                             ^
-      44 |   });
-      45 |
-      46 |   test("should allow users to access their own projects", async () => {
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:43:29
+    Call log:
+      - Expect "toBeDisabled" with timeout 5000ms
+      - waiting for locator('button:has-text("Create Account")')
 
-    Error Context: ..\..\test-results\authorization-Authorizatio-02723-requests-with-invalid-token-firefox\error-context.md
+
+      225 |
+      226 |     // Button should be disabled/loading
+    > 227 |     await expect(submitButton).toBeDisabled();
+          |                                ^
+      228 |
+      229 |     // Wait for response and redirect
+      230 |     await page.waitForURL("/", { timeout: 10000 });
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:227:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-sh-7a784-loading-state-during-signup-firefox\error-context.md
 ]]>
 </failure>
 </testcase>
-<testcase name="Authorization › should allow users to access their own projects" classname="authorization.spec.ts" time="1.847">
+<testcase name="User Signup › should navigate to login from signup page" classname="auth-signup.spec.ts" time="13.993">
+</testcase>
+<testcase name="User Signup › should navigate to signup from login page" classname="auth-signup.spec.ts" time="6.007">
+</testcase>
+<testcase name="User Signup › should allow user to login after signup" classname="auth-signup.spec.ts" time="17.146">
+<system-err>
+<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
+]]>
+</system-err>
+</testcase>
+<testcase name="User Signup › should prevent duplicate submission" classname="auth-signup.spec.ts" time="30.318">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-b8cbb-o-access-their-own-projects-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-firefox\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-firefox\error-context.md]]
 ]]>
 </system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › authorization.spec.ts:46:3 › Authorization › should allow users to access their own projects 
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  [firefox] › auth-signup.spec.ts:310:3 › User Signup › should prevent duplicate submission ────────
 
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+    Test timeout of 30000ms exceeded.
 
-       at ..\fixtures\database.ts:117
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('button:has-text("Create Account")')
 
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:52:21
 
-    Error Context: ..\..\test-results\authorization-Authorizatio-b8cbb-o-access-their-own-projects-firefox\error-context.md
+      323 |     const submitButton = page.locator('button:has-text("Create Account")');
+      324 |     await submitButton.click();
+    > 325 |     await submitButton.click();
+          |                        ^
+      326 |     await submitButton.click();
+      327 |
+      328 |     // Should only create one user and redirect once
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:325:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-signup-User-Signup-should-prevent-duplicate-submission-firefox\error-context.md
 ]]>
 </error>
 </testcase>
-<testcase name="Authorization › should prevent users from deleting other users&apos; projects" classname="authorization.spec.ts" time="3.541">
+<testcase name="User Signup › should show form fields are properly labeled" classname="auth-signup.spec.ts" time="13.648">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-996f5-leting-other-users-projects-firefox\error-context.md]]
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-firefox\video.webm]]
+
+[[ATTACHMENT|..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-firefox\error-context.md]]
 ]]>
 </system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › authorization.spec.ts:77:3 › Authorization › should prevent users from deleting other users' projects 
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [firefox] › auth-signup.spec.ts:340:3 › User Signup › should show form fields are properly labeled 
 
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+    Error: expect(locator).toBeVisible() failed
 
-       at ..\fixtures\database.ts:117
+    Locator: locator('label:has-text("Password")')
+    Expected: visible
+    Error: strict mode violation: locator('label:has-text("Password")') resolved to 2 elements:
+        1) <label for="password" class="block text-sm font-medium text-slate-700">Password</label> aka getByText('Password', { exact: true })
+        2) <label for="confirmPassword" class="block text-sm font-medium text-slate-700">Confirm Password</label> aka getByText('Confirm Password')
 
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:86:21
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('label:has-text("Password")')
 
-    Error Context: ..\..\test-results\authorization-Authorizatio-996f5-leting-other-users-projects-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Authorization › should handle 404 for non-existent resources" classname="authorization.spec.ts" time="1.875">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-8860b--for-non-existent-resources-firefox\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › authorization.spec.ts:112:3 › Authorization › should handle 404 for non-existent resources 
 
-    Error: expect(received).toBe(expected) // Object.is equality
+      345 |     await expect(page.locator('label:has-text("Full Name")')).toBeVisible();
+      346 |     await expect(page.locator('label:has-text("Email")')).toBeVisible();
+    > 347 |     await expect(page.locator('label:has-text("Password")')).toBeVisible();
+          |                                                              ^
+      348 |     await expect(
+      349 |       page.locator('label:has-text("Confirm Password")'),
+      350 |     ).toBeVisible();
+        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\auth-signup.spec.ts:347:62
 
-    Expected: 404
-    Received: 429
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
 
-      128 |
-      129 |     // Should return 404
-    > 130 |     expect(response.status).toBe(404);
-          |                             ^
-      131 |
-      132 |     // Cleanup
-      133 |     await cleanupUserData(registered.token);
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:130:29
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
 
-    Error Context: ..\..\test-results\authorization-Authorizatio-8860b--for-non-existent-resources-firefox\error-context.md
+    Error Context: ..\..\test-results\auth-signup-User-Signup-sh-e3c38-fields-are-properly-labeled-firefox\error-context.md
 ]]>
 </failure>
-</testcase>
-<testcase name="Authorization › should handle validation errors gracefully" classname="authorization.spec.ts" time="1.868">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\authorization-Authorizatio-7a21c-alidation-errors-gracefully-firefox\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › authorization.spec.ts:136:3 › Authorization › should handle validation errors gracefully 
-
-    Error: expect(received).toBe(expected) // Object.is equality
-
-    Expected: 422
-    Received: 429
-
-      153 |
-      154 |     // Should return 422 (Unprocessable Entity)
-    > 155 |     expect(response.status).toBe(422);
-          |                             ^
-      156 |
-      157 |     // Cleanup
-      158 |     await cleanupUserData(registered.token);
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\authorization.spec.ts:155:29
-
-    Error Context: ..\..\test-results\authorization-Authorizatio-7a21c-alidation-errors-gracefully-firefox\error-context.md
-]]>
-</failure>
-</testcase>
-</testsuite>
-<testsuite name="comments.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="3" failures="0" skipped="0" time="5.753" errors="3">
-<testcase name="Comments › should create and retrieve a comment via API" classname="comments.spec.ts" time="1.85">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › comments.spec.ts:23:3 › Comments › should create and retrieve a comment via API ──────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:29:21
-
-    Error Context: ..\..\test-results\comments-Comments-should-c-7ca09--retrieve-a-comment-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Comments › should list comments on a task via API" classname="comments.spec.ts" time="2.082">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\comments-Comments-should-list-comments-on-a-task-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › comments.spec.ts:58:3 › Comments › should list comments on a task via API ────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:64:21
-
-    Error Context: ..\..\test-results\comments-Comments-should-list-comments-on-a-task-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Comments › should delete a comment via API" classname="comments.spec.ts" time="1.821">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\comments-Comments-should-delete-a-comment-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › comments.spec.ts:99:3 › Comments › should delete a comment via API ───────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\comments.spec.ts:105:21
-
-    Error Context: ..\..\test-results\comments-Comments-should-delete-a-comment-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-</testsuite>
-<testsuite name="crud-operations.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="11" failures="1" skipped="0" time="28.14" errors="10">
-<testcase name="CRUD Operations › should update project details" classname="crud-operations.spec.ts" time="1.771">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-84863-ould-update-project-details-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:26:3 › CRUD Operations › should update project details ───────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:32:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-84863-ould-update-project-details-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should partially update project" classname="crud-operations.spec.ts" time="2.035">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-068fb-ld-partially-update-project-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:66:3 › CRUD Operations › should partially update project ─────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:72:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-068fb-ld-partially-update-project-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should update task details" classname="crud-operations.spec.ts" time="1.773">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Operations-should-update-task-details-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:103:3 › CRUD Operations › should update task details ─────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:109:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Operations-should-update-task-details-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should update only task status" classname="crud-operations.spec.ts" time="1.977">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-521db-uld-update-only-task-status-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:137:3 › CRUD Operations › should update only task status ─────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:143:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-521db-uld-update-only-task-status-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should update comment body" classname="crud-operations.spec.ts" time="1.977">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Operations-should-update-comment-body-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:168:3 › CRUD Operations › should update comment body ─────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:174:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Operations-should-update-comment-body-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should prevent updating another user&apos;s project" classname="crud-operations.spec.ts" time="3.83">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-fc9ce-ting-another-user-s-project-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:210:3 › CRUD Operations › should prevent updating another user's project 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:218:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-fc9ce-ting-another-user-s-project-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should prevent updating another user&apos;s task" classname="crud-operations.spec.ts" time="3.636">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-b4e1a-pdating-another-user-s-task-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:245:3 › CRUD Operations › should prevent updating another user's task 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:253:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-b4e1a-pdating-another-user-s-task-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should prevent updating another user&apos;s comment" classname="crud-operations.spec.ts" time="3.426">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-8a065-ting-another-user-s-comment-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:283:3 › CRUD Operations › should prevent updating another user's comment 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:291:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-8a065-ting-another-user-s-comment-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should handle delete of non-existent resource" classname="crud-operations.spec.ts" time="2.004">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-a70c2-te-of-non-existent-resource-firefox\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  [firefox] › crud-operations.spec.ts:326:3 › CRUD Operations › should handle delete of non-existent resource 
-
-    Error: expect(received).toBe(expected) // Object.is equality
-
-    Expected: 404
-    Received: 429
-
-      341 |
-      342 |     // Should return 404
-    > 343 |     expect(response.status).toBe(404);
-          |                             ^
-      344 |
-      345 |     // Cleanup
-      346 |     await cleanupUserData(registered.token);
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:343:29
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-a70c2-te-of-non-existent-resource-firefox\error-context.md
-]]>
-</failure>
-</testcase>
-<testcase name="CRUD Operations › should prevent deleting another user&apos;s resource" classname="crud-operations.spec.ts" time="3.769">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-f3c70-ing-another-user-s-resource-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:349:3 › CRUD Operations › should prevent deleting another user's resource 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:357:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-f3c70-ing-another-user-s-resource-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="CRUD Operations › should delete task successfully" classname="crud-operations.spec.ts" time="1.942">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\crud-operations-CRUD-Opera-48f9b-ld-delete-task-successfully-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › crud-operations.spec.ts:384:3 › CRUD Operations › should delete task successfully ────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\crud-operations.spec.ts:390:21
-
-    Error Context: ..\..\test-results\crud-operations-CRUD-Opera-48f9b-ld-delete-task-successfully-firefox\error-context.md
-]]>
-</error>
-</testcase>
-</testsuite>
-<testsuite name="filtering-pagination.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="8" failures="0" skipped="7" time="0" errors="1">
-<testcase name="Filtering &amp; Pagination › should filter tasks by priority" classname="filtering-pagination.spec.ts" time="0">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\filtering-pagination-Filte-0886b-ld-filter-tasks-by-priority-firefox\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\filtering-pagination-Filte-0886b-ld-filter-tasks-by-priority-firefox\error-context.md]]
-]]>
-</system-out>
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › filtering-pagination.spec.ts:40:3 › Filtering & Pagination › should filter tasks by priority 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\filtering-pagination.spec.ts:28:13
-
-    Error Context: ..\..\test-results\filtering-pagination-Filte-0886b-ld-filter-tasks-by-priority-firefox\error-context.md
-
-    Error Context: ..\..\test-results\filtering-pagination-Filte-0886b-ld-filter-tasks-by-priority-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should filter tasks by status" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should handle empty filter results gracefully" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should list tasks with pagination support" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should list projects with pagination" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should support pagination parameters" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should handle filters with paginated results" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Filtering &amp; Pagination › should support page navigation" classname="filtering-pagination.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="form-validation.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="11" failures="0" skipped="10" time="0" errors="1">
-<testcase name="Form Validation › should validate required project name" classname="form-validation.spec.ts" time="0">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\form-validation-Form-Valid-d12bc-idate-required-project-name-firefox\error-context.md]]
-
-[[ATTACHMENT|..\..\test-results\form-validation-Form-Valid-d12bc-idate-required-project-name-firefox\error-context.md]]
-]]>
-</system-out>
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › form-validation.spec.ts:36:3 › Form Validation › should validate required project name 
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\form-validation.spec.ts:23:13
-
-    Error Context: ..\..\test-results\form-validation-Form-Valid-d12bc-idate-required-project-name-firefox\error-context.md
-
-    Error Context: ..\..\test-results\form-validation-Form-Valid-d12bc-idate-required-project-name-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Form Validation › should validate project name minimum length" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should validate required task title" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should validate task title minimum length" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should validate invalid task status" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should validate invalid task priority" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should validate invalid task due date format" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should validate required comment body" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should accept valid project with special characters" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should accept valid task with long description" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Form Validation › should reject task description exceeding maximum length" classname="form-validation.spec.ts">
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="projects.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="5" failures="0" skipped="0" time="24.641" errors="4">
-<testcase name="Projects › should create and retrieve a project via API" classname="projects.spec.ts" time="1.81">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › projects.spec.ts:24:3 › Projects › should create and retrieve a project via API ──────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:30:24
-
-    Error Context: ..\..\test-results\projects-Projects-should-c-ac97f--retrieve-a-project-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should list projects via API" classname="projects.spec.ts" time="2.067">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-list-projects-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › projects.spec.ts:48:3 › Projects › should list projects via API ──────────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:54:22
-
-    Error Context: ..\..\test-results\projects-Projects-should-list-projects-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should delete a project via API" classname="projects.spec.ts" time="1.787">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-delete-a-project-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › projects.spec.ts:76:3 › Projects › should delete a project via API ───────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:82:21
-
-    Error Context: ..\..\test-results\projects-Projects-should-delete-a-project-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should add and remove project members via API" classname="projects.spec.ts" time="3.438">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\projects-Projects-should-a-812b6-ove-project-members-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › projects.spec.ts:101:3 › Projects › should add and remove project members via API ────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\projects.spec.ts:110:21
-
-    Error Context: ..\..\test-results\projects-Projects-should-a-812b6-ove-project-members-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Projects › should navigate to projects page when authenticated" classname="projects.spec.ts" time="15.539">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-</testcase>
-</testsuite>
-<testsuite name="routes.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="7" failures="0" skipped="0" time="73.279" errors="0">
-<testcase name="Route Protection › should redirect unauthenticated users to login page" classname="routes.spec.ts" time="8.004">
-</testcase>
-<testcase name="Route Protection › should allow access to login page without token" classname="routes.spec.ts" time="6.136">
-</testcase>
-<testcase name="Route Protection › should allow authenticated users to access protected dashboard" classname="routes.spec.ts" time="13.017">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-</testcase>
-<testcase name="Route Protection › should redirect to login when accessing protected route without token" classname="routes.spec.ts" time="6.469">
-</testcase>
-<testcase name="Route Protection › should maintain auth state during navigation" classname="routes.spec.ts" time="14.147">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-</testcase>
-<testcase name="Route Protection › should allow navigation to tasks page when authenticated" classname="routes.spec.ts" time="12.958">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-</testcase>
-<testcase name="Route Protection › should allow navigation to settings page when authenticated" classname="routes.spec.ts" time="12.548">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
-</testcase>
-</testsuite>
-<testsuite name="tasks.spec.ts" timestamp="2026-08-16T07:28:50.760Z" hostname="firefox" tests="5" failures="0" skipped="0" time="28.274" errors="4">
-<testcase name="Tasks › should create and retrieve a task via API" classname="tasks.spec.ts" time="1.89">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-create-and-retrieve-a-task-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › tasks.spec.ts:24:3 › Tasks › should create and retrieve a task via API ───────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:30:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-create-and-retrieve-a-task-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should list tasks via API" classname="tasks.spec.ts" time="2.162">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-list-tasks-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › tasks.spec.ts:55:3 › Tasks › should list tasks via API ───────────────────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:61:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-list-tasks-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should filter tasks by status via API" classname="tasks.spec.ts" time="2.056">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-filter-tasks-by-status-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › tasks.spec.ts:94:3 › Tasks › should filter tasks by status via API ───────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:100:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-filter-tasks-by-status-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should delete a task via API" classname="tasks.spec.ts" time="2.082">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\..\test-results\tasks-Tasks-should-delete-a-task-via-API-firefox\error-context.md]]
-]]>
-</system-out>
-<error message="Failed to create project: {&quot;success&quot;:false,&quot;error&quot;:{&quot;code&quot;:&quot;RATE_LIMIT_EXCEEDED&quot;,&quot;message&quot;:&quot;Too many requests. Please try again later.&quot;}}" type="Error">
-<![CDATA[  [firefox] › tasks.spec.ts:132:3 › Tasks › should delete a task via API ───────────────────────────
-
-    Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
-
-       at ..\fixtures\database.ts:117
-
-      115 |   if (!response.ok) {
-      116 |     const error = await response.json();
-    > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-          |           ^
-      118 |   }
-      119 |
-      120 |   // Add delay after write to avoid rate limiting
-        at createProject (C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\fixtures\database.ts:117:11)
-        at C:\Users\USER\Documents\Codex\2026-07-07\task-management-system-docs-api-design\Task-Management-System\frontend\e2e\tests\tasks.spec.ts:138:21
-
-    Error Context: ..\..\test-results\tasks-Tasks-should-delete-a-task-via-API-firefox\error-context.md
-]]>
-</error>
-</testcase>
-<testcase name="Tasks › should navigate to tasks page when authenticated" classname="tasks.spec.ts" time="20.084">
-<system-err>
-<![CDATA[Could not list projects for cleanup (likely rate limited), skipping cleanup
-]]>
-</system-err>
 </testcase>
 </testsuite>
 </testsuites>

@@ -8,9 +8,18 @@
 import { apiClient } from "../../../shared/api/client";
 import { tokenStorage } from "../../../shared/utils/token-storage";
 import type { RequestOptions } from "../../../shared/api/cancellation";
-import type { LoginRequest, User } from "../types";
+import type { LoginRequest, RegisterRequest, User } from "../types";
 
 export const authServices = {
+  async register(
+    data: RegisterRequest,
+    options?: RequestOptions,
+  ): Promise<{ token: string; user: User }> {
+    const result = await apiClient.auth.register(data, options);
+    tokenStorage.setAccessToken(result.token);
+    return result;
+  },
+
   async login(
     data: LoginRequest,
     options?: RequestOptions,

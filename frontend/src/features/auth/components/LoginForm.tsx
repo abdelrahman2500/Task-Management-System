@@ -1,6 +1,7 @@
 import { Mail, Lock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "../../../shared/components/ui/Button";
 import { Input } from "../../../shared/components/ui/Input";
@@ -10,6 +11,7 @@ import { useLogin } from "../hooks/useLogin";
 
 export default function LoginForm() {
   const { mutate, isPending } = useLogin();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -80,13 +82,23 @@ export default function LoginForm() {
         </a>
       </div>
 
-      <Button
-        type="submit"
-        loading={isPending}
-        disabled={isPending}
-      >
+      <Button type="submit" loading={isPending} disabled={isPending}>
         Sign In
       </Button>
+
+      <div className="text-center">
+        <p className="text-sm text-slate-600">
+          Don't have an account?{" "}
+          <button
+            type="button"
+            onClick={() => navigate("/auth/signup")}
+            className="font-medium text-blue-600 transition hover:text-blue-700"
+            disabled={isPending}
+          >
+            Sign Up
+          </button>
+        </p>
+      </div>
     </form>
   );
 }
