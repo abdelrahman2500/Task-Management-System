@@ -11,7 +11,7 @@ export const createTaskSchema = z.object({
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be YYYY-MM-DD")
     .nullable()
     .optional(),
-});
+}).strict();
 
 export const updateTaskSchema = z.object({
   title: z.string().min(3).max(100).optional(),
@@ -24,7 +24,7 @@ export const updateTaskSchema = z.object({
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be YYYY-MM-DD")
     .nullable()
     .optional(),
-});
+}).strict();
 
 /**
  * Query parameter validation schemas

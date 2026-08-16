@@ -6,7 +6,7 @@ import { z } from "zod";
 export const createProjectSchema = z.object({
   name: z.string().min(3).max(100),
   description: z.string().max(500).optional(),
-});
+}).strict();
 
 /**
  * Update project body validation
@@ -15,7 +15,7 @@ export const updateProjectSchema = z.object({
   name: z.string().min(3).max(100).optional(),
   description: z.string().max(500).nullable().optional(),
   status: z.enum(["active", "archived"]).optional(),
-});
+}).strict();
 
 /**
  * Add member body validation
@@ -23,14 +23,14 @@ export const updateProjectSchema = z.object({
 export const addMemberSchema = z.object({
   userId: z.number().int().positive(),
   role: z.enum(["admin", "member", "viewer"]).default("member"),
-});
+}).strict();
 
 /**
  * Update member body validation
  */
 export const updateMemberSchema = z.object({
   role: z.enum(["admin", "member", "viewer"]),
-});
+}).strict();
 
 /**
  * Query parameter validation schemas

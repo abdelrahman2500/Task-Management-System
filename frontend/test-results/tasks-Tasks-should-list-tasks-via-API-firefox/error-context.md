@@ -1,0 +1,223 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: tasks.spec.ts >> Tasks >> should list tasks via API
+- Location: e2e\tests\tasks.spec.ts:55:3
+
+# Error details
+
+```
+Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+```
+
+# Test source
+
+```ts
+  17  |   data: T;
+  18  | }
+  19  | export interface TestProject {
+  20  |   id: number;
+  21  |   name: string;
+  22  |   description?: string;
+  23  | }
+  24  | export interface TestTask {
+  25  |   id: number;
+  26  |   title: string;
+  27  |   status: string;
+  28  |   priority: string;
+  29  | }
+  30  | export interface TestComment {
+  31  |   id: number;
+  32  |   body: string;
+  33  |   taskId: number;
+  34  | }
+  35  | export interface TestProjectMember {
+  36  |   id: number;
+  37  |   userId: number;
+  38  |   role: string;
+  39  | }
+  40  | 
+  41  | async function responseData<T>(response: Response): Promise<T> {
+  42  |   const json = (await response.json()) as any;
+  43  |   // If response has data property, return it; otherwise assume it's the data itself
+  44  |   return json.data !== undefined ? json.data : json;
+  45  | }
+  46  | 
+  47  | /**
+  48  |  * Extract full response with pagination metadata
+  49  |  */
+  50  | async function responseDataWithPagination<T>(
+  51  |   response: Response,
+  52  | ): Promise<{ data: T[]; pagination?: any }> {
+  53  |   const json = (await response.json()) as any;
+  54  |   return {
+  55  |     data: json.data || [],
+  56  |     pagination: json.pagination,
+  57  |   };
+  58  | }
+  59  | 
+  60  | /**
+  61  |  * Fetch helper with auth token
+  62  |  */
+  63  | async function apiRequest(
+  64  |   method: string,
+  65  |   endpoint: string,
+  66  |   token?: string,
+  67  |   body?: unknown,
+  68  | ): Promise<Response> {
+  69  |   const headers: Record<string, string> = {
+  70  |     "Content-Type": "application/json",
+  71  |   };
+  72  | 
+  73  |   if (token) {
+  74  |     headers["Authorization"] = `Bearer ${token}`;
+  75  |   }
+  76  | 
+  77  |   const options: RequestInit = {
+  78  |     method,
+  79  |     headers,
+  80  |   };
+  81  | 
+  82  |   if (body) {
+  83  |     options.body = JSON.stringify(body);
+  84  |   }
+  85  | 
+  86  |   return fetch(`${API_URL}${endpoint}`, options);
+  87  | }
+  88  | 
+  89  | /**
+  90  |  * Add delay to reduce rate limiting impact
+  91  |  * POST operations should have delays to avoid hitting rate limiter
+  92  |  * Rate limit: 100 write requests per 15 minutes per user
+  93  |  * Budget: ~9 seconds per write request for full safety margin
+  94  |  */
+  95  | async function delayAfterWrite(): Promise<void> {
+  96  |   // 3000ms (3 seconds) delay after write operations for safety
+  97  |   // This provides substantial buffer to prevent hitting the 100 req/15min limit
+  98  |   // Expected total time per test: 3s * number_of_writes
+  99  |   await new Promise((resolve) => setTimeout(resolve, 3000));
+  100 | }
+  101 | 
+  102 | /**
+  103 |  * Create a project
+  104 |  */
+  105 | export async function createProject(
+  106 |   token: string,
+  107 |   projectData: {
+  108 |     name: string;
+  109 |     description?: string;
+  110 |     status?: string;
+  111 |   },
+  112 | ): Promise<TestProject> {
+  113 |   const response = await apiRequest("POST", "/projects", token, projectData);
+  114 | 
+  115 |   if (!response.ok) {
+  116 |     const error = await response.json();
+> 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
+      |           ^ Error: Failed to create project: {"success":false,"error":{"code":"RATE_LIMIT_EXCEEDED","message":"Too many requests. Please try again later."}}
+  118 |   }
+  119 | 
+  120 |   // Add delay after write to avoid rate limiting
+  121 |   await delayAfterWrite();
+  122 | 
+  123 |   return responseData<TestProject>(response);
+  124 | }
+  125 | 
+  126 | /**
+  127 |  * Get a project by ID
+  128 |  */
+  129 | export async function getProject(
+  130 |   token: string,
+  131 |   projectId: number,
+  132 | ): Promise<TestProject> {
+  133 |   const response = await apiRequest("GET", `/projects/${projectId}`, token);
+  134 | 
+  135 |   if (!response.ok) {
+  136 |     throw new Error(`Failed to get project ${projectId}`);
+  137 |   }
+  138 | 
+  139 |   return responseData<TestProject>(response);
+  140 | }
+  141 | 
+  142 | /**
+  143 |  * Delete a project
+  144 |  */
+  145 | export async function deleteProject(
+  146 |   token: string,
+  147 |   projectId: number,
+  148 | ): Promise<void> {
+  149 |   const response = await apiRequest("DELETE", `/projects/${projectId}`, token);
+  150 | 
+  151 |   if (!response.ok) {
+  152 |     throw new Error(`Failed to delete project ${projectId}`);
+  153 |   }
+  154 | 
+  155 |   // Add delay after write to avoid rate limiting
+  156 |   await delayAfterWrite();
+  157 | }
+  158 | 
+  159 | /**
+  160 |  * Create a task
+  161 |  */
+  162 | export async function createTask(
+  163 |   token: string,
+  164 |   projectId: number,
+  165 |   taskData: {
+  166 |     title: string;
+  167 |     description?: string;
+  168 |     status?: string;
+  169 |     priority?: string;
+  170 |     dueDate?: string;
+  171 |     assigneeId?: number;
+  172 |   },
+  173 | ): Promise<TestTask> {
+  174 |   const response = await apiRequest(
+  175 |     "POST",
+  176 |     `/tasks/project/${projectId}`,
+  177 |     token,
+  178 |     taskData,
+  179 |   );
+  180 | 
+  181 |   if (!response.ok) {
+  182 |     const error = await response.json();
+  183 |     throw new Error(`Failed to create task: ${JSON.stringify(error)}`);
+  184 |   }
+  185 | 
+  186 |   // Add delay after write to avoid rate limiting
+  187 |   await delayAfterWrite();
+  188 | 
+  189 |   return responseData<TestTask>(response);
+  190 | }
+  191 | 
+  192 | /**
+  193 |  * Get a task by ID
+  194 |  */
+  195 | export async function getTask(
+  196 |   token: string,
+  197 |   taskId: number,
+  198 | ): Promise<TestTask> {
+  199 |   const response = await apiRequest("GET", `/tasks/${taskId}`, token);
+  200 | 
+  201 |   if (!response.ok) {
+  202 |     throw new Error(`Failed to get task ${taskId}`);
+  203 |   }
+  204 | 
+  205 |   return responseData<TestTask>(response);
+  206 | }
+  207 | 
+  208 | /**
+  209 |  * Update a task
+  210 |  */
+  211 | export async function updateTask(
+  212 |   token: string,
+  213 |   taskId: number,
+  214 |   taskData: Partial<{
+  215 |     title: string;
+  216 |     description: string;
+  217 |     status: string;
+```
