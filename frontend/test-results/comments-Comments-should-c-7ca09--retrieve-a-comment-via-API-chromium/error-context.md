@@ -12,7 +12,7 @@
 # Error details
 
 ```
-Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"30262f09-3493-4c8c-b787-66d9be7987d6"}}
+Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"161cfcdb-4dd4-4c71-a101-0d5cf2a554e2"}}
 ```
 
 # Test source
@@ -119,7 +119,7 @@ Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FA
   115 |   if (!response.ok) {
   116 |     const error = await response.json();
 > 117 |     throw new Error(`Failed to create project: ${JSON.stringify(error)}`);
-      |           ^ Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"30262f09-3493-4c8c-b787-66d9be7987d6"}}
+      |           ^ Error: Failed to create project: {"success":false,"error":{"code":"VALIDATION_FAILED","message":"The request contains invalid input parameters.","details":{"":"Unrecognized key(s) in object: 'status'"},"requestId":"161cfcdb-4dd4-4c71-a101-0d5cf2a554e2"}}
   118 |   }
   119 | 
   120 |   // Add delay after write to avoid rate limiting

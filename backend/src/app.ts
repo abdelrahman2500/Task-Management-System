@@ -11,6 +11,7 @@ import { requestLoggerMiddleware } from "./middleware/requestLogger";
 import { logServerStart } from "./lib/logger";
 import { getEnvironment } from "./config/environment";
 import { buildCompleteOpenAPISpec } from "./config/openapi";
+import { prisma } from "./lib/prisma";
 
 export const app = express();
 
@@ -46,6 +47,24 @@ app.use(apiLimiter);
 // Health check (no rate limiting applied to this endpoint)
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+// Readiness check - verify database connectivity
+app.get("/health/ready", async (_req, res) => {
+  try {
+    // Quick database connectivity check
+    await prisma.$queryRaw`SELECT 1`;
+    res.json({
+      status: "ready",
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    res.status(503).json({
+      status: "not_ready",
+      reason: "database_unavailable",
+      timestamp: new Date().toISOString(),
+    });
+  }
 });
 
 // OpenAPI/Swagger documentation endpoint
